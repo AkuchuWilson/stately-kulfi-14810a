@@ -1,0 +1,24 @@
+
+const standardData=[
+ {title:'Why fit matters',body:'Customers rarely know what their feet need. They know what hurts. A trained specialist closes that gap before the shoe ever leaves the store.',quote:'Listen first. Measure properly. Explain clearly. Know the limits.',ticks:[['Long shifts on hard floors','Connect work, activity and fatigue to fit decisions.'],['Shoes that look right but fit wrong','Length is only one measure; width, shape and volume matter.'],['Professional boundaries','Red flags are referred, not sold to.']]},
+ {title:'The S.E.R.V.E. Method',body:'BrightPath Academy’s signature customer conversation framework turns emotional intelligence into visible customer care and consistent commercial practice, while the customer stays in control of the decision.',quote:'Help the customer make a confident, informed choice. Never pressure them into one.',ticks:[['Eight moments','A guide, not a script.'],['Customer pace','Return to an earlier step when new information changes the picture.'],['Service-led performance','Better conversations create better recommendations.']]},
+ {title:'CLEAR concerns',body:'A concern is useful information, not something to defeat. It may signal an unanswered question, a mismatch, a budget limit, uncertainty or a need for more time.',quote:'C · Calmly acknowledge  |  L · Learn what is underneath  |  E · Explain in their terms  |  A · Adjust or offer alternatives  |  R · Return the choice',ticks:[['No argument','Let the customer finish.'],['No guessing','Ask a neutral question first.'],['No pressure','A respectful pause is part of good service.']]},
+ {title:'Fit assessment',body:'Some stores use a foot scanner. Others use trained observation, measurement and fitting. Both routes help the team understand the customer, check the fit and guide a confident choice.',quote:'Two ways to assess fit. One customer standard.',ticks:[['Scanner-supported fitting','Technology adds evidence when used appropriately.'],['Hands-on fitting','Observation and measurement remain essential.'],['Shared finish','Try. Compare. Choose.']]}
+];
+const tabs=document.querySelectorAll('.standard-btn');const sp=document.getElementById('standardPanel');
+function renderStandard(i){const x=standardData[i];sp.innerHTML=`<div class="eyebrow">The Standard</div><h3>${x.title}</h3><p>${x.body}</p><div class="quote">${x.quote}</div><div class="ticks">${x.ticks.map(t=>`<div class="tick"><i>✓</i><div><b>${t[0]}</b><span>${t[1]}</span></div></div>`).join('')}</div>`;tabs.forEach((b,j)=>b.classList.toggle('active',i===j));}
+tabs.forEach((b,i)=>b.addEventListener('click',()=>renderStandard(i)));renderStandard(0);
+
+const disciplineData={
+ discover:{title:'DISCOVER — understand before you recommend',p:'The customer should be explaining why they need something before the specialist explains what they sell.',formula:'Activity → Friction → Desired outcome',clear:'Rule: never recommend until you can repeat the customer’s need back in one sentence.'},
+ prove:{title:'PROVE — let the customer see and feel the reason',p:'The strongest proof is not a feature list. It is a relevant assessment, a plain-language explanation and a noticeable comparison.',formula:'See → Explain → Feel → Compare',clear:'Rule: never defend the price of something the customer has not yet understood or felt.'},
+ guide:{title:'GUIDE — one solution, one reason, one natural next step',p:'Helping somebody make a decision is part of service. The recommendation should connect directly to what the customer said matters.',formula:'Need → Reason → Solution → Next step',clear:'CLEAR sits here: calmly acknowledge, learn what is underneath, explain, adjust if appropriate, and return the choice.'}
+};
+const dbtns=document.querySelectorAll('[data-discipline]');const dp=document.getElementById('disciplinePanel');
+function renderD(k){const x=disciplineData[k];dp.innerHTML=`<h4>${x.title}</h4><p>${x.p}</p><div class="formula">${x.formula}</div><div class="clear-box"><b>Floor standard</b>${x.clear}</div>`;dbtns.forEach(b=>b.classList.toggle('active',b.dataset.discipline===k));}
+dbtns.forEach(b=>b.addEventListener('click',()=>renderD(b.dataset.discipline)));renderD('discover');
+
+const menu=document.getElementById('menuBtn');if(menu)menu.addEventListener('click',()=>document.body.classList.toggle('menu-open'));document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+
+document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',()=>{const p=b.parentElement;p.classList.toggle('open');b.querySelector('span').textContent=p.classList.contains('open')?'−':'+';}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
