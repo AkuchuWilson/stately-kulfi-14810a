@@ -2211,6 +2211,12 @@ body:not(.public-mode) .wa-fab{display:none}
 .ls-scene img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover}
 .ls-scene figcaption{display:flex;gap:10px;align-items:center;padding:12px 16px;color:#E6EBF2;font-size:14.5px}
 .ls-scene figcaption span{flex:none;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0E1B30;background:#E2C88E;padding:3px 8px;border-radius:999px}
+.au-tabs{grid-column:1/-1;display:flex;gap:6px;background:#EEF0F3;border-radius:999px;padding:4px;margin-bottom:6px}
+.au-tabs button{flex:1;border:0;background:none;border-radius:999px;padding:9px;font:600 14px var(--sans);cursor:pointer;color:#3B4556}
+.au-tabs button[aria-selected="true"]{background:#fff;color:#0E1B30;box-shadow:0 1px 4px rgb(0 0 0 / .1)}
+.au-msg{grid-column:1/-1;margin:6px 0 0;font-size:14px;min-height:1em}
+.au-msg.err{color:#B4232A}.au-msg.ok{color:#1A6B52}
+.au-link{grid-column:1/-1;background:none;border:0;color:#1F5F9E;font:600 13.5px var(--sans);cursor:pointer;justify-self:start;padding:0}
 
 #publicSite section{scroll-margin-top:72px}
 </style>
@@ -4951,8 +4957,10 @@ var PROG = [
 var ALLVALUE = PROG.reduce(function(a,p){ return a+p.p; },0);
 PLANS.member = {name:"All-access membership", who:"Per seat", price:19};
 PLANS.enterprise = {name:"Enterprise", who:"10+ seats", price:15};
+var BP_AUTH = { url:"", anon:"" }; /* Supabase project URL and anon (public) key */
+function authOn(){ return !!(BP_AUTH.url && BP_AUTH.anon); }
 if (!platform.ent) platform.ent = {};
-(function(){ try { var q=new URLSearchParams(location.search), b=q.get("buy"); if (!b) return;
+(function(){ try { var q=new URLSearchParams(location.search), b=q.get("buy"); if (!b) return; if (authOn()) { window.__pendingBuy=b; history.replaceState(null,"",location.pathname+"#dashboard"); return; }
   if (b==="member_m"||b==="member_y") platform.plan={key:"member", billing:b.slice(-1), since:new Date().toISOString().slice(0,10)};
   else if (b==="ent_m"||b==="ent_y") platform.plan={key:"enterprise", billing:b.slice(-1), since:new Date().toISOString().slice(0,10)};
   else if (PROG.some(function(p){return p.k===b;})) platform.ent[b]=new Date().toISOString().slice(0,10);
@@ -5100,6 +5108,114 @@ renderLesson = function(id){
   var fig='<figure class="ls-scene"><img src="assets/img/'+s[0]+'.webp" alt="'+s[1]+'" loading="lazy"><figcaption><span>Scenario</span>'+s[2]+'</figcaption></figure>';
   if (hd) hd.insertAdjacentHTML("afterend", fig); else sec.insertAdjacentHTML("afterbegin", fig);
 };
+/* ===== v21: secure accounts (Supabase) — dormant until BP_AUTH is configured ===== */
+var SB=null, SBUSER=null, SBREADY=false;
+(function(){
+  if (!authOn()) return;
+  /* Paid access comes only from the server once accounts are on. */
+  platform.ent={}; if (platform.plan && platform.plan.key!=="free") platform.plan=null; savePlatform();
+  var s=document.createElement("script"); s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+  s.onload=function(){ SB=window.supabase.createClient(BP_AUTH.url, BP_AUTH.anon, {auth:{persistSession:true, autoRefreshToken:true, detectSessionInUrl:true}}); SBREADY=true; init(); };
+  s.onerror=function(){ toast("Sign-in is temporarily unavailable. Please refresh in a moment."); };
+  document.head.appendChild(s);
+  function init(){
+    SB.auth.getSession().then(function(r){ if (r.data && r.data.session) onSignedIn(r.data.session.user); else authUi(); });
+    SB.auth.onAuthStateChange(function(ev, session){
+      if (ev==="PASSWORD_RECOVERY") recoverUi();
+      if (ev==="SIGNED_IN" && session && (!SBUSER || SBUSER.id!==session.user.id)) onSignedIn(session.user);
+      if (ev==="SIGNED_OUT") { SBUSER=null; }
+    });
+  }
+})();
+function authUi(){
+  var f=document.getElementById("profileForm"); if (!f || f.__auth) return; f.__auth=true;
+  var mode="signup";
+  f.insertAdjacentHTML("afterbegin",'<div class="au-tabs" role="tablist"><button type="button" data-au="signup" aria-selected="true">Create account</button><button type="button" data-au="signin" aria-selected="false">Sign in</button></div>');
+  var em=document.getElementById("pfEmail"), lab=em.closest("label")||em.parentNode;
+  lab.insertAdjacentHTML("afterend",'<label class="field-label au-pw">Password<input id="pfPass" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>');
+  f.insertAdjacentHTML("beforeend",'<p class="au-msg" id="auMsg" role="status"></p><button type="button" class="au-link" id="auForgot" hidden>Forgot your password?</button>');
+  function setMode(m){ mode=m; f.querySelectorAll("[data-au]").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-au")===m); });
+    ["pfName","pfOrg","pfTrack","pfCode"].forEach(function(id){ var el=document.getElementById(id); if (el) { var l=el.closest("label")||el; l.hidden=(m==="signin"); el.required=(m==="signup" && id==="pfName"); } });
+    document.getElementById("pfPass").autocomplete = m==="signin" ? "current-password" : "new-password";
+    document.getElementById("auForgot").hidden = m!=="signin";
+    var sb=f.querySelector('button[type="submit"]'); if (sb) sb.textContent = m==="signin" ? "Sign in" : "Create my account"; msg(""); }
+  function msg(t,ok){ var m=document.getElementById("auMsg"); m.textContent=t; m.className="au-msg"+(ok?" ok":t?" err":""); }
+  f.addEventListener("click", function(e){ var t=e.target.closest("[data-au]"); if (t) setMode(t.getAttribute("data-au")); });
+  document.getElementById("auForgot").addEventListener("click", function(){ var e=em.value.trim(); if (!e) { msg("Enter your email first."); return; } SB.auth.resetPasswordForEmail(e,{redirectTo:location.origin+location.pathname}).then(function(r){ msg(r.error?r.error.message:"Check your email for a password reset link.", !r.error); }); });
+  f.addEventListener("submit", function(e){
+    if (window.__authOK) { window.__authOK=false; return; }
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (!SBREADY) { msg("Connecting, please try again in a moment."); return; }
+    var email=em.value.trim(), pw=document.getElementById("pfPass").value, btn=f.querySelector('button[type="submit"]');
+    if (pw.length<8) { msg("Use a password of at least 8 characters."); return; }
+    btn.disabled=true;
+    var done=function(){ btn.disabled=false; };
+    if (mode==="signup") {
+      var name=document.getElementById("pfName").value.trim(), org=(document.getElementById("pfOrg")||{}).value||"";
+      SB.auth.signUp({email:email, password:pw, options:{data:{name:name, organisation:org}, emailRedirectTo:location.origin+location.pathname}}).then(function(r){ done();
+        if (r.error) { msg(r.error.message); return; }
+        if (!r.data.session) { msg("Check your email to confirm your account, then sign in.", true); setMode("signin"); return; } });
+    } else {
+      SB.auth.signInWithPassword({email:email, password:pw}).then(function(r){ done(); if (r.error) msg(r.error.message==="Invalid login credentials"?"Email or password is incorrect.":r.error.message); });
+    }
+  }, true);
+  setMode(mode);
+}
+function recoverUi(){ var pw=prompt("Choose a new password (at least 8 characters):"); if (pw && pw.length>=8) SB.auth.updateUser({password:pw}).then(function(r){ toast(r.error?r.error.message:"Password updated."); }); }
+function onSignedIn(user){
+  SBUSER=user; var md=user.user_metadata||{};
+  profile=Object.assign({}, profile||{}, {name:md.name||(profile&&profile.name)||user.email.split("@")[0], email:user.email, org:md.organisation||(profile&&profile.org)||"", uid:user.id}); saveProfile();
+  SB.from("profiles").upsert({id:user.id, name:profile.name, organisation:profile.org}).then(function(){});
+  SB.from("progress").select("state").eq("user_id",user.id).maybeSingle().then(function(r){
+    var remote=r.data&&r.data.state;
+    if (remote && remote.done) { var d=Object.assign({}, remote.done, state.done); Object.keys(remote).forEach(function(k){ if (!(k in state) || k==="enrolled"||k==="ft"||k==="at") state[k]=Object.assign({}, remote[k]||{}, state[k]||{}); }); state.done=d; if (!state.last) state.last=remote.last; if (!state.track) state.track=remote.track; }
+    _saveLocalOnly(); pushProgress(); loadEntitlements(true);
+  });
+  var f=document.getElementById("profileForm");
+  if (f && !document.getElementById("authShell").hidden) { ["pfName","pfEmail"].forEach(function(id){ var el=document.getElementById(id); if (el) el.value= id==="pfName"?profile.name:profile.email; }); window.__authOK=true; f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
+}
+function loadEntitlements(render){
+  if (!SBUSER) return Promise.resolve();
+  return SB.from("entitlements").select("kind,key,status").eq("status","active").then(function(r){
+    var rows=r.data||[]; platform.ent={}; var plan=null;
+    rows.forEach(function(x){ if (x.kind==="programme") platform.ent[x.key]=true; else if (x.key==="enterprise") plan={key:"enterprise"}; else if (x.key==="member" && (!plan||plan.key!=="enterprise")) plan={key:"member"}; else if (x.key==="bpg" && !plan) plan={key:"company", code:"BPG"}; });
+    platform.plan=plan; savePlatform();
+    if (plan && (plan.key==="enterprise"||plan.code==="BPG")) { try { if (!state.manager) setManager(true); if (!state.master) setMaster(true); } catch(e){} }
+    rebuildAll(); try { renderNav(); renderProgress(); } catch(e){}
+    if (render && !document.getElementById("academyApp").hidden) { if (current) go(current); else goView(VIEW||"dashboard"); }
+    return rows;
+  });
+}
+/* progress sync */
+var _saveLocalOnly = save, _pushT=null;
+function pushProgress(){ if (!SBUSER) return; clearTimeout(_pushT); _pushT=setTimeout(function(){ SB.from("progress").upsert({user_id:SBUSER.id, state:state, updated_at:new Date().toISOString()}).then(function(){}); }, 1200); }
+save = function(){ _saveLocalOnly(); pushProgress(); };
+/* purchases are linked to the signed-in account */
+var _startPayV21 = startPay;
+startPay = function(k){
+  if (!authOn()) return _startPayV21(k);
+  if (!SBUSER) { window.__afterAuthPay=k; openAcademy("dashboard"); toast("Create your account or sign in first, so your purchase is linked to it."); return; }
+  var url=PAY[k]; if (!url) return _startPayV21(k);
+  location.href=url+"?client_reference_id="+encodeURIComponent(SBUSER.id)+"&prefilled_email="+encodeURIComponent(SBUSER.email);
+};
+(function(){ if (!authOn()) return; var tries=0, b=window.__pendingBuy;
+  var t=setInterval(function(){ if (!SBUSER) { if (++tries>40) clearInterval(t); return; }
+    if (window.__afterAuthPay) { var k=window.__afterAuthPay; window.__afterAuthPay=null; clearInterval(t); startPay(k); return; }
+    if (!b) { clearInterval(t); return; }
+    if (tries===0) toast("Payment received. Activating your access...");
+    loadEntitlements(true).then(function(rows){ tries++; if ((rows||[]).length || tries>20) { clearInterval(t); toast((rows||[]).length?"Your access is active.":"Your payment is processing. Access will appear shortly; refresh in a minute."); } }); }, 3000); })();
+/* team code redeemed on the server */
+var _bpgRedeemV21 = bpgRedeem;
+bpgRedeem = function(code, after){
+  if (!authOn()) return _bpgRedeemV21(code, after);
+  var go2=function(){ SB.auth.getSession().then(function(r){ var tok=r.data&&r.data.session&&r.data.session.access_token; if (!tok) { after(false); return; }
+    fetch("/.netlify/functions/redeem-code",{method:"POST", headers:{"Content-Type":"application/json", Authorization:"Bearer "+tok}, body:JSON.stringify({code:code, organisation:(profile&&profile.org)||""})}).then(function(x){ return x.json(); }).then(function(j){ if (j.ok) loadEntitlements(true).then(function(){ after(true); }); else { toast(j.error||"Code not accepted."); after(false); } }).catch(function(){ after(false); }); }); };
+  if (SBUSER) go2(); else { var n=0, t=setInterval(function(){ if (SBUSER||++n>20) { clearInterval(t); go2(); } }, 500); }
+};
+/* sign out from the Academy sidebar */
+var _sideMainV21 = sideMain;
+sideMain = function(){ var h=_sideMainV21(); if (authOn() && SBUSER) h=h.replace('<p class="sb-foot">','<button class="sb-link sm" data-signout><span>Sign out ('+esc(SBUSER.email)+')</span></button><p class="sb-foot">'); return h; };
+document.addEventListener("click", function(e){ if (!e.target.closest("[data-signout]")) return; SB.auth.signOut().then(function(){ try { localStorage.removeItem(PROFILE_KEY); localStorage.removeItem(PLATFORM_KEY); localStorage.removeItem(STORE_KEY); } catch(x){} location.href=location.pathname; }); });
 
 var start = null;
 try { var hm = (location.hash || "").match(/lesson-([RMTA]?\d+\.\d+)/); if (hm && (findIdx(hm[1]) > -1 || /^[RMTA]/.test(hm[1]))) start = hm[1]; } catch(e) {}
