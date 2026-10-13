@@ -2144,6 +2144,10 @@ body:not(.public-mode) .wa-fab{display:none}
 @media (max-width:640px){.pv-roll ol > li{grid-template-columns:32px 1fr}.pv-roll ol > li span,.pv-roll ol > li em{grid-column:2}}
 .wa-fab{background:rgb(31 157 85)!important}
 .ev-btn.wa,.btn-line.wa{color:rgb(18 140 74)!important;border-color:rgb(158 217 182)!important}
+.ls-scene{margin:4px 0 18px;border-radius:14px;overflow:hidden;background:#0E1B30;box-shadow:0 12px 30px rgb(14 27 48 / .12)}
+.ls-scene img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover}
+.ls-scene figcaption{display:flex;gap:10px;align-items:center;padding:12px 16px;color:#E6EBF2;font-size:14.5px}
+.ls-scene figcaption span{flex:none;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0E1B30;background:#E2C88E;padding:3px 8px;border-radius:999px}
 
 #publicSite section{scroll-margin-top:72px}
 </style>
@@ -4932,7 +4936,7 @@ try { FAQ.managers.q[0]=["What team options are available?","Quelles offres équ
   var path=document.getElementById("pvPath"); if (path) path.innerHTML=P.map(function(p,i){ return '<li'+(i===5?' class="fin"':'')+'><img src="assets/img/badge-'+p[0]+'.webp" alt="" loading="lazy"><b>'+(i<5?'Stage '+(i+1):'Grand finale')+'</b><span>'+p[1]+'</span></li>'; }).join("");
   /* catalogue */
   var ALLM=[].concat(COURSE,SERVEMODS,FLOORMODS,TRACKMODS,MANAGERMODS,MASTERMODS), ALLL=[]; ALLM.forEach(function(m){ m.lessons.forEach(function(l){ ALLL.push(l); }); });
-  var IMG={foundations:"coaching",floor:"scene-walk-compare",fit:"scan",pathway:"retail",cfs:"cert-finale",manager:"scene-huddle",master:"master"};
+  var IMG={foundations:"sc-foot-model",floor:"sc-listening",fit:"sc-scan-pressure",pathway:"retail",cfs:"cert-finale",manager:"sc-huddle",master:"master"};
   var OUT={foundations:"Open every conversation well and know when to refer.",floor:"Discover, prove and guide decisions without pressure.",fit:"Assess fit with or without a scanner and recommend clearly.",pathway:"Apply the standard in retail or clinical settings.",cfs:"The full pathway, final exam and recorded roleplay.",manager:"Run huddles, coach on the floor and grow results.",master:"Fit complex feet and coach and certify others."};
   function stat(p){ var ls=ALLL.filter(function(l){ return p.c(l.id); }); if (p.k==="pathway"||p.k==="cfs") ls=ls.filter(function(l){ return !/^M\d/.test(l.id); }); var m=ls.reduce(function(a,l){ return a+lessonMins(l); },0); return {n:ls.length, t:fmtMins(m)}; }
   var cat=document.getElementById("pvCat");
@@ -4958,6 +4962,33 @@ try { FAQ.managers.q[0]=["What team options are available?","Quelles offres équ
   /* reveal */
   if ("IntersectionObserver" in window) { var io=new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, {threshold:.08}); site.querySelectorAll(".pv-sec .pv-wrap > *").forEach(function(el){ el.classList.add("pv-r"); io.observe(el); }); }
 })();
+/* ===== v20: diverse scenario photography in topics ===== */
+var SCENE={
+  "0.1":["sc-listening","A specialist listening closely to a customer in store","Helping starts with listening, not a product pitch."],
+  "1.1":["sc-foot-model","A trainer explaining foot structure to two colleagues with an anatomical model","Use a foot model to explain structure in plain language."],
+  "S1.2":["sc-listening","A specialist listening to a customer explain what matters","One open question at a time, then room to answer."],
+  "S2.2":["sc-scan-pressure","A specialist showing a customer his pressure map while he holds an insole","Validate with evidence the customer can see and feel."],
+  "3.1":["sc-scan-3d","A specialist explaining a 3D foot scan to two colleagues","Choose the route first: scanner-supported or hands-on."],
+  "3.2":["sc-scan-pressure","A specialist pointing to the relevant area of a pressure map","Point to relevant findings only, then ask how it feels."],
+  "3.3":["sc-hands-on","A specialist measuring a customer's foot by hand while a colleague observes","Measure length and width by hand. Compare shape and volume."],
+  "M1.1":["sc-scan-3d","A clinical and retail team reviewing a 3D scan together","In a clinic, every finding stays inside your scope."],
+  "6.1":["sc-certified","A diverse group of graduates holding their certificates","Bring everything together for certification day."],
+  "T1.1":["sc-huddle","A manager sharing team progress on a tablet during a huddle","Make the target visible and shared, not pressured."],
+  "A3.1":["sc-foot-model","A trainer coaching colleagues with a foot model","Coach the behaviour, one practice point at a time."]
+};
+STAGE_IMG.found=["sc-foot-model","A trainer explaining foot structure with an anatomical model"];
+STAGE_IMG.serve=["sc-listening","A specialist listening closely to a customer"];
+STAGE_IMG.fit=["sc-scan-pressure","A specialist explaining a pressure map to a customer"];
+STAGE_IMG.lead=["sc-huddle","A manager sharing team progress during a huddle"];
+var _renderLessonV20 = renderLesson;
+renderLesson = function(id){
+  _renderLessonV20(id);
+  var s=SCENE[id], art=page.querySelector(".lesson2"); if (!s || !art) return;
+  var sec=document.getElementById("ls-learn")||document.getElementById("ls-obj"); if (!sec) return;
+  var hd=sec.querySelector(".ls-sh");
+  var fig='<figure class="ls-scene"><img src="assets/img/'+s[0]+'.webp" alt="'+s[1]+'" loading="lazy"><figcaption><span>Scenario</span>'+s[2]+'</figcaption></figure>';
+  if (hd) hd.insertAdjacentHTML("afterend", fig); else sec.insertAdjacentHTML("afterbegin", fig);
+};
 
 var start = null;
 try { var hm = (location.hash || "").match(/lesson-([RMTA]?\d+\.\d+)/); if (hm && (findIdx(hm[1]) > -1 || /^[RMTA]/.test(hm[1]))) start = hm[1]; } catch(e) {}
