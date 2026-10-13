@@ -2144,6 +2144,17 @@ body:not(.public-mode) .wa-fab{display:none}
 @media (max-width:640px){.pv-roll ol > li{grid-template-columns:32px 1fr}.pv-roll ol > li span,.pv-roll ol > li em{grid-column:2}}
 .wa-fab{background:rgb(31 157 85)!important}
 .ev-btn.wa,.btn-line.wa{color:rgb(18 140 74)!important;border-color:rgb(158 217 182)!important}
+.pv-press{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:center;margin-top:28px;padding:22px 24px;border-radius:22px;background:var(--sf);border:1px solid var(--line);box-shadow:var(--sh)}
+.pv-presstag{display:flex;flex-direction:column;gap:4px;padding-right:20px;border-right:1px solid var(--line)}
+.pv-presstag span{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--gld);color:rgb(30 24 10);padding:3px 8px;border-radius:999px}
+.pv-presstag b{font-family:var(--serif);font-size:19px;color:var(--ink)}.pv-presstag small{font-size:12.5px;color:var(--mut)}
+.pv-pq{font-family:var(--serif);font-size:20px;color:var(--grn);margin-bottom:6px!important}
+.pv-presstxt > p:not(.pv-pq){font-size:14.5px;color:var(--mut);line-height:1.55}
+.pv-presstxt ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pv-presstxt li{font-size:12px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:4px 9px}
+.pv-press .pv-btn.line{color:var(--grn)}
+.pv-trust small a{color:var(--grn);font-weight:700;text-decoration:none}
+@media (max-width:900px){.pv-press{grid-template-columns:1fr}.pv-presstag{border-right:0;padding-right:0;flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}.pv-press .pv-btn{justify-self:start}}
 .ls-scene{margin:4px 0 18px;border-radius:14px;overflow:hidden;background:#0E1B30;box-shadow:0 12px 30px rgb(14 27 48 / .12)}
 .ls-scene img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover}
 .ls-scene figcaption{display:flex;gap:10px;align-items:center;padding:12px 16px;color:#E6EBF2;font-size:14.5px}
@@ -2178,7 +2189,7 @@ body:not(.public-mode) .wa-fab{display:none}
         <figure class="pv-heroimg"><img src="assets/img/pv-hero.webp" alt="A specialist guiding a customer comparing new shoes in store"><figcaption><b>Service becomes performance when the fit is understood.</b><span>Discover &rarr; prove &rarr; recommend &rarr; confident choice</span></figcaption></figure>
       </div>
       <div class="pv-stats"><div><b>7</b><span>Programmes</span></div><div><b>92</b><span>Practical topics</span></div><div><b>7</b><span>Achievement badges</span></div><div><b>~9 hrs</b><span>To certification</span></div><div><b>$15</b><span>Per seat, per month</span></div></div>
-      <div class="pv-trust"><span>Founder training experience includes teams at</span><ul><li>Global Footcare AU / NZ / SG</li><li>MAP Indonesia</li><li>ASICS Middle East</li><li>Primer Group Asia</li><li>Runners Middle East</li><li>Apparel Group</li><li>IRUN Poland</li><li>Footprints Podiatry</li><li>Body Mechanix</li></ul><small>Training experience shown. Not an endorsement of BrightPath Academy.</small></div>
+      <div class="pv-trust"><span>Founder training experience includes teams at</span><ul><li>Global Footcare AU / NZ / SG</li><li>MAP Indonesia</li><li>ASICS Middle East</li><li>Primer Group Asia</li><li>Runners Middle East</li><li>Apparel Group</li><li>IRUN Poland</li><li>Footprints Podiatry</li><li>Body Mechanix</li></ul><small>Training experience shown. Not an endorsement of BrightPath Academy. <a href="#about">See training feedback &rarr;</a></small></div>
     </div>
   </section>
 
@@ -2257,6 +2268,11 @@ body:not(.public-mode) .wa-fab{display:none}
           <a class="pv-link" href="https://www.linkedin.com/in/akuchu-wilson-03513aa5" target="_blank" rel="noopener">View LinkedIn profile &rarr;</a>
         </div>
       </div>
+      <aside class="pv-press" aria-label="Training feedback">
+        <div class="pv-presstag"><span>Featured</span><b>Primer Group News</b><small>May 2025</small></div>
+        <div class="pv-presstxt"><p class="pv-pq">&ldquo;It&rsquo;s not just about selling shoes; it&rsquo;s about improving lives.&rdquo;</p><p>Akuchu co-led a 12-day training tour for retail teams in the Philippines, Singapore and Malaysia. Store associates said they felt more confident assessing customer needs and recommending the right products afterwards.</p><ul><li>Philippines</li><li>Singapore</li><li>Malaysia</li><li>Hands-on scanner workshops</li><li>On-floor sales coaching</li></ul></div>
+        <a class="pv-btn line sm" href="https://www.primergrp.com/blogs/news/aetrex-soars-in-southeast-asia-empowering-retail-associates-with-cutting-edge-training" target="_blank" rel="noopener">Read the article</a>
+      </aside>
       <div class="pv-ex" id="ps-executions">
         <div class="pv-exhead"><h3>Executions in the field</h3><p>Store launches, team training, customer fittings and events.</p></div>
         <div class="ex-wrap"><div class="ex-preview" id="exPreview"></div><button class="pv-btn line ex-open" id="exToggle" aria-expanded="false" aria-controls="exGrid">View all photos</button><div class="ex-grid" id="exGrid" hidden></div></div>
