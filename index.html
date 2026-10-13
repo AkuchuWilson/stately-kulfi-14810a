@@ -4881,7 +4881,7 @@ if (LANG==="fr") setTimeout(applyLang, 0);
   document.getElementById("ps-executions").addEventListener("click", function(e){ var f=e.target.closest("[data-exf]"); if (f) { F=f.getAttribute("data-exf"); OPEN=false; draw(); return; } var b=e.target.closest("[data-ex]"); if (b) lb(+b.getAttribute("data-ex")); });
 })();
 /* ===== v18: one-off programmes, per-seat membership and enterprise ===== */
-var PAY = { foundations:"https://buy.stripe.com/bJecN764jaPT9EpgN28AE00", floor:"https://buy.stripe.com/fZubJ3akz5vzeYJbsI8AE01", fit:"", pathway:"", cfs:"", manager:"", master:"", member_m:"", member_y:"", ent_m:"", ent_y:"" };
+var PAY = { foundations:"https://buy.stripe.com/bJecN764jaPT9EpgN28AE00", floor:"https://buy.stripe.com/fZubJ3akz5vzeYJbsI8AE01", fit:"https://buy.stripe.com/4gM28t1O32jnbMxbsI8AE02", pathway:"https://buy.stripe.com/fZu9AV50faPT8Al1S88AE03", cfs:"https://buy.stripe.com/fZu14pcsHcY19EpeEU8AE04", manager:"https://buy.stripe.com/14A7sN78n6zD03PgN28AE05", master:"https://buy.stripe.com/4gM7sNakzgad6sdaoE8AE06", member_m:"https://buy.stripe.com/4gM4gB3Wb9LP2bX54k8AE07", member_y:"https://buy.stripe.com/cNicN73Wb1fjaIt9kA8AE08", ent_m:"https://buy.stripe.com/aFacN7gIXf699EpdAQ8AE09", ent_y:"https://buy.stripe.com/aFaaEZeAPe257wh8gw8AE0a" };
 var PROG = [
   {k:"foundations", n:"BrightPath Foundations: The S.E.R.V.E. Standard", s:"Stages 1 and 2", p:49, b:"found", c:function(id){ return /^[01]\./.test(id)||/^S\d/.test(id); }},
   {k:"floor", n:"Master the Floor", s:"Discover, prove, guide", p:89, b:"guide", c:function(id){ return /^F\d/.test(id)||/^5\./.test(id); }},
