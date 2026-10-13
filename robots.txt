@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stately-kulfi-14810a.netlify.app/sitemap.xml
+Sitemap: https://academy.brightpathglobal.org/sitemap.xml

@@ -6,7 +6,7 @@
 <meta name="description" content="BrightPath Academy, a BrightPath Global company: the professional standard for modern footwear fitting. Certified Fit Specialist training for retail and clinical teams. Module 0 is free.">
 <meta property="og:title" content="BrightPath Academy | A BrightPath Global company">
 <meta property="og:description" content="The professional standard for modern footwear fitting. Start Module 0 free.">
-<meta property="og:image" content="https://stately-kulfi-14810a.netlify.app/assets/img/og.jpg">
+<meta property="og:image" content="https://academy.brightpathglobal.org/assets/img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -4346,7 +4346,7 @@ function badgeCard(s){
   return '<div class="bd-card'+(done?' earned':'')+(s.finale?' finale':'')+'">'+badgeSVG(s.k,g.tier,done)+'<b>'+s.badge+'</b><small>Stage '+s.n+''+'</small>'+
     (done?'<span class="bd-tier" style="--t:'+TIER_COL[g.tier]+'">'+g.tier+'</span><span class="bd-sub">'+[g.label,stPace(s)].filter(Boolean).join(" &middot; ")+'</span><a class="bd-li" target="_blank" rel="noopener" href="'+liUrl(s)+'">Add to LinkedIn</a>':'<span class="bd-sub">'+(ls.length?d+' of '+ls.length+' lessons':'Choose a pathway')+'</span>')+'</div>';
 }
-function liUrl(s){ var dt=new Date((stLessons(s).map(function(l){return state.at&&state.at[l.id];}).filter(Boolean).sort().pop())||Date.now()); return "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name="+encodeURIComponent(s.badge+" ("+stGrade(s).tier+")")+"&organizationName="+encodeURIComponent("BrightPath Academy")+"&issueYear="+dt.getFullYear()+"&issueMonth="+(dt.getMonth()+1)+"&certUrl="+encodeURIComponent("https://stately-kulfi-14810a.netlify.app/"); }
+function liUrl(s){ var dt=new Date((stLessons(s).map(function(l){return state.at&&state.at[l.id];}).filter(Boolean).sort().pop())||Date.now()); return "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name="+encodeURIComponent(s.badge+" ("+stGrade(s).tier+")")+"&organizationName="+encodeURIComponent("BrightPath Academy")+"&issueYear="+dt.getFullYear()+"&issueMonth="+(dt.getMonth()+1)+"&certUrl="+encodeURIComponent("https://academy.brightpathglobal.org/"); }
 function badgesPanel(){ var js=journey(), e=js.filter(stDone).length; return '<section class="panel bd-panel"><div class="panel-head"><div><h2>Your stage badges</h2><p>Earn a badge for every stage. Its grade reflects how many answers you got right first time, and its pace note shows how you worked through it. The final exam is the grand finale.</p></div><span class="status '+(e?'good':'neutral')+'">'+e+' of '+js.length+' earned</span></div><div class="bd-row">'+js.map(badgeCard).join("")+'</div><p class="fine">Grades: Distinction 90%+ right first time, Merit 75%+, Achieved on completion. The finale grade comes from your best final exam score.</p></section>'; }
 /* badge celebration */
 var BD_SEEN=null;
