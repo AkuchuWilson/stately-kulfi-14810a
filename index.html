@@ -1920,325 +1920,380 @@ body.sx-open{overflow:hidden}
 .wa-fab:hover{background:#124186}
 body:not(.public-mode) .wa-fab{display:none}
 @media (max-width:640px){.wa-fab span{display:none}.wa-fab{padding:12px;left:12px;bottom:12px}}
+/* ===== v19 refined homepage (rgb() syntax keeps the palette) ===== */
+#publicSite.pv{--bg:rgb(247 244 237);--sf:rgb(255 253 249);--sf2:rgb(240 236 227);--ink:rgb(22 42 40);--ink2:rgb(52 75 71);--mut:rgb(98 112 108);--grn:rgb(15 76 67);--grn2:rgb(23 102 90);--grn3:rgb(233 243 239);--nvy:rgb(16 43 69);--gld:rgb(201 154 63);--gld2:rgb(227 194 122);--line:rgb(20 42 40 / .11);--sh:0 18px 50px rgb(16 43 69 / .10);--serif:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--ink);padding:0!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.pv *{box-sizing:border-box}
+.pv h1,.pv h2,.pv h3{font-family:var(--serif)!important;font-weight:700!important;letter-spacing:-.025em!important;color:var(--ink);margin:0}
+.pv p{margin:0}
+.pv-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.pv-ann{background:linear-gradient(90deg,rgb(220 238 232),rgb(237 245 242));color:rgb(23 77 69);font-size:13px;font-weight:700;text-align:center;padding:9px 16px;border-bottom:1px solid var(--line)}
+.pv-head{position:sticky;top:0;z-index:100;background:rgb(247 244 237 / .92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.pv-headin{min-height:74px;display:flex;align-items:center;gap:24px}
+.pv-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:none}
+.pv-brand img{width:42px;height:42px;border-radius:11px}
+.pv-brand b{display:block;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.pv-brand small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.pv-nav{display:flex;gap:22px;margin-left:auto}
+.pv-nav a{font-size:14.5px;font-weight:600;color:var(--ink2);text-decoration:none}
+.pv-nav a:hover{color:var(--grn)}
+.pv-acts{display:flex;align-items:center;gap:10px}
+.pv-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;font:700 14px Inter,sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent;white-space:nowrap;transition:transform .2s,box-shadow .2s,background .2s}
+.pv-btn:hover{transform:translateY(-1px)}
+.pv-btn.dark{background:var(--grn);color:#fff;box-shadow:0 10px 24px rgb(15 76 67 / .22)}
+.pv-btn.dark:hover{background:var(--grn2)}
+.pv-btn.ghost{background:var(--sf);color:var(--ink);border-color:var(--line)}
+.pv-btn.gold{background:linear-gradient(180deg,rgb(222 186 104),rgb(196 152 66));color:rgb(30 24 10);border-color:rgb(186 142 58)}
+.pv-btn.line{background:transparent;color:inherit;border-color:currentColor}
+.pv-btn.sm{min-height:36px;padding:0 14px;font-size:13px}
+.pv-icon{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--sf);display:grid;place-items:center;cursor:pointer}
+.pv-icon svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:2}
+.pv-burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--sf);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.pv-burger span{width:18px;height:2px;background:var(--ink);border-radius:2px}
+.pv-mnav{display:none}
+.pv-hero{padding:28px 0 24px}
+.pv-herocard{display:grid;grid-template-columns:1.05fr .95fr;border-radius:28px;overflow:hidden;background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));box-shadow:0 30px 80px rgb(10 34 45 / .18);min-height:560px}
+.pv-herocopy{padding:56px 48px;color:rgb(234 241 238);display:flex;flex-direction:column;gap:20px;justify-content:center}
+.pv-pill{align-self:flex-start;font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px;border:1px solid rgb(255 255 255 / .2);background:rgb(255 255 255 / .06)}
+.pv .pv-herocopy h1{color:#fff;font-size:clamp(40px,4.8vw,64px);line-height:1.02}
+.pv-herocopy > p{font-size:18px;line-height:1.6;color:rgb(206 221 216);max-width:46ch}
+.pv-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.pv-herocopy .pv-btn.line{color:#fff;border-color:rgb(255 255 255 / .35)}
+.pv-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.pv-proof div{padding:14px;border-radius:16px;border:1px solid rgb(255 255 255 / .14);background:rgb(255 255 255 / .05)}
+.pv-proof b{display:block;font-size:14px;color:#fff}.pv-proof span{display:block;font-size:12.5px;color:rgb(186 204 199);margin-top:4px;line-height:1.45}
+.pv-heroimg{position:relative;margin:0}
+.pv-heroimg img{width:100%;height:100%;object-fit:cover;object-position:35% 50%}
+.pv-heroimg figcaption{position:absolute;left:18px;right:18px;bottom:18px;display:grid;grid-template-columns:1.2fr 1fr;gap:12px;align-items:center;padding:16px 18px;border-radius:18px;background:rgb(255 253 249 / .95);box-shadow:var(--sh)}
+.pv-heroimg figcaption b{font-family:var(--serif);font-size:18px;line-height:1.25;color:var(--ink)}
+.pv-heroimg figcaption span{font-size:12.5px;color:var(--mut);text-align:right}
+.pv-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:18px;background:var(--sf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.pv-stats div{padding:18px 16px;text-align:center;border-left:1px solid var(--line)}
+.pv-stats div:first-child{border-left:0}
+.pv-stats b{display:block;font-family:var(--serif);font-size:30px;color:var(--grn);line-height:1.1}
+.pv-stats span{font-size:12.5px;font-weight:600;color:var(--mut)}
+.pv-trust{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:14px 18px;border-radius:18px;background:var(--sf);border:1px solid var(--line)}
+.pv-trust > span{font-size:13px;font-weight:700;color:var(--ink)}
+.pv-trust ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pv-trust li{font-size:12px;font-weight:700;color:var(--ink2);background:var(--sf2);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+.pv-trust small{width:100%;font-size:11.5px;color:var(--mut)}
+.pv-sec{padding:84px 0}
+.pv-sec.alt{background:var(--sf2)}
+.pv-sh{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-bottom:30px}
+.pv .pv-sh h2{font-size:clamp(32px,3.6vw,48px);line-height:1.05}
+.pv-sh > p{color:var(--mut);font-size:16.5px;line-height:1.6}
+.pv-eye{font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--grn);margin-bottom:12px!important}
+.pv-eye.light{color:var(--gld2)}
+.pv-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pv-card{background:var(--sf);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--sh);transition:transform .3s}
+.pv-card:hover{transform:translateY(-3px)}
+.pv-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pv-card > div{padding:20px 22px 24px}
+.pv .pv-card h3{font-size:21px;margin-bottom:6px}
+.pv-card p{color:var(--mut);font-size:15px;line-height:1.55}
+.pv-steps{list-style:none;margin:18px 0 0;padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:24px;background:var(--nvy);color:rgb(214 224 235)}
+.pv-steps li{padding:4px 20px;border-left:1px solid rgb(255 255 255 / .14)}
+.pv-steps li:first-child{border-left:0}
+.pv-steps b{display:block;color:#fff;font-size:15px}.pv-steps span{font-size:13px;color:rgb(178 194 212)}
+.pv-tabs{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px;align-items:start}
+.pv-tablist{display:grid;gap:10px}
+.pv-tablist button{text-align:left;padding:18px 20px;border-radius:20px;border:1px solid var(--line);background:var(--sf);cursor:pointer;font:inherit;transition:background .2s,transform .2s}
+.pv-tablist button:hover{transform:translateX(3px)}
+.pv-tablist button b{display:block;font-size:16px;color:var(--ink)}.pv-tablist button span{display:block;font-size:13px;color:var(--mut);margin-top:3px}
+.pv-tablist button[aria-selected="true"]{background:var(--grn);border-color:var(--grn)}
+.pv-tablist button[aria-selected="true"] b{color:#fff}.pv-tablist button[aria-selected="true"] span{color:rgb(196 222 214)}
+.pv-panel{background:var(--sf);border:1px solid var(--line);border-radius:26px;padding:32px;box-shadow:var(--sh);min-height:100%}
+.pv .pv-panel h3{font-size:32px;margin-bottom:10px}
+.pv-panel > p{color:var(--mut);font-size:16px;line-height:1.6}
+.pv-panel blockquote{margin:18px 0;padding:16px 20px;border-left:4px solid var(--gld);background:rgb(251 246 234);border-radius:0 14px 14px 0;font-family:var(--serif);font-size:19px;color:var(--ink2)}
+.pv-ticks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pv-ticks li{display:grid;grid-template-columns:28px 1fr;gap:10px}
+.pv-ticks i{width:26px;height:26px;border-radius:50%;background:var(--grn3);color:var(--grn);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px}
+.pv-ticks b{display:block;font-size:14.5px}.pv-ticks span{font-size:13.5px;color:var(--mut)}
+.pv-path{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.pv-path::before{content:"";position:absolute;left:8%;right:8%;top:34px;height:2px;background:linear-gradient(90deg,var(--grn3),var(--gld2))}
+.pv-path li{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pv-path img{width:68px;height:auto;filter:drop-shadow(0 8px 14px rgb(16 43 69 / .18))}
+.pv-path b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grn)}.pv-path span{font-size:13.5px;font-weight:600;color:var(--ink2)}
+.pv-path li.fin b{color:rgb(150 110 40)}
+.pv-cat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pv-prog{display:flex;flex-direction:column;background:var(--sf);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh);transition:transform .3s}
+.pv-prog:hover{transform:translateY(-3px)}
+.pv-prog.best{border:2px solid var(--gld)}
+.pv-pimg{position:relative;height:150px;background:var(--nvy)}
+.pv-pimg > img:first-child{width:100%;height:100%;object-fit:cover}
+.pv-pbadge{position:absolute;right:12px;bottom:-26px;width:62px;height:auto;filter:drop-shadow(0 6px 12px rgb(0 0 0 / .25))}
+.pv-flag{position:absolute;left:12px;top:12px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--gld);color:rgb(30 24 10)}
+.pv-flag.free{background:var(--grn);color:#fff}
+.pv-pbody{padding:18px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pv .pv-pbody h3{font-size:19px;line-height:1.2;padding-right:56px}
+.pv-pbody > p{font-size:14px;color:var(--mut);line-height:1.5}
+.pv-meta{list-style:none;margin:0;padding:0;display:flex;gap:6px;flex-wrap:wrap}
+.pv-meta li{font-size:12px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:4px 9px}
+.pv-pfoot{margin-top:auto;padding-top:10px;display:flex;align-items:center;gap:8px;border-top:1px solid var(--line)}
+.pv-pfoot strong{margin-right:auto;font-family:var(--serif);font-size:24px;color:var(--ink)}
+.pv-pfoot strong small{font:600 12px Inter,sans-serif;color:var(--mut)}
+.pv-prog.seat{background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));border:0;color:rgb(214 228 224)}
+.pv .pv-prog.seat h3{color:#fff;font-size:24px;padding-right:0}
+.pv-prog.seat .pv-pbody{justify-content:center;padding:26px}
+.pv-prog.seat .pv-pbody > p{color:rgb(190 208 204)}
+.pv-seatprice{font-family:var(--serif);font-size:44px;color:#fff;line-height:1}
+.pv-seatprice small{display:block;font:600 13px Inter,sans-serif;color:rgb(190 208 204);margin-top:6px}
+.pv-prog.seat .pv-btn{align-self:flex-start;margin-top:8px}
+.pv-ent{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.pv-entimg{position:relative;margin:0;border-radius:26px;overflow:hidden;box-shadow:var(--sh);min-height:460px}
+.pv-entimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pv-entimg figcaption{position:absolute;left:16px;right:16px;bottom:16px;padding:14px 16px;border-radius:16px;background:rgb(16 43 69 / .9);color:rgb(214 224 235)}
+.pv-entimg b{display:block;color:#fff;font-size:15px}.pv-entimg span{font-size:13px}
+.pv-roll{background:var(--sf);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px}
+.pv-roll ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pv-roll li{display:grid;grid-template-columns:34px 110px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--bg)}
+.pv-roll li i{width:32px;height:32px;border-radius:50%;background:var(--nvy);color:var(--gld2);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px}
+.pv-roll li b{font-size:15px}.pv-roll li span{font-size:13px;color:var(--mut)}
+.pv-roll li em{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--grn)}
+.pv-vis{border-radius:18px;background:var(--nvy);color:rgb(214 224 235);padding:16px 18px}
+.pv-vis > div{display:flex;justify-content:space-between;margin-bottom:10px}
+.pv-vis small{font-weight:800;color:#fff;font-size:14px}.pv-vis em{font-style:normal;font-size:12px;color:rgb(160 180 200)}
+.pv-vis ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pv-vis li{padding:10px;border-radius:12px;background:rgb(255 255 255 / .06)}
+.pv-vis li b{display:block;color:#fff;font-size:14px}.pv-vis li span{font-size:12px;color:rgb(170 188 208)}
+.pv-roll .pv-btn{align-self:flex-start}
+.pv-cred{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch}
+.pv-cert{position:relative;border-radius:26px;padding:30px;background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));color:rgb(214 228 224);box-shadow:0 30px 80px rgb(10 34 45 / .18);display:flex;flex-direction:column;gap:10px}
+.pv-cert > img{width:92px;height:auto}
+.pv-cert small{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gld2)}
+.pv .pv-cert h3{color:#fff;font-size:32px}
+.pv-cert dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 0}
+.pv-cert dl div{padding:10px 12px;border-radius:12px;background:rgb(255 255 255 / .06)}
+.pv-cert dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgb(160 186 180)}.pv-cert dd{margin:2px 0 0;font-weight:700;color:#fff;font-size:14px}
+.pv-gates{background:var(--sf);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--sh)}
+.pv .pv-gates h3{font-size:26px;margin-bottom:14px}
+.pv-gates ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pv-gates li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center}
+.pv-gates li i{width:50px;height:50px;border-radius:14px;background:var(--grn3);color:var(--grn);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px}
+.pv-gates b{display:block;font-size:15.5px}.pv-gates span{font-size:13.5px;color:var(--mut)}
+.pv-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.pv-badges img{width:48px;height:auto}
+.pv-founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:center}
+.pv-founder figure{margin:0;border-radius:26px;overflow:hidden;box-shadow:var(--sh);aspect-ratio:4/4.4}
+.pv-founder figure img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.pv .pv-fcopy h3{font-size:30px;line-height:1.15;margin-bottom:12px}
+.pv-fcopy > p{color:var(--mut);font-size:16px;line-height:1.6}
+.pv-fcopy blockquote{margin:16px 0;padding:14px 18px;border-left:4px solid var(--gld);background:rgb(251 246 234);border-radius:0 14px 14px 0;font-family:var(--serif);font-size:18px;color:var(--ink2)}
+.pv-tl{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.pv-tl li{padding:10px 14px;border-radius:14px;background:var(--sf);border:1px solid var(--line)}
+.pv-tl b{display:block;font-size:14.5px}.pv-tl span{font-size:13px;color:var(--mut)}
+.pv-link{font-weight:700;color:var(--grn);text-decoration:none}
+.pv-ex{margin-top:40px}
+.pv-exhead{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:14px}
+.pv .pv-exhead h3{font-size:24px}.pv-exhead p{color:var(--mut)}
+.pv .ex-preview,.pv .ex-grid{grid-template-columns:repeat(3,1fr)}
+.pv .ex-item{border-radius:18px}
+.pv .ex-filters button[aria-selected="true"]{background:var(--grn);border-color:var(--grn)}
+.pv-learn{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start}
+.pv .pv-h3{font-size:22px;margin-bottom:12px}
+.pv .in-grid{grid-template-columns:1fr 1fr}
+.pv .in-card{border-radius:18px;border-left:3px solid var(--gld)}
+.pv .in-card b{font-family:var(--serif)}
+.pv .ev-grid{grid-template-columns:1fr}
+.pv .ev-card{border-radius:18px}
+.pv .ev-date{background:var(--grn)}
+.pv .fq-tabs button{border-radius:14px}
+.pv .fq-tabs button[aria-selected="true"]{background:var(--grn);border-color:var(--grn)}
+.pv .fq-item{background:var(--sf)}
+.pv-cta{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;padding:40px;border-radius:30px;background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));color:rgb(214 228 224);box-shadow:0 30px 80px rgb(10 34 45 / .18)}
+.pv .pv-cta h2{color:#fff;font-size:clamp(30px,3.2vw,42px);line-height:1.08;margin-bottom:12px}
+.pv-cta > div > p{color:rgb(190 208 204)}
+.pv-ctalinks{display:grid;gap:6px;margin-top:18px}
+.pv-ctalinks a{color:var(--gld2);font-weight:700;text-decoration:none}
+.pv-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--sf);border-radius:22px;padding:22px;color:var(--ink)}
+.pv-form label{display:grid;gap:5px;font-size:13px;font-weight:700;color:var(--ink2)}
+.pv-form .full{grid-column:1/-1}
+.pv-form input,.pv-form select,.pv-form textarea{font:500 15px Inter,sans-serif;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.pv-formacts{display:flex;gap:10px;flex-wrap:wrap}
+.pv-formacts .pv-btn.line{color:rgb(18 140 74);border-color:rgb(158 217 182)}
+.pv-sent h3{font-size:26px}.pv-sent p{color:var(--mut)}
+.pv-foot{background:rgb(11 30 42);color:rgb(178 194 200);padding:52px 0 22px;margin-top:60px}
+.pv-footin{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:28px}
+.pv-footin b{display:block;color:#fff;font-size:14px;margin-bottom:10px}
+.pv-footin a{display:block;color:rgb(178 194 200);text-decoration:none;font-size:14px;margin:6px 0}
+.pv-footin p{font-size:14px;line-height:1.6;margin-top:12px}
+.pv-brand.light b{color:#fff}.pv-brand.light small{color:rgb(150 168 176)}
+.pv-base{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:34px;padding-top:16px;border-top:1px solid rgb(255 255 255 / .1);font-size:12.5px}
+.pv .pr2-t.feat{border-color:var(--gld)}
+.pv .pr2-bill button[aria-pressed="true"]{background:var(--grn)}
+.pv .pr2-buy{background:var(--grn);border-color:var(--grn)}
+.pv .pr2-t{border-radius:22px}
+.pv-r{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.pv-r.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.pv-r{opacity:1;transform:none;transition:none}}
+.pv a:focus-visible,.pv button:focus-visible{outline:3px solid var(--gld)!important;outline-offset:2px}
+@media (max-width:1100px){.pv-nav{display:none}.pv-burger{display:flex}.pv-acts .pv-btn.ghost{display:none}.pv-cat{grid-template-columns:repeat(2,1fr)}.pv-mnav{display:none;flex-direction:column;gap:4px;padding:10px 24px 18px}.pv.menu-open .pv-mnav{display:flex}.pv-mnav a{padding:10px 0;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}.pv-mnav .pv-btn{margin-top:8px}}
+@media (max-width:900px){.pv-herocard{grid-template-columns:1fr}.pv-heroimg{height:360px}.pv-herocopy{padding:36px 26px}.pv-sh{grid-template-columns:1fr;gap:10px}.pv-g3{grid-template-columns:1fr}.pv-steps{grid-template-columns:1fr 1fr;row-gap:14px}.pv-steps li:nth-child(3){border-left:0}.pv-tabs,.pv-ent,.pv-cred,.pv-founder,.pv-learn,.pv-cta{grid-template-columns:1fr}.pv-stats{grid-template-columns:repeat(3,1fr)}.pv-stats div:nth-child(4){border-left:0}.pv-stats div:nth-child(n+4){border-top:1px solid var(--line)}.pv-path{grid-template-columns:repeat(3,1fr);row-gap:16px}.pv-path::before{display:none}.pv-footin{grid-template-columns:1fr 1fr}.pv .ex-preview,.pv .ex-grid{grid-template-columns:1fr 1fr}.pv-entimg{min-height:280px}}
+@media (max-width:640px){.pv-acts .pv-btn.dark{display:none}.pv-headin{gap:12px}.pv-brand small{display:none}.pv-sec{padding:56px 0}.pv-proof{grid-template-columns:1fr}.pv-heroimg figcaption{grid-template-columns:1fr}.pv-heroimg figcaption span{text-align:left}.pv-stats{grid-template-columns:repeat(2,1fr)}.pv-stats div{border-left:0!important;border-top:1px solid var(--line)}.pv-stats div:first-child{grid-column:1/-1;border-top:0}.pv-cat{grid-template-columns:1fr}.pv-steps{grid-template-columns:1fr}.pv-steps li{border-left:0;padding:8px 6px;border-top:1px solid rgb(255 255 255 / .1)}.pv-steps li:first-child{border-top:0}.pv-roll li{grid-template-columns:32px 1fr;}.pv-roll li span,.pv-roll li em{grid-column:2}.pv-vis ul{grid-template-columns:1fr}.pv-form{grid-template-columns:1fr}.pv-cta{padding:24px}.pv .in-grid{grid-template-columns:1fr}.pv-footin{grid-template-columns:1fr}.pv-cert dl{grid-template-columns:1fr}.pv-exhead{flex-direction:column}}
+.pv .pv-herocopy h1,.pv .pv-cta h2,.pv .pv-cert h3,.pv .pv-prog.seat h3{color:#fff!important}
+.pv-nav a{white-space:nowrap}
+.pv-nav{gap:20px}
+.pv-roll li{display:list-item}
+.pv-roll ol > li{display:grid;grid-template-columns:34px 110px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--bg)}
+.pv-vis li{display:block!important;grid-template-columns:none!important;background:rgb(255 255 255 / .06)!important}
+.pv .in-card p{display:none}
+.pv .in-card{gap:6px;padding:16px 18px}
+.pv .pr2-progs{display:none}
+.pr2-browse{display:none}
+.pv .pr2-browse{display:inline-flex;margin-top:auto;justify-content:center;width:100%;min-height:44px;align-items:center;border-radius:999px;background:var(--grn);color:#fff;font-weight:700;text-decoration:none}
+@media (max-width:640px){.pv-roll ol > li{grid-template-columns:32px 1fr}.pv-roll ol > li span,.pv-roll ol > li em{grid-column:2}}
+.wa-fab{background:rgb(31 157 85)!important}
+.ev-btn.wa,.btn-line.wa{color:rgb(18 140 74)!important;border-color:rgb(158 217 182)!important}
 
 #publicSite section{scroll-margin-top:72px}
 </style>
 </head>
 <body class="public-mode">
 
-<main id="publicSite">
-  <header class="ps-head">
-    <div class="ps-wrap ps-headin">
-      <a class="ps-brand" href="#ps-hero" data-ps-jump>
-        <span class="ps-mark" aria-hidden="true"><img src="assets/img/logo-emblem-navy.webp" alt="" width="40" height="40" style="display:block;border-radius:8px"></span>
-        <span class="ps-brandtext"><b>BrightPath Academy</b><small>A BrightPath Global company</small></span>
-      </a>
-      <nav class="ps-nav" aria-label="Main navigation"><a href="#ps-pathway" data-ps-jump data-navpart="standard">Academy</a><a href="#ps-courses" data-ps-jump data-navpart="programs">Courses</a><a href="#ps-cred" data-ps-jump>Certification</a><a href="#ps-insights" data-ps-jump data-navpart="learn">Insights</a><a href="#part-about" data-ps-jump data-navpart="about">About</a></nav><button class="ps-search" data-search aria-label="Search courses, lessons and topics"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Search</span></button><button class="ps-lang" data-lang aria-label="Changer la langue : Français">FR</button>
-      <div class="ps-actions"><button class="ps-btn ghost sm" data-enter-academy="dashboard" data-signin>Sign in <span aria-hidden="true">&rarr;</span></button><button class="ps-btn sm gold" data-enter-academy="dashboard">Start free</button></div>
-      <button class="ps-burger" id="publicMenuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24" width="22" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6"/></svg></button>
+<main id="publicSite" class="pv">
+  <div class="pv-ann">Enterprise-ready footwear fitting education for retail, clinical and multi-site teams.</div>
+  <header class="pv-head">
+    <div class="pv-wrap pv-headin">
+      <a class="pv-brand" href="#ps-hero"><img src="assets/img/pv-academy_logo.webp" alt=""><span><b>BrightPath Academy</b><small>A BrightPath Global company</small></span></a>
+      <nav class="pv-nav" aria-label="Main navigation"><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#enterprise">For Organisations</a><a href="#about">About</a></nav>
+      <div class="pv-acts"><button class="pv-icon" data-search aria-label="Search courses, lessons and topics"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><button class="pv-btn ghost" data-enter-academy="dashboard">Learner sign in</button><a class="pv-btn dark" href="#contact">Train your team</a><button class="pv-burger" id="pvMenuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button></div>
     </div>
+    <nav class="pv-mnav" id="pvMnav" aria-label="Mobile navigation"><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#enterprise">For Organisations</a><a href="#about">About</a><button class="pv-btn dark" data-enter-academy="dashboard">Learner sign in</button></nav>
   </header>
-  <div class="ps-mmenu" id="publicMobileMenu" aria-hidden="true">
-    <div class="ps-mhead"><span class="ps-brandtext"><b>BrightPath Academy</b><small>A BrightPath Global company</small></span><button id="publicMenuClose" aria-label="Close menu">&times;</button></div>
-    <div class="ps-mgroup"><b>1 &middot; The Standard</b><a href="#ps-why" data-ps-jump>Why fit matters</a><a href="#ps-method" data-ps-jump>The S.E.R.V.E. Method</a><a href="#ps-clear" data-ps-jump>CLEAR concerns</a><a href="#ps-tech" data-ps-jump>Fit assessment</a></div>
-    <div class="ps-mgroup"><b>2 &middot; The Courses</b><a href="#ps-courses" data-ps-jump>Course catalogue</a><a href="#ps-floor" data-ps-jump>Master the Floor</a><a href="#ps-cred" data-ps-jump>Credentials and badges</a></div>
-    <div class="ps-mgroup"><b>3 &middot; For Business</b><a href="#ps-org" data-ps-jump>For organisations</a><a href="#ps-measure" data-ps-jump>Coaching and measurement</a><a href="#plans-public" data-ps-jump>Plans and pricing</a></div>
-    <div class="ps-mgroup"><b>4 &middot; Learn more</b><a href="#ps-insights" data-ps-jump>Insights</a><a href="#ps-events" data-ps-jump>Events</a><a href="#ps-faq" data-ps-jump>FAQ</a></div>
-    <div class="ps-mgroup"><b>5 &middot; About</b><a href="#ps-vision" data-ps-jump>Philosophy and vision</a><a href="#ps-founder" data-ps-jump>Founder profile</a><a href="#ps-executions" data-ps-jump>Executions</a><a href="#brightpath" data-ps-jump>BrightPath Global</a></div>
-    <div class="ps-mcta"><button class="ps-btn" data-enter-academy="dashboard">Start Module 0 free</button><button class="ps-btn ghost" data-enter-academy="dashboard">Sign in</button></div>
-  </div>
 
-
-  <nav class="ps-bar" id="psBar" aria-label="Site sections"><div class="ps-wrap ps-barin"><a href="#part-standard" data-ps-jump data-navpart="standard"><span>1</span>Standard</a><a href="#part-programs" data-ps-jump data-navpart="programs"><span>2</span>Courses</a><a href="#part-business" data-ps-jump data-navpart="business"><span>3</span>Business</a><a href="#part-learn" data-ps-jump data-navpart="learn"><span>4</span>Learn</a><a href="#part-about" data-ps-jump data-navpart="about"><span>5</span>About</a></div></nav>
-
-  <section class="ps-hero hx" id="ps-hero">
-    <div class="ps-wrap hx-grid">
-      <div class="hx-copy">
-        <p class="hx-kick">People &middot; Skills &middot; Better fit &middot; Brighter lives</p>
-        <h1>Build expertise.<br>Earn confidence.</h1>
-        <p class="hx-lede">A structured pathway from foundations to fit specialisation. Learn the S.E.R.V.E. conversation, assess fit with or without a scanner, and earn a badge at every stage on the way to certification.</p>
-        <div class="hx-cta"><a class="ps-btn gold" href="#ps-pathway" data-ps-jump>Explore the pathway <span aria-hidden="true">&rarr;</span></a><a class="ps-btn ghostlight" href="#ps-courses" data-ps-jump>View courses</a></div>
-        <p class="hx-note">Stage 1 starts free. No card needed. <button class="hx-link" data-enter-academy="dashboard">Already enrolled? Sign in</button></p>
-      </div>
-      <div class="hx-art" aria-hidden="true"><div class="hx-glow"></div><img src="assets/img/logo-emblem-navy.webp" alt=""><ul class="hx-words"><li>Knowledge</li><li>People</li><li>Practice</li><li>Progress</li></ul><p class="hx-tag">A clearer path to brighter possibilities</p></div>
-    </div>
-  </section>
-
-  <section class="ps-sec pw2" id="ps-pathway" data-part="standard">
-    <div class="ps-wrap">
-      <header class="pw2-head ps-r"><p class="ps-num">The Academy</p><h2>Your learning pathway</h2><p>A structured curriculum that builds knowledge, skills and confidence, from foundations to Certified Fit Specialist.</p></header>
-      <ol class="pw2-steps ps-r" id="pw2Steps"></ol>
-      <div class="pw2-branch ps-r" aria-label="Specialisation and certification">
-        <svg class="pw2-fork" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path d="M200 0 V14 C200 26 100 22 100 44"/><path d="M200 14 C200 26 300 22 300 44"/></svg><div class="pw2-spec"><a class="pw2-sp r" href="#cg-spec" data-ps-jump data-spec-tab="r"><img src="assets/img/badge-spec_retail.webp" alt=""><span><b>Retail Specialist</b><small>Expertise for retail excellence</small></span></a><a class="pw2-sp c" href="#cg-spec" data-ps-jump data-spec-tab="c"><img src="assets/img/badge-spec_medical.webp" alt=""><span><b>Clinical Specialist</b><small>Expertise for clinical settings</small></span></a></div>
-        <svg class="pw2-fork" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path d="M100 0 C100 22 200 18 200 30 V44"/><path d="M300 0 C300 22 200 18 200 30"/></svg><a class="pw2-cert" href="#ps-cred" data-ps-jump><img src="assets/img/badge-cert.webp" alt=""><span><b>Certified Fit Specialist</b><small>The grand finale: final exam and recorded roleplay</small></span></a>
-      </div>
-    </div>
-  </section>
-
-  
-
-  
-  <section class="ps-trust" aria-label="Teams trained">
-    <div class="ps-wrap ps-trustin"><span>Teams trained by our founder</span><ul><li>Global Footcare Australia, NZ and Singapore</li><li>MAP Indonesia</li><li>ASICS Middle East</li><li>Primer Group Asia</li><li>Runners Middle East</li><li>Apparel Group</li><li>IRUN Poland</li><li>Footprints Podiatry</li><li>Body Mechanix</li></ul></div>
-    <p class="ps-wrap trust-note">Training experience shown. Not presented as an endorsement of BrightPath Academy by these organisations.</p>
-  </section>
-  
-
-  <div class="ps-part" id="part-standard" data-part="standard">
-    <div class="ps-wrap ps-partin">
-      <div><span class="ps-partno">Part 1 of 5</span><h2>The Standard</h2><p>Why fit matters, the S.E.R.V.E. Method, how concerns are handled and the two ways to assess fit.</p></div>
-      <nav class="ps-partnav" aria-label="The Standard"><a href="#ps-why" data-ps-jump><span>1.1</span>Why fit matters</a><a href="#ps-method" data-ps-jump><span>1.2</span>The S.E.R.V.E. Method</a><a href="#ps-clear" data-ps-jump><span>1.3</span>CLEAR concerns</a><a href="#ps-tech" data-ps-jump><span>1.4</span>Fit assessment</a></nav>
-    </div>
-  </div>
-
-  <section class="ps-sec" data-part="standard" id="ps-why">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">1.1 &middot; Why fit matters</p><h2>Most foot discomfort starts with the wrong fit.</h2><p>Customers rarely know what their feet need. They know what hurts. A trained specialist closes that gap before the shoe ever leaves the store.</p></header>
-      <div class="ps-whygrid">
-        <article class="ps-story ps-r"><div><h3>Long shifts on hard floors</h3><p>Nurses, retail staff and hospitality workers stand for hours. The wrong support shows up as aching feet, knees and backs by the end of the day.</p></div></article>
-        <article class="ps-story ps-r"><div><h3>Shoes that look right but fit wrong</h3><p>Length is only one measure. Width, shape and volume decide whether a shoe stays comfortable, and most customers have never been measured for them.</p></div></article>
-        <aside class="ps-answer ps-r"><p class="ps-num light">What a specialist does differently</p><ol><li><b>Listens first.</b> Open questions about work, activity and what hurts.</li><li><b>Measures properly.</b> Size, shape and volume, not size alone.</li><li><b>Explains clearly.</b> The scan in three plain sentences.</li><li><b>Knows the limits.</b> Red flags are referred, not sold to.</li></ol></aside>
-      </div>
-      <p class="ps-swipe">Swipe to see more</p>
-    </div>
-  </section>
-  <section class="ps-sec alt" data-part="standard" id="ps-method">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">1.2 &middot; The S.E.R.V.E. Method</p><h2>Understand the person. Prove the fit. Make the next step feel natural.</h2><p>Our signature customer conversation framework turns emotional intelligence into visible customer care and consistent commercial practice, while the customer stays in control of the decision.</p></header>
-      <blockquote class="sv-promise ps-r"><span>Our promise</span>Help the customer make a confident, informed choice. Never pressure them into one.</blockquote>
-      <div class="sv-letters ps-r" role="tablist" id="svLetters"></div>
-      <div class="ps-r" id="svPanel"></div>
-      <div class="sv-flow ps-r">
-        <div class="sv-flowhead"><p class="ps-num">The customer conversation flow</p><h3>Eight moments. A guide, not a script.</h3><p>Move at the customer's pace, and return to an earlier step whenever new information changes the picture.</p></div>
-        <div class="sv-moments" role="tablist" id="svMoments"></div>
-        <div id="svMoment"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ps-sec" data-part="standard" id="ps-clear">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">1.3 &middot; The CLEAR concern-response system</p><h2>A concern is useful information, not something to defeat.</h2><p>It may signal an unanswered question, a mismatch, a budget limit, uncertainty or a need for more time. CLEAR helps teams understand it and respond helpfully.</p></header>
-      <ol class="cl-steps ps-r">
-        <li><b>C</b><span><strong>Calmly acknowledge</strong>Let the customer finish. No arguing or rushing to reassure.</span></li>
-        <li><b>L</b><span><strong>Learn what is underneath</strong>Ask a neutral question. Do not guess.</span></li>
-        <li><b>E</b><span><strong>Explain in their terms</strong>Short, specific and honest. No medical promises.</span></li>
-        <li><b>A</b><span><strong>Adjust or offer alternatives</strong>Only options that genuinely fit the need.</span></li>
-        <li><b>R</b><span><strong>Return the choice</strong>A respectful pause is part of good service.</span></li>
-      </ol>
-      <div class="cl-try ps-r"><div class="cl-tryhead"><p class="ps-num">Common concerns</p><h3>Select what the customer says.</h3></div><div class="cl-list" id="clList"></div><div id="clAns"></div></div>
-    </div>
-  </section>
-  <section class="ps-sec dark" data-part="standard" id="ps-tech">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num light">1.4 &middot; Fit assessment</p><h2>Two ways to assess fit. One customer standard.</h2><p class="ps-sub">Some stores use a foot scanner. Others use trained observation, measurement and fitting. Both routes help the team understand the customer, check the fit and guide a confident choice. Technology can add useful evidence. The specialist connects it to what the customer says and feels.</p></header>
-      <div class="rt-tabs ps-r" role="tablist" id="rtTabs"><button role="tab" data-route="0" aria-selected="true"><span>Route 1</span>Scanner-supported fitting</button><button role="tab" data-route="1" aria-selected="false"><span>Route 2</span>Hands-on fitting</button></div>
-      <div class="rt-grid ps-r">
-        <figure class="ps-techimg screen" id="psTechFig"><div class="ps-screen"><img id="psTechImg" src="assets/img/screen-pressure.webp" alt="Pressure map screen" loading="lazy"></div><figcaption id="psTechCap"></figcaption><div class="rt-shots" id="rtShots"></div></figure>
-        <div class="rt-panel" id="rtPanel"></div>
-      </div>
-      <div class="rt-shared ps-r"><div><small>Shared standard</small><p class="rt-tcc"><b>Try.</b> <b>Compare.</b> <b>Choose.</b></p></div><p>Both routes finish the same way. The customer's comfort, feedback and decision guide the next step.</p></div>
-    </div>
-  </section>
-  <div class="ps-part" id="part-programs" data-part="programs">
-    <div class="ps-wrap ps-partin">
-      <div><span class="ps-partno">Part 2 of 5</span><h2>The Courses</h2><p>The full course catalogue, the signature Master the Floor module, and the credential and badges learners earn.</p></div>
-      <nav class="ps-partnav" aria-label="The Courses"><a href="#ps-courses" data-ps-jump><span>2.1</span>Course catalogue</a><a href="#ps-floor" data-ps-jump><span>2.2</span>Master the Floor</a><a href="#ps-cred" data-ps-jump><span>2.3</span>Credentials and badges</a></nav>
-    </div>
-  </div>
-
-  <section class="ps-sec" data-part="programs" id="ps-courses">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">2.1 &middot; Course catalogue</p><h2>Every stage, in one place.</h2><p>What you will learn, what it takes to earn each badge, and how long it takes. Stage 1 starts free.</p></header>
-      <div class="cg-grid ps-r" id="cgGrid"></div>
-    </div>
-  </section>
-
-  <section class="ps-sec dark" data-part="programs" id="ps-floor">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num light">2.2 &middot; Signature module</p><h2>Master the Floor: where service becomes performance.</h2><p class="ps-sub">Three disciplines, one natural customer journey. High-performing teams uncover real needs, demonstrate value before discussing price and guide customers to confident decisions without pressure.</p></header>
-      <blockquote class="fl-principle ps-r">The strongest sales process does not get better at handling concerns. <span>It gets better at preventing them.</span></blockquote>
-      <div class="fl-cards ps-r" role="tablist" id="psFloorTabs"></div>
-      <div class="ps-r" id="psFloorPanel"></div>
-      <div class="fl-chain ps-r">
-        <div><p class="ps-num light">Why companies care</p><h3>Better selling doesn't start with better closing.</h3><p>It starts with better discovery, stronger proof and a clearer recommendation. Those behaviours move every number that follows.</p></div>
-        <ol><li>Customer engagement</li><li>Scan participation</li><li>Recommendation confidence</li><li>Footwear conversion</li><li>Insole attachment</li><li>Average transaction value</li><li>Fewer fit-related returns</li><li>Repeat customers</li><li>Referrals</li></ol>
-      </div>
-    </div>
-  </section>
-  
-  <section class="ps-sec alt" data-part="programs" id="ps-cred">
-    <div class="ps-wrap ps-credgrid">
-      <div class="ps-cert ps-r"><p class="cb">BrightPath Academy &middot; Professional credential</p><h3>Certified Fit Specialist</h3><p>Professional footwear fitting, customer assessment and responsible recommendation.</p><p class="cn">Learner Name</p><div class="cm"><span>Credential ID<b>BP-CFS-XXXX</b></span><span>Pathway<b>Retail or Clinical</b></span></div></div>
-      <div class="ps-r">
-        <p class="ps-num">2.3 &middot; Credentials and badges</p>
-        <h2>A credential that proves capability, not attendance.</h2>
-        <p class="ps-sub">Certification combines the core curriculum, a pathway, a final knowledge exam and a recorded roleplay. Scope, honesty and red-flag referral are must-pass standards.</p>
-        <ul class="ps-checks"><li><b>Knowledge</b><span>30-question final exam, 80% to pass.</span></li><li><b>Practical</b><span>The same customer scenario recorded twice, with and without a scanner, scored on the rubric and an observer check.</span></li><li><b>Boundaries</b><span>No diagnosis, no unsupported claims, no ignored red flags.</span></li></ul>
-      </div>
-    </div>
-    <div class="ps-wrap"><div class="ce2 ps-r"><p class="ps-num">How assessment and certification work</p><ol class="ce2-steps">
-        <li><b>1</b><div><strong>Topic knowledge checks</strong><span>Every topic ends with a short knowledge check. Answer each question correctly to complete the topic. Answers right first time count towards your badge grade.</span></div></li>
-        <li><b>2</b><div><strong>Stage badges</strong><span>Complete every topic in a stage to earn its badge, graded Distinction (90%+ right first time), Merit (75%+) or Achieved.</span></div></li>
-        <li><b>3</b><div><strong>Certification</strong><span>After Stages 1 to 5, pass the 30-question final exam (24 to pass) and submit a recorded roleplay, practised with and without a scanner, for assessor review.</span></div></li>
-      </ol></div></div>
-  </section>
-  <div class="ps-part" id="part-business" data-part="business">
-    <div class="ps-wrap ps-partin">
-      <div><span class="ps-partno">Part 3 of 5</span><h2>For Business</h2><p>How stores, clinics and networks roll the Academy out, how results are measured and what it costs.</p></div>
-      <nav class="ps-partnav" aria-label="For Business"><a href="#ps-org" data-ps-jump><span>3.1</span>For organisations</a><a href="#ps-measure" data-ps-jump><span>3.2</span>Coaching and measurement</a><a href="#plans-public" data-ps-jump><span>3.3</span>Plans and pricing</a></nav>
-    </div>
-  </div>
-
-  <section class="ps-sec" data-part="business" id="ps-org">
-    <div class="ps-wrap ps-orggrid">
-      <div class="ps-r">
-        <p class="ps-num">3.1 &middot; For organisations</p>
-        <h2>One standard across every store, clinic and market.</h2>
-        <p class="ps-sub">Footwear groups, clinic networks and distributors use the Academy as a shared capability framework: onboarding, role-specific learning, assessment and coaching in one place.</p>
-        <ul class="ps-checks"><li><b>Team visibility</b><span>Progress and certification readiness by person and location.</span></li><li><b>Manager toolkit</b><span>Daily targets, a 10-minute huddle and floor coaching.</span></li><li><b>Credential control</b><span>Structured assessment and verification.</span></li></ul>
-        <div class="ps-cta"><button class="ps-btn" data-public-demo="manager">Preview the organisation view</button></div>
-      </div>
-    </div>
-  </section>
-  <section class="ps-sec" data-part="business" id="ps-measure">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">3.2 &middot; Coaching and measurement</p><h2>Measure the customer experience and the business together.</h2><p>Establish a baseline first, then review trends by store, team and customer type. No universal targets until the starting point is known.</p></header>
-      <div class="ms-cols ps-r">
-        <div><small>Leading indicators</small><h3>Are the behaviours happening?</h3><ul><li>S.E.R.V.E. stages observed in conversations</li><li>Permission and explanation before any assessment</li><li>Appropriate assessment route, and scan use when appropriate</li><li>Clear restatement of the customer's priorities</li><li>Fit validated through walking and comparison</li><li>Appropriate referrals and scope decisions</li></ul></div>
-        <div><small>Business outcomes</small><h3>Is the experience creating value?</h3><ul><li>Conversion, read alongside traffic and intent</li><li>Footwear and relevant insole attachment</li><li>Average transaction value and units</li><li>Customer confidence, repeat visits and referrals</li><li>Fewer returns and fit-related complaints</li></ul></div>
-        <div><small>Guardrails</small><h3>Is growth staying customer-first?</h3><ul><li>Complaints about pressure or misleading claims</li><li>Returns monitored alongside conversion</li><li>Add-ons linked to a real, chosen need</li><li>Clinical referrals and claims audited</li></ul></div>
-      </div>
-      <p class="ms-note ps-r"><b>Scan use is one signal, not the score.</b> Track it when appropriate, alongside fit validation, customer confidence, conversion, relevant insole attachment, returns and fit-related complaints, so scanner numbers never become the only measure of a good customer conversation.</p>
-      <div class="ms-score ps-r">
-        <div><p class="ps-num">Field coaching scorecard</p><h3>Eight behaviours. Three levels.</h3><p>Coach with one specific strength, one practice point and one immediate repeat. The purpose is consistent skill, not script compliance.</p><p class="ms-rhythm"><b>Review rhythm</b>Weekly behaviour observations &middot; monthly store review &middot; targets after a meaningful baseline.</p></div>
-        <ol><li>Welcomes the customer and asks permission</li><li>Uses open questions and listens without rushing</li><li>Reflects the priority and checks understanding</li><li>Explains findings in plain, careful language</li><li>Connects each option to a stated need</li><li>Invites the customer to test and compare</li><li>Uses CLEAR to explore concerns without pressure</li><li>Leaves the choice with the customer</li></ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="ps-sec alt" data-part="business" id="plans-public">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">3.3 &middot; Plans and pricing</p><h2>Pay once, or learn on a seat.</h2><p>Buy one programme and keep it, or subscribe per seat and get every programme as the Academy grows. Stage 1 starts free.</p></header>
-      <div class="pr2 ps-r" id="pr2"></div>
-      <p class="pub-note">Prices in US dollars. Secure checkout by Stripe. Local taxes may apply. Cancel subscriptions any time.</p>
-    </div>
-  </section>
-  <div class="ps-part" id="part-learn" data-part="learn">
-    <div class="ps-wrap ps-partin">
-      <div><span class="ps-partno">Part 4 of 5</span><h2>Learn more</h2><p>Short reads on fitting and foot health, upcoming live sessions and answers to common questions.</p></div>
-      <nav class="ps-partnav" aria-label="Learn more"><a href="#ps-insights" data-ps-jump><span>4.1</span>Insights</a><a href="#ps-events" data-ps-jump><span>4.2</span>Events</a><a href="#ps-faq" data-ps-jump><span>4.3</span>FAQ</a></nav>
-    </div>
-  </div>
-
-  <section class="ps-sec" data-part="learn" id="ps-insights">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">4.1 &middot; Insights</p><h2>Short reads on fitting and foot health.</h2><p>Practical articles for retail and clinical teams. Videos will be added here as they are recorded.</p></header>
-      <div class="in-grid ps-r" id="inGrid"></div>
-    </div>
-  </section>
-
-  <section class="ps-sec alt" data-part="learn" id="ps-events">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">4.2 &middot; Events</p><h2>Live sessions and intakes.</h2><p>Dates are announced as each session is scheduled. Register by email or WhatsApp and we will contact you first.</p></header>
-      <div class="ev-grid ps-r" id="evGrid"></div>
-    </div>
-  </section>
-
-  <section class="ps-sec" data-part="learn" id="ps-faq">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">4.3 &middot; FAQ</p><h2>Questions, answered.</h2><p>Grouped for learners, managers, payments and certificates.</p></header>
-      <div class="fq ps-r"><div class="fq-tabs" role="tablist" id="fqTabs"></div><div class="fq-list" id="fqList"></div></div>
-    </div>
-  </section>
-
-  <div class="ps-part" id="part-about" data-part="about">
-    <div class="ps-wrap ps-partin">
-      <div><span class="ps-partno">Part 5 of 5</span><h2>About</h2><p>The people and the company behind the Academy.</p></div>
-      <nav class="ps-partnav" aria-label="About"><a href="#ps-vision" data-ps-jump><span>5.1</span>Philosophy and vision</a><a href="#ps-founder" data-ps-jump><span>5.2</span>Founder profile</a><a href="#ps-executions" data-ps-jump><span>5.3</span>Executions</a><a href="#brightpath" data-ps-jump><span>5.4</span>BrightPath Global</a></nav>
-    </div>
-  </div>
-
-    <section class="ps-sec" data-part="about" id="ps-vision">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">5.1 &middot; Our foundation</p><h2>People first. Knowledge with purpose. Growth through service.</h2><p>An academy should stand for more than courses. Our philosophy guides every fitting conversation, our vision sets the direction, and our purpose defines the impact we want to create.</p></header>
-      <div class="vs-grid ps-r">
-        <article><small>01 &middot; What we believe</small><h3>Our philosophy</h3><p>Exceptional selling begins with understanding people. Through emotional intelligence, genuine service, professional knowledge and technology, we create customer experiences built on trust, confidence and lasting relationships.</p><b>&ldquo;Help, don&rsquo;t sell.&rdquo;</b></article>
-        <article><small>02 &middot; Where we are going</small><h3>Our vision</h3><p>To become an internationally recognised centre of excellence for service-led selling, professional footwear fitting and technology-enabled customer experiences.</p><b>One meaningful standard across people, teams and markets.</b></article>
-        <article><small>03 &middot; Why we exist</small><h3>Our purpose</h3><p>To develop confident professionals, empower businesses and transform everyday customer interactions into meaningful experiences that deliver value for people and sustainable growth for organisations.</p><b>Better conversations. Better fit. Better business.</b></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="ps-sec" data-part="about" id="ps-founder">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">5.2 &middot; Founder profile</p><h2>Built by someone who has done the fitting, the training and the store launches.</h2></header>
-      <div class="ps-fgrid">
-        <div class="ps-fside ps-r">
-          <figure class="ps-fimg pf"><img src="assets/img/founder-profile.webp" alt="Portrait of Akuchu Wilson, founder of BrightPath Academy" loading="lazy"></figure>
-          <div class="ps-fcard"><b>Akuchu Wilson</b><span>Founder, BrightPath Academy and BrightPath Global</span>
-            <ul class="ps-creds"><li>Certified Feet Scanning Specialist</li><li>Footwear Fitting Expert</li></ul>
-            <a class="ps-btn ghost sm" href="https://www.linkedin.com/in/akuchu-wilson-b56278187/" target="_blank" rel="noopener">View LinkedIn profile</a>
-          </div>
+  <section class="pv-hero" id="ps-hero">
+    <div class="pv-wrap">
+      <div class="pv-herocard">
+        <div class="pv-herocopy">
+          <span class="pv-pill">People &middot; Skills &middot; Better fit &middot; Brighter lives</span>
+          <h1>Better conversations. Better fit. Better business.</h1>
+          <p>The professional fitting standard for footwear retailers, clinics and distributors. With or without a scanner.</p>
+          <div class="pv-ctas"><a class="pv-btn gold" href="#programmes">Explore programmes</a><a class="pv-btn line" href="#contact">Train your team</a></div>
+          <div class="pv-proof"><div><b>Customer-first</b><span>S.E.R.V.E. keeps the customer in control.</span></div><div><b>Practical proof</b><span>Try, compare and validate fit.</span></div><div><b>Certified</b><span>Exam, roleplay and badges.</span></div></div>
         </div>
-        <div class="ps-r">
-          <div class="ps-bio">
-            <p>Akuchu Wilson has spent his career where foot-scanning technology meets the shop floor. For more than seven years he has trained retail and clinical teams across the Middle East, Asia, Europe, Australia and New Zealand to turn a scan into a confident, honest recommendation.</p>
-            <p>At Aetrex, a world leader in foot-scanning technology, he led global sales training and retail excellence, launched foot-scanning kiosks in UAE malls and supported in-store execution and multiple store launches. He has represented Aetrex at international trade shows including NRF Singapore, MICAM Milan, Running Expo Amsterdam and ISPO Munich.</p>
-            <p>Today he is Business Development and Technology Specialist at The Comfort Co | Global Footcare in Australia, and founder of BrightPath Global and BrightPath Academy. Every lesson in the Academy comes from that floor experience.</p>
-          </div>
-          <p class="ps-tlhead">Career</p>
-          <ol class="ps-timeline">
-            <li><span>2026 &ndash; now</span><div><b>Business Development and Technology Specialist</b><small>The Comfort Co | Global Footcare, Australia</small></div></li>
-            <li><span>2024 &ndash; 2026</span><div><b>International Sales Excellence and Training Manager</b><small>Aetrex International. Global sales training, retail excellence and foot-scanning initiatives across the Middle East, Asia and Europe.</small></div></li>
-            <li><span>2020 &ndash; 2024</span><div><b>Area Sales Excellence Manager and Brand Trainer</b><small>Aetrex, Middle East (Quality Gulf Co. LLC). Launched foot-scanning kiosks in UAE malls.</small></div></li>
-            <li><span>2018 &ndash; 2020</span><div><b>Retail</b><small>Al-Futtaim / RSH Middle East</small></div></li>
-          </ol>
-          <blockquote class="ps-quote">"We are here to help you find what meets your needs, not to sell you what you don't need."</blockquote>
+        <figure class="pv-heroimg"><img src="assets/img/pv-hero.webp" alt="A specialist guiding a customer comparing new shoes in store"><figcaption><b>Service becomes performance when the fit is understood.</b><span>Discover &rarr; prove &rarr; recommend &rarr; confident choice</span></figcaption></figure>
+      </div>
+      <div class="pv-stats"><div><b>7</b><span>Programmes</span></div><div><b>92</b><span>Practical topics</span></div><div><b>7</b><span>Achievement badges</span></div><div><b>~9 hrs</b><span>To certification</span></div><div><b>$15</b><span>Per seat, per month</span></div></div>
+      <div class="pv-trust"><span>Founder training experience includes teams at</span><ul><li>Global Footcare AU / NZ / SG</li><li>MAP Indonesia</li><li>ASICS Middle East</li><li>Primer Group Asia</li><li>Runners Middle East</li><li>Apparel Group</li><li>IRUN Poland</li><li>Footprints Podiatry</li><li>Body Mechanix</li></ul><small>Training experience shown. Not an endorsement of BrightPath Academy.</small></div>
+    </div>
+  </section>
+
+  <section class="pv-sec" id="value">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Value at a glance</p><h2>Built for the problems teams solve every day.</h2></div><p>Real fit challenges first. The courses come second.</p></header>
+      <div class="pv-g3">
+        <article class="pv-card img"><img src="assets/img/pv-fatigue.webp" alt="A nurse resting tired feet after a long shift" loading="lazy"><div><h3>Long-shift fatigue</h3><p>Ask about the real use case before recommending.</p></div></article>
+        <article class="pv-card img"><img src="assets/img/pv-tight.webp" alt="A specialist checking a tight shoe" loading="lazy"><div><h3>Shape mismatch</h3><p>Length is one measure. Width, depth and volume decide comfort.</p></div></article>
+        <article class="pv-card img"><img src="assets/img/pv-scan.webp" alt="A customer on a foot scanner" loading="lazy"><div><h3>Technology without explanation</h3><p>Turn scan data into plain, careful language.</p></div></article>
+      </div>
+      <ol class="pv-steps"><li><b>1 &middot; Listen first</b><span>Open questions about work and activity.</span></li><li><b>2 &middot; Measure properly</b><span>Length, width and volume.</span></li><li><b>3 &middot; Explain clearly</b><span>Plain language. No medical promises.</span></li><li><b>4 &middot; Validate the fit</b><span>Walk. Compare. Choose.</span></li></ol>
+    </div>
+  </section>
+
+  <section class="pv-sec alt" id="standard">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">The BrightPath Standard</p><h2>One philosophy. Clear tools underneath it.</h2></div><p>Choose a tool to see how it works on the floor.</p></header>
+      <div class="pv-tabs">
+        <div class="pv-tablist" role="tablist" id="pvStdTabs"></div>
+        <div class="pv-panel" id="pvStdPanel" role="tabpanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv-sec" id="programmes">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Programme catalogue</p><h2>Seven programmes. One clear path to certification.</h2></div><p>Every programme ends in an assessment and a badge. Foundations starts free.</p></header>
+      <ol class="pv-path" id="pvPath" aria-label="Learning pathway"></ol>
+      <div class="pv-cat" id="pvCat"></div>
+    </div>
+  </section>
+
+  <section class="pv-sec alt" id="pricing">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Pricing</p><h2>Pay once, or learn on a seat.</h2></div><p>Prices in US dollars. Secure checkout by Stripe.</p></header>
+      <div class="pr2" id="pr2"></div>
+    </div>
+  </section>
+
+  <section class="pv-sec" id="enterprise">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">For organisations</p><h2>One standard across every store, clinic and market.</h2></div><p>Rollout, coaching and credential visibility, not a one-off training day.</p></header>
+      <div class="pv-ent">
+        <figure class="pv-entimg"><img src="assets/img/pv-consult.webp" alt="A manager coaching a team member with a tablet" loading="lazy"><figcaption><b>A coaching rhythm, not a training day.</b><span>Short huddles. Field observation. Immediate practice.</span></figcaption></figure>
+        <div class="pv-roll">
+          <p class="pv-eye">Enterprise rollout</p>
+          <ol><li><i>1</i><b>Baseline</b><span>Current behaviours and goals</span><em>Start</em></li><li><i>2</i><b>Certify</b><span>Core learning and assessment</span><em>Learn</em></li><li><i>3</i><b>Coach</b><span>Huddles and floor practice</span><em>Apply</em></li><li><i>4</i><b>Measure</b><span>Behaviours and results together</span><em>Review</em></li><li><i>5</i><b>Refresh</b><span>Quarterly reinforcement</span><em>Sustain</em></li></ol>
+          <div class="pv-vis"><div><small>Organisation dashboard</small><em>What managers see</em></div><ul><li><b>Progress</b><span>by store and learner</span></li><li><b>Credentials</b><span>earned and due</span></li><li><b>Coaching</b><span>observations logged</span></li></ul></div>
+          <a class="pv-btn dark" href="#contact">Request an enterprise proposal</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ps-sec alt" data-part="about" id="ps-executions">
-    <div class="ps-wrap">
-      <header class="ps-sechead ps-r"><p class="ps-num">5.3 &middot; Executions</p><h2>Training and launches in the field.</h2><p>Store launches, team training, customer fittings and events across the Middle East, Asia and Australia, led by the founder.</p></header>
-      <div class="ex-wrap ps-r"><div class="ex-preview" id="exPreview"></div><button class="ps-btn ex-open" id="exToggle" aria-expanded="false" aria-controls="exGrid">View all execution photos</button><div class="ex-grid" id="exGrid" hidden></div></div>
+  <section class="pv-sec alt" id="credentials">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Credential integrity</p><h2>Capability, not attendance.</h2></div><p>Earned through knowledge, practice and professional boundaries.</p></header>
+      <div class="pv-cred">
+        <div class="pv-cert"><img src="assets/img/badge-cert.webp" alt="Certified Fit Specialist badge"><small>BrightPath Academy &middot; Professional credential</small><h3>Certified Fit Specialist</h3><dl><div><dt>Credential ID</dt><dd>BP-CFS-XXXX</dd></div><div><dt>Pathway</dt><dd>Retail or Clinical</dd></div><div><dt>Knowledge</dt><dd>30 questions &middot; 80% pass</dd></div><div><dt>Practical</dt><dd>Recorded roleplay</dd></div></dl></div>
+        <div class="pv-gates"><h3>Three gates protect the standard.</h3><ul><li><i>80%</i><div><b>Knowledge</b><span>Final exam: 24 of 30 to pass.</span></div></li><li><i>PR</i><div><b>Practical</b><span>Roleplay recorded with and without a scanner.</span></div></li><li><i>HS</i><div><b>Honesty and scope</b><span>No diagnosis. No unsupported claims. Red flags referred.</span></div></li></ul><div class="pv-badges" id="pvBadges"></div></div>
+      </div>
     </div>
   </section>
 
-
-  <div data-part="about" id="bpwrap">  <section class="bp-sec bp2" id="brightpath" data-part="about">
-    <div class="public-wrap">
-      <div class="bp2-head ps-r">
-        <div><div class="bp-lockup"><img class="bp-mark" src="assets/img/logo-emblem-navy.webp" alt="" width="64" height="64" style="border-radius:10px;display:block"><div><b>BrightPath Global</b><span>5.4 &middot; Parent company</span></div></div>
-        <h2>Foot-health technology needs people who <em>know how to use it.</em></h2></div>
-        <p>BrightPath Academy is the education arm of BrightPath Global, founded by Akuchu Wilson to bring foot-scanning technology and orthotic support to new markets. As BrightPath FootCare prepares to introduce Aetrex 3D foot scanning in Cameroon, starting with a proposed pilot in Yaound&eacute; and Douala, the Academy trains the people behind the scanner.</p>
+  <section class="pv-sec" id="about">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Built from real experience</p><h2>From the shop floor to the training room.</h2></div><p>Created by Akuchu Wilson, founder of BrightPath Academy and BrightPath Global.</p></header>
+      <div class="pv-founder">
+        <figure><img src="assets/img/founder-profile.webp" alt="Portrait of Akuchu Wilson" loading="lazy"></figure>
+        <div class="pv-fcopy">
+          <h3>Seven years of global fitting and training, turned into a repeatable standard.</h3>
+          <p>Akuchu has trained retail and clinical teams across the Middle East, Asia, Europe, Australia and New Zealand, launched foot-scanning kiosks and supported store openings.</p>
+          <blockquote>&ldquo;We are here to help you find what meets your needs, not to sell you what you don&rsquo;t need.&rdquo;</blockquote>
+          <ul class="pv-tl"><li><b>Business Development &amp; Technology Specialist</b><span>The Comfort Co | Global Footcare &middot; 2026&ndash;now</span></li><li><b>International Sales Excellence &amp; Training Manager</b><span>Aetrex International &middot; 2024&ndash;2026</span></li><li><b>Area Sales Excellence Manager &amp; Brand Trainer</b><span>Aetrex Middle East &middot; 2020&ndash;2024</span></li></ul>
+          <a class="pv-link" href="https://www.linkedin.com/in/akuchu-wilson-03513aa5" target="_blank" rel="noopener">View LinkedIn profile &rarr;</a>
+        </div>
       </div>
-      <div class="bp2-cols ps-r">
-        <div><small>BrightPath FootCare</small><b>The technology</b><p>3D foot scanning and orthotic insoles for pharmacies, clinics, hospitals and everyday customers.</p></div>
-        <div><small>BrightPath Academy</small><b>The people</b><p>One fitting standard that turns technology into confident, honest recommendations.</p></div>
-        <div><small>Where it starts</small><b>Cameroon</b><p>A proposed first pilot in Yaound&eacute; and Douala, with the same standard wherever the scan happens.</p></div>
+      <div class="pv-ex" id="ps-executions">
+        <div class="pv-exhead"><h3>Executions in the field</h3><p>Store launches, team training, customer fittings and events.</p></div>
+        <div class="ex-wrap"><div class="ex-preview" id="exPreview"></div><button class="pv-btn line ex-open" id="exToggle" aria-expanded="false" aria-controls="exGrid">View all photos</button><div class="ex-grid" id="exGrid" hidden></div></div>
       </div>
-      <a class="bp-link" href="https://brightpathglobal.org" target="_blank" rel="noopener">Visit BrightPath Global <span aria-hidden="true">&rarr;</span></a>
     </div>
-  </section></div>
-  
-
-  <section class="ps-final">
-    <div class="ps-wrap ps-finalin ps-r"><div><h2>Your first lesson is free and takes five minutes.</h2><p>No card needed. Create your learner profile and start Module 0, The BrightPath Way.</p></div><div class="ps-cta"><button class="ps-btn gold" data-enter-academy="dashboard">Start Module 0 free</button><button class="ps-btn ghostlight" data-public-demo="learner">Preview the learner view</button></div></div>
   </section>
-  <footer class="ps-foot">
-    <div class="ps-wrap">
-      <div class="ps-footgrid" id="footGrid">
-        <div><b class="ps-footbrand">BrightPath Academy</b><p>Professional footwear fitting education at the intersection of service, foot knowledge, technology and responsible performance.</p><div class="bp-endorse"><img class="bp-mark" src="assets/img/logo-emblem-navy.webp" alt="" width="34" height="34" style="border-radius:6px;display:block"><span>Part of <a href="https://brightpathglobal.org" target="_blank" rel="noopener">BrightPath Global</a></span></div></div>
-        <div><b>Academy</b><a href="#ps-method" data-ps-jump>S.E.R.V.E. Method</a><a href="#ps-courses" data-ps-jump>Courses</a><a href="#ps-cred" data-ps-jump>Credentials</a><a href="#plans-public" data-ps-jump>Plans</a></div>
-        <div><b>Contact</b><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://brightpathglobal.org" target="_blank" rel="noopener">brightpathglobal.org</a><a href="#ps-hero" data-enter-academy="dashboard">Academy sign in</a></div>
-      </div>
-      <div class="ps-footbase"><span>&copy; 2026 BrightPath Academy, a BrightPath Global company</span><span>Illustrative scenes are AI-generated. Training photos are from real sessions.</span></div>
+
+  <section class="pv-sec alt" id="learn">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">Insights and events</p><h2>Learn more before you start.</h2></div><p>Short reads and live sessions.</p></header>
+      <div class="pv-learn"><div><h3 class="pv-h3">Insights</h3><div class="in-grid" id="inGrid"></div></div><div><h3 class="pv-h3">Live sessions</h3><div class="ev-grid" id="evGrid"></div></div></div>
     </div>
+  </section>
+
+  <section class="pv-sec" id="faq">
+    <div class="pv-wrap">
+      <header class="pv-sh"><div><p class="pv-eye">FAQ</p><h2>Questions, answered.</h2></div><p>Learners, managers, payments and certificates.</p></header>
+      <div class="fq"><div class="fq-tabs" role="tablist" id="fqTabs"></div><div class="fq-list" id="fqList"></div></div>
+    </div>
+  </section>
+
+  <section class="pv-sec" id="contact">
+    <div class="pv-wrap">
+      <div class="pv-cta">
+        <div><p class="pv-eye light">Enterprise launch</p><h2>Bring one fitting standard to your team.</h2><p>Tell us about your stores or clinics. We reply within one business day.</p><div class="pv-ctalinks"><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp +61 485 502 264</a></div></div>
+        <form class="pv-form" name="enterprise-interest" method="POST" action="/success" data-netlify="true" id="pvForm"><input type="hidden" name="form-name" value="enterprise-interest"><label>Name<input name="name" required autocomplete="name"></label><label>Work email<input name="email" type="email" required autocomplete="email"></label><label>Organisation<input name="organisation" autocomplete="organization"></label><label>Team size<select name="team_size"><option>1&ndash;10</option><option>11&ndash;40</option><option>41&ndash;100</option><option>100+</option></select></label><label class="full">What would you like to improve?<textarea name="message" rows="3"></textarea></label><div class="full pv-formacts"><button class="pv-btn gold" type="submit">Request a proposal</button><a class="pv-btn line" id="pvWa" href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp us</a></div></form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pv-foot">
+    <div class="pv-wrap pv-footin">
+      <div><a class="pv-brand light" href="#ps-hero"><img src="assets/img/pv-academy_logo.webp" alt=""><span><b>BrightPath Academy</b><small>A BrightPath Global company</small></span></a><p>Professional footwear fitting education at the intersection of service, foot knowledge and technology.</p></div>
+      <div><b>Academy</b><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#credentials">Credentials</a></div>
+      <div><b>For business</b><a href="#enterprise">For organisations</a><a href="#contact">Request a proposal</a><a href="#faq">FAQ</a></div>
+      <div><b>Contact</b><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp +61 485 502 264</a><a href="https://brightpathglobal.org" target="_blank" rel="noopener">brightpathglobal.org</a></div>
+    </div>
+    <div class="pv-wrap pv-base"><span>&copy; 2026 BrightPath Academy, a BrightPath Global company</span><span>Some scenes are AI-generated. Training photos are from real sessions.</span></div>
   </footer>
 </main>
+
 
 <div id="academyApp" hidden>
 <header class="top">
@@ -4784,7 +4839,7 @@ if (LANG==="fr") setTimeout(applyLang, 0);
   document.getElementById("ps-executions").addEventListener("click", function(e){ var f=e.target.closest("[data-exf]"); if (f) { F=f.getAttribute("data-exf"); OPEN=false; draw(); return; } var b=e.target.closest("[data-ex]"); if (b) lb(+b.getAttribute("data-ex")); });
 })();
 /* ===== v18: one-off programmes, per-seat membership and enterprise ===== */
-var PAY = { foundations:"", floor:"", fit:"", pathway:"", cfs:"", manager:"", master:"", member_m:"", member_y:"", ent_m:"", ent_y:"" };
+var PAY = { foundations:"https://buy.stripe.com/bJecN764jaPT9EpgN28AE00", floor:"https://buy.stripe.com/fZubJ3akz5vzeYJbsI8AE01", fit:"", pathway:"", cfs:"", manager:"", master:"", member_m:"", member_y:"", ent_m:"", ent_y:"" };
 var PROG = [
   {k:"foundations", n:"BrightPath Foundations: The S.E.R.V.E. Standard", s:"Stages 1 and 2", p:49, b:"found", c:function(id){ return /^[01]\./.test(id)||/^S\d/.test(id); }},
   {k:"floor", n:"Master the Floor", s:"Discover, prove, guide", p:89, b:"guide", c:function(id){ return /^F\d/.test(id)||/^5\./.test(id); }},
@@ -4825,7 +4880,7 @@ function pricingHTML(){
   var rows=PROG.map(function(p){ var own=platform.ent&&platform.ent[p.k]; return '<li class="pr2-prog'+(p.best?' best':'')+'"><img src="assets/img/badge-'+p.b+'.webp" alt="" loading="lazy"><span><b>'+p.n+'</b><small>'+p.s+(p.best?' &middot; <em>Best value, worth $'+(49+89+119+149)+' separately</em>':'')+'</small></span><strong>$'+p.p+'</strong>'+(own?'<span class="pr2-own">Owned</span>':'<button class="pr2-buy" data-pay="'+p.k+'">Buy</button>')+'</li>'; }).join("");
   return '<div class="pr2-bill" role="group" aria-label="Billing"><button data-bill="m" aria-pressed="'+(!y)+'">Monthly</button><button data-bill="y" aria-pressed="'+y+'">Annual <em>save up to 21%</em></button></div>'+
   '<div class="pr2-grid">'+
-  '<article class="pr2-t"><small class="pr2-k">Pay once</small><h3>Courses</h3><p class="pr2-price"><span>from</span> $49 <i>one-time</i></p><p class="pr2-d">Buy a single programme and keep it. Lifetime access to what you buy, with its badge and assessments.</p><ul class="pr2-progs">'+rows+'</ul></article>'+
+  '<article class="pr2-t"><small class="pr2-k">Pay once</small><h3>Courses</h3><p class="pr2-price"><span>from</span> $49 <i>one-time</i></p><p class="pr2-d">Buy a single programme and keep it. Lifetime access to what you buy, with its badge and assessments.</p><ul class="pr2-progs">'+rows+'</ul><a class="pr2-browse" href="#programmes">Browse all 7 programmes</a></article>'+
   '<article class="pr2-t feat"><span class="pr2-flag">Most value</span><small class="pr2-k">Per seat</small><h3>All-access membership</h3><p class="pr2-price">'+money(mem)+' <i>per seat / month</i></p><p class="pr2-sub">'+(y?'Billed $180 a year per seat':'Billed monthly. Cancel any time')+'</p><p class="pr2-d">Every programme, every badge and certification, plus new lessons as they are added. Less than '+(y?'50':'65')+' cents a day.</p><ul class="pr2-ticks"><li>All 7 programmes, worth $'+ALLVALUE.toLocaleString("en-US")+' if bought separately</li><li>Certified Fit Specialist exam and roleplay review</li><li>Manager Academy and Master Fit Specialist included</li><li>Add more seats any time</li></ul><button class="btn-gold pr2-cta" data-pay="'+(y?'member_y':'member_m')+'">Start membership</button></article>'+
   '<article class="pr2-t"><small class="pr2-k">Companies and teams</small><h3>Enterprise</h3><p class="pr2-price">'+money(ent)+' <i>per seat / month</i></p><p class="pr2-sub">'+(y?'Billed annually &middot; $15 per seat on monthly billing':'Billed monthly &middot; $12 per seat on annual billing')+'</p><p class="pr2-d">Scalable pathways and multi-site coaching for stores, clinics and distributors. 10-seat minimum.</p><ul class="pr2-ticks"><li>Everything in membership for every seat</li><li>Organisation dashboard and manager toolkit</li><li>Multi-site rollout and coaching plan</li><li>Team badges and credential tracking</li></ul><label class="pr2-seats">Seats <input type="number" id="prSeats" min="10" max="2000" value="20"></label><p class="pr2-total" id="prTotal"></p><div class="pr2-ctas"><button class="btn-teal pr2-cta" data-pay="'+(y?'ent_y':'ent_m')+'">Buy seats</button><a class="btn-line" href="mailto:globalbrightpath1@gmail.com?subject=Enterprise%20enquiry">Email us</a><a class="btn-line wa" href="https://wa.me/61485502264?text='+encodeURIComponent("Hello BrightPath Academy, I would like to discuss Enterprise seats for my team.")+'" target="_blank" rel="noopener">WhatsApp us</a></div></article>'+
   '</div><p class="pr2-eg">Example: a 10-person store team on Enterprise annual is $120 a month, about the price of one pair of premium running shoes.</p>';
@@ -4858,6 +4913,51 @@ try { FAQ.managers.q[0]=["What team options are available?","Quelles offres équ
 
 (function(){ var site=document.getElementById("publicSite"); if(!site) return;
   site.insertAdjacentHTML("beforeend",'<a class="wa-fab" href="https://wa.me/61485502264?text='+encodeURIComponent("Hello BrightPath Academy, I have an enquiry.")+'" target="_blank" rel="noopener" aria-label="Chat with BrightPath Academy on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="M9 8.5c.2-.5.5-.5.8-.5h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.5.6c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.4 2.4.2.1.4.1.6 0l.6-.5c.2-.1.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .6-.5.8-.6.3-1.5.5-2.4.2-2.2-.7-4.2-2.7-4.9-4.9-.3-.9-.1-1.8.2-2.4Z"/></svg><span>WhatsApp</span></a>'); })();
+/* ===== v19: refined public homepage ===== */
+(function(){
+  var site=document.getElementById("publicSite"); if(!site || !site.classList.contains("pv")) return;
+  /* standard tabs */
+  var STD=[
+    {t:"Why fit matters", s:"Start with the real problem.", b:"Customers rarely know what their feet need. They know what hurts.", q:"Listen first. Measure properly. Explain clearly. Know the limits.", k:[["Long shifts on hard floors","Connect work and fatigue to fit."],["Right look, wrong fit","Width, shape and volume matter."],["Professional boundaries","Red flags are referred, not sold to."]]},
+    {t:"The S.E.R.V.E. Method", s:"The customer conversation.", b:"Five moves that keep the customer in control of a confident choice.", q:"Help the customer choose with confidence. Never pressure them into one.", k:[["See and Explore","Welcome, notice, ask one question at a time."],["Reflect and Validate","Confirm the need, then prove the fit."],["Empower","One clear recommendation and a real choice."]]},
+    {t:"CLEAR concerns", s:"A response tool, not a battle.", b:"A concern is useful information about a need, a budget or a doubt.", q:"Calm. Learn. Explain. Adjust. Return the choice.", k:[["Acknowledge calmly","No defending, no discounting first."],["Learn what is underneath","Price, timing or uncertainty?"],["Return the choice","The customer decides."]]},
+    {t:"Fit assessment", s:"With or without a scanner.", b:"Two routes, one standard: both end with try, compare, choose.", q:"Technology supports the conversation. It never replaces it.", k:[["Scanner-supported","Permission, plain language, relevant findings."],["Hands-on","Observe, measure, compare shape and volume."],["Validate","Walk, compare, let the customer feel it."]]}
+  ];
+  var tl=document.getElementById("pvStdTabs"), pn=document.getElementById("pvStdPanel"), cur=0;
+  function drawStd(){ tl.innerHTML=STD.map(function(x,i){ return '<button role="tab" aria-selected="'+(i===cur)+'" data-std="'+i+'"><b>'+x.t+'</b><span>'+x.s+'</span></button>'; }).join("");
+    var x=STD[cur]; pn.innerHTML='<p class="pv-eye">The Standard</p><h3>'+x.t+'</h3><p>'+x.b+'</p><blockquote>'+x.q+'</blockquote><ul class="pv-ticks">'+x.k.map(function(k){ return '<li><i aria-hidden="true">&#10003;</i><div><b>'+k[0]+'</b><span>'+k[1]+'</span></div></li>'; }).join("")+'</ul>'; }
+  if (tl) { drawStd(); tl.addEventListener("click", function(e){ var b=e.target.closest("[data-std]"); if(!b) return; cur=+b.getAttribute("data-std"); drawStd(); }); }
+  /* pathway */
+  var P=[["found","Foundations"],["serve","S.E.R.V.E."],["fit","Fitting skills"],["guide","The decision"],["spec_retail","Retail or Clinical"],["cert","Certified"]];
+  var path=document.getElementById("pvPath"); if (path) path.innerHTML=P.map(function(p,i){ return '<li'+(i===5?' class="fin"':'')+'><img src="assets/img/badge-'+p[0]+'.webp" alt="" loading="lazy"><b>'+(i<5?'Stage '+(i+1):'Grand finale')+'</b><span>'+p[1]+'</span></li>'; }).join("");
+  /* catalogue */
+  var ALLM=[].concat(COURSE,SERVEMODS,FLOORMODS,TRACKMODS,MANAGERMODS,MASTERMODS), ALLL=[]; ALLM.forEach(function(m){ m.lessons.forEach(function(l){ ALLL.push(l); }); });
+  var IMG={foundations:"coaching",floor:"scene-walk-compare",fit:"scan",pathway:"retail",cfs:"cert-finale",manager:"scene-huddle",master:"master"};
+  var OUT={foundations:"Open every conversation well and know when to refer.",floor:"Discover, prove and guide decisions without pressure.",fit:"Assess fit with or without a scanner and recommend clearly.",pathway:"Apply the standard in retail or clinical settings.",cfs:"The full pathway, final exam and recorded roleplay.",manager:"Run huddles, coach on the floor and grow results.",master:"Fit complex feet and coach and certify others."};
+  function stat(p){ var ls=ALLL.filter(function(l){ return p.c(l.id); }); if (p.k==="pathway"||p.k==="cfs") ls=ls.filter(function(l){ return !/^M\d/.test(l.id); }); var m=ls.reduce(function(a,l){ return a+lessonMins(l); },0); return {n:ls.length, t:fmtMins(m)}; }
+  var cat=document.getElementById("pvCat");
+  if (cat && typeof PROG!=="undefined") cat.innerHTML=PROG.map(function(p){ var st=stat(p), free=p.k==="foundations";
+    return '<article class="pv-prog'+(p.best?' best':'')+'"><div class="pv-pimg"><img src="assets/img/'+IMG[p.k]+'.webp" alt="" loading="lazy">'+(p.best?'<span class="pv-flag">Best value</span>':'')+(free?'<span class="pv-flag free">Start free</span>':'')+'<img class="pv-pbadge" src="assets/img/badge-'+p.b+'.webp" alt=""></div><div class="pv-pbody"><h3>'+p.n.split(":")[0]+'</h3><p>'+OUT[p.k]+'</p><ul class="pv-meta"><li>'+st.n+' topics</li><li>'+st.t+'</li><li>Badge</li></ul><div class="pv-pfoot"><strong>$'+p.p+'<small> one-time</small></strong>'+(free?'<button class="pv-btn line sm" data-pv-free>Preview free</button>':'')+'<button class="pv-btn dark sm" data-pay="'+p.k+'">Buy</button></div></div></article>'; }).join("")+'<article class="pv-prog seat"><div class="pv-pbody"><p class="pv-eye light">All programmes</p><h3>Or get everything on one seat.</h3><p>All 7 programmes, every badge and certification.</p><strong class="pv-seatprice">$15<small> per seat / month, billed annually</small></strong><a class="pv-btn gold" href="#pricing">See membership</a></div></article>';
+  site.addEventListener("click", function(e){ if (e.target.closest("[data-pv-free]")) { if (profile&&profile.name) { openAcademy("course"); enroll("found"); go("0.1"); } else { window.__cgEnrol={k:"found",id:"0.1"}; openAcademy("course"); } } });
+  var pf=document.getElementById("profileForm"); if (pf) pf.addEventListener("submit", function(){ setTimeout(function(){ var x=window.__cgEnrol; if (x && profile && profile.name && !document.getElementById("academyApp").hidden) { window.__cgEnrol=null; enroll(x.k); go(x.id); } }, 80); });
+  /* badges row */
+  var bd=document.getElementById("pvBadges"); if (bd) bd.innerHTML=["found","serve","fit","guide","spec_retail","spec_medical","lead","cert"].map(function(k){ return '<img src="assets/img/badge-'+k+'.webp" alt="'+(BADGE[k]||"")+' badge" title="'+(BADGE[k]||"")+'" loading="lazy">'; }).join("");
+  /* mobile menu */
+  var mb=document.getElementById("pvMenuBtn"), mn=document.getElementById("pvMnav");
+  if (mb) { mb.addEventListener("click", function(){ var o=site.classList.toggle("menu-open"); mb.setAttribute("aria-expanded",o); }); mn.addEventListener("click", function(e){ if (e.target.closest("a,button")) { site.classList.remove("menu-open"); mb.setAttribute("aria-expanded","false"); } }); }
+  /* smooth in-page links without changing app routing */
+  site.addEventListener("click", function(e){ var a=e.target.closest('a[href^="#"]'); if(!a) return; var id=a.getAttribute("href").slice(1), el=document.getElementById(id); if (!el) return; e.preventDefault(); el.scrollIntoView({behavior:"smooth", block:"start"}); });
+  /* enquiry form: Netlify form, with email fallback */
+  var f=document.getElementById("pvForm"), wa=document.getElementById("pvWa");
+  if (f) {
+    f.addEventListener("input", function(){ var d=new FormData(f); wa.href="https://wa.me/61485502264?text="+encodeURIComponent("Hello BrightPath Academy, I would like a proposal. Name: "+(d.get("name")||"")+". Organisation: "+(d.get("organisation")||"")+". Team size: "+(d.get("team_size")||"")+". "+(d.get("message")||"")); });
+    f.addEventListener("submit", function(e){ e.preventDefault(); var d=new FormData(f), btn=f.querySelector('button[type="submit"]'); btn.disabled=true; btn.textContent="Sending...";
+      fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:new URLSearchParams(d).toString()}).then(function(r){ if(!r.ok) throw 0; f.innerHTML='<div class="full pv-sent"><h3>Thank you.</h3><p>Your request is in. We will reply within one business day.</p></div>'; })
+      .catch(function(){ btn.disabled=false; btn.textContent="Request a proposal"; location.href="mailto:globalbrightpath1@gmail.com?subject="+encodeURIComponent("Enterprise proposal request")+"&body="+encodeURIComponent("Name: "+d.get("name")+"\nEmail: "+d.get("email")+"\nOrganisation: "+d.get("organisation")+"\nTeam size: "+d.get("team_size")+"\n\n"+(d.get("message")||"")); }); });
+  }
+  /* reveal */
+  if ("IntersectionObserver" in window) { var io=new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, {threshold:.08}); site.querySelectorAll(".pv-sec .pv-wrap > *").forEach(function(el){ el.classList.add("pv-r"); io.observe(el); }); }
+})();
 
 var start = null;
 try { var hm = (location.hash || "").match(/lesson-([RMTA]?\d+\.\d+)/); if (hm && (findIdx(hm[1]) > -1 || /^[RMTA]/.test(hm[1]))) start = hm[1]; } catch(e) {}
