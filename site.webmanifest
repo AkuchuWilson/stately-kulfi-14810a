@@ -1,1 +1,17 @@
-{"name": "BrightPath Academy", "short_name": "BrightPath Academy", "start_url": "/", "display": "standalone", "background_color": "#f7f4ed", "theme_color": "#0f4c43", "icons": [{"src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png"}]}
+{
+  "name": "Treadfolio Academy",
+  "short_name": "Treadfolio",
+  "description": "Professional footwear fitting education and certification.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2F4F6",
+  "theme_color": "#13233F",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
