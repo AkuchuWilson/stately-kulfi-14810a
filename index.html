@@ -2155,6 +2155,19 @@ body:not(.public-mode) .wa-fab{display:none}
 .pv-press .pv-btn.line{color:var(--grn)}
 .pv-trust small a{color:var(--grn);font-weight:700;text-decoration:none}
 @media (max-width:900px){.pv-press{grid-template-columns:1fr}.pv-presstag{border-right:0;padding-right:0;flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}.pv-press .pv-btn{justify-self:start}}
+.pv-quotes{margin-top:28px}
+.pv-qhead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px}
+.pv .pv-qhead h3{font-size:24px}
+.pv-qgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.pv-q{margin:0;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:22px;border-radius:20px;background:var(--sf);border:1px solid var(--line);box-shadow:var(--sh)}
+.pv-q blockquote{margin:0;font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--ink)}
+.pv-q.feat{grid-row:1 / span 2;background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));border:0}
+.pv-q.feat blockquote{color:#fff;font-size:22px}
+.pv-q figcaption a{display:block;font-weight:800;color:var(--grn);text-decoration:none;font-size:14.5px}
+.pv-q figcaption span{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.pv-q.feat figcaption a{color:var(--gld2)}.pv-q.feat figcaption span{color:rgb(190 208 204)}
+.pv-q:nth-child(2){grid-column:2 / span 2}
+@media (max-width:900px){.pv-qgrid{grid-template-columns:1fr}.pv-q.feat{grid-row:auto}.pv-q:nth-child(2){grid-column:auto}.pv-qhead{flex-direction:column}}
 .ls-scene{margin:4px 0 18px;border-radius:14px;overflow:hidden;background:#0E1B30;box-shadow:0 12px 30px rgb(14 27 48 / .12)}
 .ls-scene img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover}
 .ls-scene figcaption{display:flex;gap:10px;align-items:center;padding:12px 16px;color:#E6EBF2;font-size:14.5px}
@@ -2273,6 +2286,15 @@ body:not(.public-mode) .wa-fab{display:none}
         <div class="pv-presstxt"><p class="pv-pq">&ldquo;It&rsquo;s not just about selling shoes; it&rsquo;s about improving lives.&rdquo;</p><p>Akuchu co-led a 12-day training tour for retail teams in the Philippines, Singapore and Malaysia. Store associates said they felt more confident assessing customer needs and recommending the right products afterwards.</p><ul><li>Philippines</li><li>Singapore</li><li>Malaysia</li><li>Hands-on scanner workshops</li><li>On-floor sales coaching</li></ul></div>
         <a class="pv-btn line sm" href="https://www.primergrp.com/blogs/news/aetrex-soars-in-southeast-asia-empowering-retail-associates-with-cutting-edge-training" target="_blank" rel="noopener">Read the article</a>
       </aside>
+      <section class="pv-quotes" aria-label="What retail leaders say">
+        <div class="pv-qhead"><h3>What retail leaders say</h3><a class="pv-link" href="https://www.linkedin.com/in/akuchu-wilson-03513aa5" target="_blank" rel="noopener">LinkedIn recommendations &rarr;</a></div>
+        <div class="pv-qgrid">
+          <figure class="pv-q feat"><blockquote>&ldquo;He demonstrated a strong ability to engage frontline teams and translate technical fit and footwear concepts into clear, practical guidance that teams could apply on the shop floor.&rdquo;</blockquote><figcaption><a href="https://www.linkedin.com/in/mehrshad-gh-123a781a0/" target="_blank" rel="noopener">Mehrshad Gh</a><span>Former Area Manager, Runners &middot; now Operations Manager, Tolaab (UAE)</span></figcaption></figure>
+          <figure class="pv-q"><blockquote>&ldquo;Mr. Wilson exemplifies dedication and belief in the potential of others, consistently driving teams towards success.&rdquo;</blockquote><figcaption><a href="https://www.linkedin.com/in/santosh-maden-078a931b6/" target="_blank" rel="noopener">Santosh Maden</a><span>Sales Growth Specialist &middot; Retail Operations and Product Training</span></figcaption></figure>
+          <figure class="pv-q"><blockquote>&ldquo;His passion for the brand and its principles was truly contagious.&rdquo;</blockquote><figcaption><a href="https://www.linkedin.com/in/aneesha-jethwani-12603b39/" target="_blank" rel="noopener">Aneesha Jethwani</a><span>Head of Brand and Growth Marketing, GCC</span></figcaption></figure>
+          <figure class="pv-q"><blockquote>&ldquo;Great leadership skills.&rdquo;</blockquote><figcaption><a href="https://www.linkedin.com/in/asanga-shalindra-9aa60a1a4/" target="_blank" rel="noopener">Asanga Shalindra</a><span>Retail Operations Manager</span></figcaption></figure>
+        </div>
+      </section>
       <div class="pv-ex" id="ps-executions">
         <div class="pv-exhead"><h3>Executions in the field</h3><p>Store launches, team training, customer fittings and events.</p></div>
         <div class="ex-wrap"><div class="ex-preview" id="exPreview"></div><button class="pv-btn line ex-open" id="exToggle" aria-expanded="false" aria-controls="exGrid">View all photos</button><div class="ex-grid" id="exGrid" hidden></div></div>
