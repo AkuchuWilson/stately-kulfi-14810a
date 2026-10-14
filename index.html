@@ -2218,6 +2218,35 @@ body:not(.public-mode) .wa-fab{display:none}
 .au-msg{grid-column:1/-1;margin:6px 0 0;font-size:14px;min-height:1em}
 .au-msg.err{color:#B4232A}.au-msg.ok{color:#1A6B52}
 .au-link{grid-column:1/-1;background:none;border:0;color:#1F5F9E;font:600 13.5px var(--sans);cursor:pointer;justify-self:start;padding:0}
+.pv-oc{align-self:flex-start;border:0;background:none;padding:2px 0;font:700 13.5px Inter,sans-serif;color:rgb(15 76 67);cursor:pointer;border-bottom:1px solid rgb(15 76 67 / .35)}
+.pv-oc:hover{border-bottom-color:rgb(15 76 67)}
+.oc-wrap{position:fixed;inset:0;z-index:460;background:rgb(8 20 30 / .6);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:5vh 16px}
+.oc{width:min(920px,100%);background:#FFFDF9;border-radius:24px;box-shadow:0 30px 80px rgb(0 0 0 / .35);overflow:hidden;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:rgb(22 42 40)}
+.oc-head{display:grid;grid-template-columns:76px 1fr auto;gap:18px;align-items:center;padding:26px 28px;background:linear-gradient(150deg,rgb(14 61 58),rgb(16 43 69));color:rgb(214 228 224)}
+.oc-head img{width:76px;height:auto}
+.oc-head small{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgb(227 194 122)}
+.oc-head h2{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(22px,3vw,30px)!important;color:#fff!important;margin:4px 0 6px!important;line-height:1.15}
+.oc-head p{margin:0;font-size:15px;color:rgb(190 208 204)}
+.oc-x{align-self:start;width:40px;height:40px;border-radius:50%;border:1px solid rgb(255 255 255 / .3);background:transparent;color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.oc-facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgb(20 42 40 / .1)}
+.oc-facts div{padding:16px;text-align:center;border-left:1px solid rgb(20 42 40 / .1)}
+.oc-facts div:first-child{border-left:0}
+.oc-facts b{display:block;font-family:Georgia,serif;font-size:24px;color:rgb(15 76 67)}
+.oc-facts span{font-size:12.5px;color:rgb(98 112 108);font-weight:600}
+.oc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:22px 28px 0}
+.oc-grid section{background:#fff;border:1px solid rgb(20 42 40 / .1);border-radius:18px;padding:18px 20px}
+.oc-grid section.biz{background:rgb(251 246 234);border-color:rgb(227 194 122 / .6)}
+.oc h3{font-family:Georgia,serif!important;font-size:19px!important;margin:0 0 10px!important;color:rgb(22 42 40)!important}
+.oc-ticks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.oc-ticks li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45}
+.oc-ticks li::before{content:"";position:absolute;left:3px;top:6px;width:11px;height:6px;border-left:2px solid rgb(15 76 67);border-bottom:2px solid rgb(15 76 67);transform:rotate(-45deg)}
+.oc-dots{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14.5px}
+.oc-mods{margin:0;padding-left:20px;display:grid;gap:5px;font-size:14px}
+.oc-note{margin:10px 0 0!important;font-size:12.5px;color:rgb(98 112 108)}
+.oc-foot{display:flex;gap:10px;flex-wrap:wrap;padding:22px 28px 26px}
+.oc-foot .pv-btn.line{color:rgb(15 76 67)}
+@media (max-width:700px){.oc-head{grid-template-columns:56px 1fr auto;padding:20px}.oc-head img{width:56px}.oc-facts{grid-template-columns:1fr 1fr}.oc-facts div:nth-child(3){border-left:0}.oc-facts div:nth-child(n+3){border-top:1px solid rgb(20 42 40 / .1)}.oc-grid{grid-template-columns:1fr;padding:16px 16px 0}.oc-foot{padding:18px 16px 22px}.oc-foot .pv-btn{flex:1 1 100%}.oc-wrap{padding:2vh 8px}}
+@media print{body.oc-open > *:not(.oc-wrap){display:none!important}.oc-wrap{position:static;background:none;padding:0;overflow:visible}.oc{box-shadow:none;width:100%}.oc-x,.oc-foot{display:none!important}.oc-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
 #publicSite section{scroll-margin-top:72px}
 </style>
@@ -5043,6 +5072,7 @@ try { FAQ.managers.q[0]=["What team options are available?","Quelles offres équ
   var IMG={foundations:"sc-foot-model",floor:"sc-listening",fit:"sc-scan-pressure",pathway:"retail",cfs:"cert-finale",manager:"sc-huddle",master:"sc-certified"};
   var OUT={foundations:"Open every conversation well and know when to refer.",floor:"Discover, prove and guide decisions without pressure.",fit:"Assess fit with or without a scanner and recommend clearly.",pathway:"Apply the standard in retail or clinical settings.",cfs:"The full pathway, final exam and recorded roleplay.",manager:"Run huddles, coach on the floor and grow results.",master:"Fit complex feet and coach and certify others."};
   function stat(p){ var ls=ALLL.filter(function(l){ return p.c(l.id); }); if (p.k==="pathway"||p.k==="cfs") ls=ls.filter(function(l){ return !/^M\d/.test(l.id); }); var m=ls.reduce(function(a,l){ return a+lessonMins(l); },0); return {n:ls.length, t:fmtMins(m)}; }
+  window.__pvStat=stat;
   var cat=document.getElementById("pvCat");
   if (cat && typeof PROG!=="undefined") cat.innerHTML=PROG.map(function(p){ var st=stat(p), free=p.k==="foundations";
     return '<article class="pv-prog'+(p.best?' best':'')+'"><div class="pv-pimg"><img src="assets/img/'+IMG[p.k]+'.webp" alt="" loading="lazy">'+(p.best?'<span class="pv-flag">Best value</span>':'')+(free?'<span class="pv-flag free">Start free</span>':'')+'<img class="pv-pbadge" src="assets/img/badge-'+p.b+'.webp" alt=""></div><div class="pv-pbody"><h3>'+p.n.split(":")[0]+'</h3><p>'+OUT[p.k]+'</p><ul class="pv-meta"><li>'+st.n+' topics</li><li>'+st.t+'</li><li>Badge</li></ul><div class="pv-pfoot"><strong>$'+p.p+'<small> one-time</small></strong>'+(free?'<button class="pv-btn line sm" data-pv-free>Preview free</button>':'')+'<button class="pv-btn dark sm" data-pay="'+p.k+'">Buy</button></div></div></article>'; }).join("")+'<article class="pv-prog seat"><div class="pv-pbody"><p class="pv-eye light">All programmes</p><h3>Or get everything on one seat.</h3><p>All 7 programmes, every badge and certification.</p><strong class="pv-seatprice">$15<small> per seat / month, billed annually</small></strong><a class="pv-btn gold" href="#pricing">See membership</a></div></article>';
@@ -5217,6 +5247,59 @@ bpgRedeem = function(code, after){
 var _sideMainV21 = sideMain;
 sideMain = function(){ var h=_sideMainV21(); if (authOn() && SBUSER) h=h.replace('<p class="sb-foot">','<button class="sb-link sm" data-signout><span>Sign out ('+esc(SBUSER.email)+')</span></button><p class="sb-foot">'); return h; };
 document.addEventListener("click", function(e){ if (!e.target.closest("[data-signout]")) return; SB.auth.signOut().then(function(){ try { localStorage.removeItem(PROFILE_KEY); localStorage.removeItem(PLATFORM_KEY); localStorage.removeItem(STORE_KEY); } catch(x){} location.href=location.pathname; }); });
+/* ===== v22: learning outcome overview per programme ===== */
+var OUTCOMES={
+  foundations:{who:"New and existing frontline staff in footwear retail, pharmacies and clinics.",
+    learn:["Welcome customers and read their needs without assuming","Explain foot structure, length, width and volume in plain language","Run the five-move S.E.R.V.E. conversation","Handle concerns calmly with the CLEAR tool","Recognise red flags and refer instead of selling"],
+    biz:["One consistent customer standard across every store and shift","Pressure-free service that builds trust and repeat visits","Safer conversations with clear referral boundaries","A shared language for coaching new starters"],
+    kpi:["Customer satisfaction and review scores","Conversion on assisted fittings","Time for new starters to reach the standard"]},
+  floor:{who:"Sales associates and senior staff who want to lift results without pushing.",
+    learn:["Ask discovery questions before showing product","Let the customer feel the difference before talking price","Guide a confident decision with one clear recommendation","Introduce insoles and care products as solutions, not add-ons"],
+    biz:["Higher-value sales earned through service","More complete solutions per customer","Fewer discount-led conversations","A repeatable floor routine managers can coach"],
+    kpi:["Units per transaction","Insole and accessory attach rate","Average sale value and conversion"]},
+  fit:{who:"Staff responsible for fittings, with or without a foot scanner.",
+    learn:["Observe current shoes, wear patterns and how the customer moves","Measure both feet for length, width and volume","Run scanner-supported or hands-on assessments","Read scan results carefully and explain only what is relevant","Recommend, then validate the fit with the customer"],
+    biz:["Fewer fit-related returns and exchanges","Full value from scanner investments","Consistent fittings whoever is on shift","Recommendations customers trust"],
+    kpi:["Fit-related returns and exchanges","Scanner usage per day","Fittings completed per shift"]},
+  pathway:{who:"Specialists working in high-volume retail, or alongside clinicians in clinics and pharmacies.",
+    learn:["Retail: fit by category and run floor routines at peak times","Retail: commercial habits that keep service standards high","Clinical: work inside scope and support the clinician's plan","Clinical: grow clinic retail responsibly"],
+    biz:["Standards that hold up in your real environment","Clear scope boundaries for clinic teams","Stronger retail revenue alongside clinical care"],
+    kpi:["Retail: conversion and attach rate in peak periods","Clinical: referral compliance and patient satisfaction","Clinic retail revenue per patient"]},
+  cfs:{who:"Team members ready to earn the full professional credential.",
+    learn:["Everything in Foundations, Master the Floor, Fit Intelligence and one specialist pathway","Run a complete fitting conversation from welcome to decision","Pass a 30-question exam (24 to pass) and a recorded roleplay"],
+    biz:["A verifiable credential for every certified team member","A clear career step that supports retention","Evidence of capability for partners, brands and clinics"],
+    kpi:["Percentage of team certified","Store standard audit scores","Staff retention after certification"]},
+  manager:{who:"Store, area and clinic managers who lead fitting teams.",
+    learn:["Set and track the targets that drive revenue","Run a 10-minute daily huddle","Coach on the floor with short observations and feedback","Motivate without pressure"],
+    biz:["A daily rhythm that keeps standards alive after training","Managers who coach instead of chase","Faster lift in store results"],
+    kpi:["Coaching observations per week","Daily target achievement","Team certification progress"]},
+  master:{who:"Experienced specialists and future in-house trainers.",
+    learn:["Handle complex fittings and know when to involve clinicians","Build referral relationships between retail and clinical care","Coach colleagues one practice point at a time","Train and assess new team members"],
+    biz:["In-house trainers who scale the standard","Lower dependence on external training","Stronger retail and clinical partnerships"],
+    kpi:["Internal trainers certified","New starters trained per quarter","Referral partnerships active"]}
+};
+function ocModules(p){ var all=[].concat(COURSE,SERVEMODS,FLOORMODS,TRACKMODS,MANAGERMODS,MASTERMODS); return all.filter(function(m){ return m.lessons.some(function(l){ return p.c(l.id); }); }).map(function(m){ return m.title+(m.track==="retail"?" (Retail)":m.track==="medical"?" (Clinical)":""); }).filter(function(t,i,a){ return a.indexOf(t)===i; }); }
+function openOutcomes(k){
+  var p=PROG.filter(function(x){return x.k===k;})[0], o=OUTCOMES[k]; if(!p||!o) return;
+  var mods=ocModules(p), li=function(a){ return a.map(function(x){ return "<li>"+x+"</li>"; }).join(""); };
+  var w=document.createElement("div"); w.className="oc-wrap"; w.setAttribute("role","dialog"); w.setAttribute("aria-modal","true"); w.setAttribute("aria-label",p.n+" learning outcomes");
+  w.innerHTML='<div class="oc"><header class="oc-head"><img src="assets/img/badge-'+p.b+'.webp" alt=""><div><small>Learning outcome overview</small><h2>'+p.n+'</h2><p>'+o.who+'</p></div><button class="oc-x" data-oc-close aria-label="Close">&times;</button></header>'+
+  '<div class="oc-facts"><div><b>'+mods.length+'</b><span>Modules</span></div><div><b>'+(window.__pvStat?window.__pvStat(p).n:"")+'</b><span>Topics</span></div><div><b>'+(window.__pvStat?window.__pvStat(p).t:"")+'</b><span>Learning time</span></div><div><b>$'+p.p+'</b><span>One-time, or included in a seat</span></div></div>'+
+  '<div class="oc-grid"><section><h3>Your people will be able to</h3><ul class="oc-ticks">'+li(o.learn)+'</ul></section><section class="biz"><h3>What your business gains</h3><ul class="oc-ticks">'+li(o.biz)+'</ul></section></div>'+
+  '<div class="oc-grid"><section><h3>Measures to track</h3><ul class="oc-dots">'+li(o.kpi)+'</ul><p class="oc-note">Suggested measures for your own reporting. Results depend on your team and how the standard is applied.</p></section><section><h3>Modules included</h3><ol class="oc-mods">'+li(mods)+'</ol><p class="oc-note">Assessment: a knowledge check in every topic. Award: the '+(BADGE[p.b]||p.n)+' badge'+(k==="cfs"?', plus final exam and recorded roleplay':'')+'.</p></section></div>'+
+  '<footer class="oc-foot"><button class="pv-btn dark" data-pay="'+p.k+'">Buy for $'+p.p+'</button><a class="pv-btn gold" href="#contact" data-oc-close>Request a team proposal</a><button class="pv-btn line" data-oc-print>Save as PDF</button></footer></div>';
+  document.body.appendChild(w); document.body.classList.add("sx-open","oc-open");
+  var close=function(){ w.remove(); document.body.classList.remove("sx-open","oc-open"); document.removeEventListener("keydown",esc1); };
+  function esc1(e){ if (e.key==="Escape") close(); }
+  document.addEventListener("keydown",esc1);
+  w.addEventListener("click", function(e){ if (e.target===w || e.target.closest("[data-oc-close]")) { var a=e.target.closest('a[href="#contact"]'); close(); if (a) { e.preventDefault(); var el=document.getElementById("contact"); if (el) el.scrollIntoView({behavior:"smooth"}); } } if (e.target.closest("[data-oc-print]")) window.print(); });
+  w.querySelector(".oc-x").focus();
+}
+(function(){
+  var cat=document.getElementById("pvCat"); if (!cat) return;
+  cat.querySelectorAll(".pv-prog:not(.seat)").forEach(function(card,i){ var p=PROG[i]; if (!p) return; var meta=card.querySelector(".pv-meta"); if (meta) meta.insertAdjacentHTML("afterend",'<button class="pv-oc" data-oc="'+p.k+'">Learning outcomes &rarr;</button>'); });
+  document.addEventListener("click", function(e){ var b=e.target.closest("[data-oc]"); if (b) { e.preventDefault(); openOutcomes(b.getAttribute("data-oc")); } });
+})();
 
 var start = null;
 try { var hm = (location.hash || "").match(/lesson-([RMTA]?\d+\.\d+)/); if (hm && (findIdx(hm[1]) > -1 || /^[RMTA]/.test(hm[1]))) start = hm[1]; } catch(e) {}
