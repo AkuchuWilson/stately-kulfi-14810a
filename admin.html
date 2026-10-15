@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Academy Admin | BrightPath Academy</title><link rel="icon" type="image/png" href="assets/favicon-32.png">
+<style>
+:root{--ink:#162A28;--mut:#5B6576;--line:#E3DCCD;--bg:#F7F4ED;--grn:#0F4C43;--nvy:#102B45;--gld:#C99A3F}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(150deg,#0E3D3A,#102B45);color:#fff}header .in{max-width:1240px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;gap:12px}
+header img{width:36px;height:36px;border-radius:9px}header b{font-size:17px}header small{display:block;color:#E3C27A;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+header .who{margin-left:auto;font-size:13px;color:#C9D7D3}header button{margin-left:10px}
+main{max-width:1240px;margin:0 auto;padding:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.login{max-width:420px;margin:60px auto}.login h1{font-family:Georgia,serif;margin:0 0 6px}.login p{color:var(--mut);margin:0 0 16px}
+label{display:grid;gap:4px;font-weight:600;font-size:13px;margin-bottom:12px}input,select{font:inherit;padding:10px 12px;border:1px solid #CFC7B6;border-radius:10px;background:#fff}
+.btn{border:0;border-radius:999px;padding:10px 18px;font:700 14px inherit;cursor:pointer;background:var(--grn);color:#fff}.btn.line{background:transparent;border:1px solid currentColor;color:var(--grn)}.btn.sm{padding:6px 12px;font-size:12.5px}
+header .btn.line{color:#fff}
+.msg{min-height:1.2em;font-size:14px;color:#B4232A}.msg.ok{color:#1A6B52}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}.stats div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stats b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--grn)}.stats span{font-size:12.5px;color:var(--mut);font-weight:600}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.tools input{flex:1;min-width:220px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #EEE8DB;vertical-align:top;font-size:14px}th{background:#F1ECE1;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+td small{display:block;color:var(--mut);font-size:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;margin:2px 4px 2px 0;padding:3px 6px 3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:#DFF0EA;color:#1A6B52}
+.chip.off{background:#F3E3E3;color:#9B2C2C;text-decoration:line-through}.chip button{border:0;background:rgba(0,0,0,.08);border-radius:50%;width:18px;height:18px;cursor:pointer;font-size:11px;line-height:1}
+.grant{display:flex;gap:6px;margin-top:6px}.grant select{padding:5px 8px;font-size:12.5px}
+.badge{font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;background:#FBF4E3;color:#7A5A1A}
+.wrap{overflow-x:auto}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<header><div class="in"><img src="assets/img/pv-academy_logo.webp" alt=""><div><small>Private</small><b>Academy Admin</b></div><span class="who" id="who"></span></div></header>
+<main id="app"><div class="card login"><h1>Admin sign in</h1><p>Use your Academy admin account.</p>
+<label>Email<input id="em" type="email" autocomplete="email"></label><label>Password<input id="pw" type="password" autocomplete="current-password"></label>
+<button class="btn" id="go">Sign in</button><p class="msg" id="msg"></p></div></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+var SB=supabase.createClient("https://nrjwhdryvwdrqqlhbuuf.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yandoZHJ5dndkcnFxbGhidXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTkyMDQsImV4cCI6MjEwNzU3NTIwNH0.u9FVgXD9OcoBUkZvuVAJIcS43LMnQET6_4rPpFYlbGc");
+var NAMES={foundations:"Foundations",floor:"Master the Floor",fit:"Fit Intelligence",pathway:"Specialist Pathway",cfs:"Certified Fit Specialist",manager:"Manager Academy",master:"Master Fit Specialist",member:"All-access membership",enterprise:"Enterprise seat",bpg:"BrightPath Global team"};
+var DATA=null, Q="";
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function d(x){return x?new Date(x).toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"}):"Never";}
+async function api(body){ var s=(await SB.auth.getSession()).data.session; if(!s) throw new Error("Signed out"); var r=await fetch("/.netlify/functions/admin",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+s.access_token},body:JSON.stringify(body)}); var j=await r.json(); if(!r.ok) throw new Error(j.error||"Error"); return j; }
+async function load(){ var app=document.getElementById("app"); try { DATA=await api({action:"list"}); document.getElementById("who").innerHTML=esc(DATA.me)+' <button class="btn line sm" id="out">Sign out</button>'; render(); } catch(e){ app.innerHTML='<div class="card login"><h1>No access</h1><p>'+esc(e.message)+'</p><button class="btn" id="out">Sign out</button></div>'; } }
+function render(){
+  var u=DATA.users, q=Q.toLowerCase(), list=u.filter(function(x){ return !q || (x.email+" "+x.name+" "+x.org).toLowerCase().indexOf(q)>-1; });
+  var paid=u.filter(function(x){ return x.access.some(function(a){ return a.status==="active" && a.source==="stripe"; }); }).length;
+  var sales=u.reduce(function(n,x){ return n+x.access.filter(function(a){ return a.source==="stripe"; }).length; },0);
+  var active=u.filter(function(x){ return x.progress.updated && (Date.now()-new Date(x.progress.updated))<30*864e5; }).length;
+  var opts=Object.keys(NAMES).map(function(k){ return '<option value="'+k+'">'+NAMES[k]+'</option>'; }).join("");
+  document.getElementById("app").innerHTML='<div class="stats"><div><b>'+u.length+'</b><span>Learners</span></div><div><b>'+u.filter(function(x){return x.confirmed;}).length+'</b><span>Confirmed emails</span></div><div><b>'+paid+'</b><span>Paying learners</span></div><div><b>'+sales+'</b><span>Purchases</span></div><div><b>'+active+'</b><span>Active last 30 days</span></div></div>'+
+  '<div class="tools"><input id="q" placeholder="Search name, email or organisation" value="'+esc(Q)+'"><button class="btn line" id="csv">Export CSV</button><button class="btn line" id="rf">Refresh</button></div>'+
+  '<div class="wrap"><table><thead><tr><th>Learner</th><th>Joined</th><th>Progress</th><th>Access</th></tr></thead><tbody>'+
+  (list.length?list.map(function(x){ return '<tr><td><b>'+esc(x.name||"(no name)")+'</b><small>'+esc(x.email)+'</small><small>'+esc(x.org)+'</small>'+(x.confirmed?'':'<span class="badge">Email not confirmed</span>')+'</td><td>'+d(x.created)+'<small>Last sign-in: '+d(x.last)+'</small></td><td><b>'+x.progress.topics+'</b> topics<small>'+(x.progress.track?esc(x.progress.track)+' pathway':'')+'</small><small>Last activity: '+d(x.progress.updated)+'</small></td><td>'+
+    (x.access.map(function(a){ return '<span class="chip'+(a.status!=="active"?" off":"")+'" title="'+esc(a.source)+', '+d(a.created_at)+'">'+esc(NAMES[a.key]||a.key)+' <button data-'+(a.status==="active"?"revoke":"restore")+'="'+a.id+'" aria-label="'+(a.status==="active"?"Remove":"Restore")+' access">'+(a.status==="active"?"&times;":"&#8634;")+'</button></span>'; }).join("")||'<small>Free preview only</small>')+
+    '<div class="grant"><select data-sel="'+x.id+'">'+opts+'</select><button class="btn sm" data-grant="'+x.id+'">Grant</button></div></td></tr>'; }).join(""):'<tr><td colspan="4">No learners found.</td></tr>')+'</tbody></table></div>';
+}
+document.addEventListener("click", async function(e){
+  var t=e.target;
+  if (t.id==="go") { var m=document.getElementById("msg"); m.textContent=""; var r=await SB.auth.signInWithPassword({email:document.getElementById("em").value.trim(),password:document.getElementById("pw").value}); if (r.error) { m.textContent="Email or password is incorrect."; return; } load(); }
+  if (t.id==="out") { await SB.auth.signOut(); location.reload(); }
+  if (t.id==="rf") load();
+  if (t.dataset.grant) { var k=document.querySelector('[data-sel="'+t.dataset.grant+'"]').value; if (!confirm("Grant "+NAMES[k]+" to this learner?")) return; t.disabled=true; try { await api({action:"grant",user_id:t.dataset.grant,key:k}); await load(); } catch(x){ alert(x.message); t.disabled=false; } }
+  if (t.dataset.revoke) { if (!confirm("Remove this access? The learner will lose it immediately.")) return; await api({action:"revoke",id:t.dataset.revoke}); load(); }
+  if (t.dataset.restore) { await api({action:"restore",id:t.dataset.restore}); load(); }
+  if (t.id==="csv") { var rows=[["Name","Email","Organisation","Confirmed","Joined","Last sign-in","Topics completed","Active access"]].concat(DATA.users.map(function(x){ return [x.name,x.email,x.org,x.confirmed?"Yes":"No",d(x.created),d(x.last),x.progress.topics,x.access.filter(function(a){return a.status==="active";}).map(function(a){return NAMES[a.key]||a.key;}).join("; ")]; }));
+    var csv=rows.map(function(r){ return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(","); }).join("\n"); var a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download="brightpath-learners.csv"; a.click(); }
+});
+document.addEventListener("input", function(e){ if (e.target.id==="q") { Q=e.target.value; var pos=e.target.selectionStart; render(); var n=document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); } });
+document.addEventListener("keydown", function(e){ if (e.key==="Enter" && document.getElementById("pw") && document.activeElement && document.activeElement.id==="pw") document.getElementById("go").click(); });
+SB.auth.getSession().then(function(r){ if (r.data.session) load(); });
+</script></body></html>
