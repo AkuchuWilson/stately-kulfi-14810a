@@ -2218,6 +2218,7 @@ body:not(.public-mode) .wa-fab{display:none}
 .au-msg{grid-column:1/-1;margin:6px 0 0;font-size:14px;min-height:1em}
 .au-msg.err{color:#B4232A}.au-msg.ok{color:#1A6B52}
 .au-link{grid-column:1/-1;background:none;border:0;color:#1F5F9E;font:600 13.5px var(--sans);cursor:pointer;justify-self:start;padding:0}
+.au-tabs{margin:14px 0 4px}
 .pv-oc{align-self:flex-start;border:0;background:none;padding:2px 0;font:700 13.5px Inter,sans-serif;color:rgb(15 76 67);cursor:pointer;border-bottom:1px solid rgb(15 76 67 / .35)}
 .pv-oc:hover{border-bottom-color:rgb(15 76 67)}
 .oc-wrap{position:fixed;inset:0;z-index:460;background:rgb(8 20 30 / .6);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:5vh 16px}
@@ -5161,7 +5162,10 @@ var SB=null, SBUSER=null, SBREADY=false;
 function authUi(){
   var f=document.getElementById("profileForm"); if (!f || f.__auth) return; f.__auth=true;
   var mode="signup";
-  f.insertAdjacentHTML("afterbegin",'<div class="au-tabs" role="tablist"><button type="button" data-au="signup" aria-selected="true">Create account</button><button type="button" data-au="signin" aria-selected="false">Sign in</button></div>');
+  var intro=f.querySelector("p"); if (intro) intro.textContent="Create your account to keep your progress, badges and purchases safe across all your devices.";
+  var dn=f.querySelector(".demo-note"); if (dn) dn.remove(); var db=document.getElementById("demoProfileBtn"); if (db) db.hidden=true;
+  var grid=f.querySelector(".form-grid")||f.firstChild;
+  grid.insertAdjacentHTML("beforebegin",'<div class="au-tabs" role="tablist"><button type="button" data-au="signup" aria-selected="true">Create account</button><button type="button" data-au="signin" aria-selected="false">Sign in</button></div>');
   var em=document.getElementById("pfEmail"), lab=em.closest("label")||em.parentNode;
   lab.insertAdjacentHTML("afterend",'<label class="field-label au-pw">Password<input id="pfPass" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>');
   f.insertAdjacentHTML("beforeend",'<p class="au-msg" id="auMsg" role="status"></p><button type="button" class="au-link" id="auForgot" hidden>Forgot your password?</button>');
@@ -5182,7 +5186,8 @@ function authUi(){
     btn.disabled=true;
     var done=function(){ btn.disabled=false; };
     if (mode==="signup") {
-      var name=document.getElementById("pfName").value.trim(), org=(document.getElementById("pfOrg")||{}).value||"";
+      var name=document.getElementById("pfName").value.trim(), org=(document.getElementById("pfOrg")||{}).value||"", pc=((document.getElementById("pfCode")||{}).value||"").trim();
+      try { if (pc) localStorage.setItem("bp-pending-code", pc); } catch(x){}
       SB.auth.signUp({email:email, password:pw, options:{data:{name:name, organisation:org}, emailRedirectTo:location.origin+location.pathname}}).then(function(r){ done();
         if (r.error) { msg(r.error.message); return; }
         if (!r.data.session) { msg("Check your email to confirm your account, then sign in.", true); setMode("signin"); return; } });
@@ -5201,6 +5206,7 @@ function onSignedIn(user){
     var remote=r.data&&r.data.state;
     if (remote && remote.done) { var d=Object.assign({}, remote.done, state.done); Object.keys(remote).forEach(function(k){ if (!(k in state) || k==="enrolled"||k==="ft"||k==="at") state[k]=Object.assign({}, remote[k]||{}, state[k]||{}); }); state.done=d; if (!state.last) state.last=remote.last; if (!state.track) state.track=remote.track; }
     _saveLocalOnly(); pushProgress(); loadEntitlements(true);
+    try { var pc=localStorage.getItem("bp-pending-code"); if (pc) { localStorage.removeItem("bp-pending-code"); bpgRedeem(pc, function(ok){ toast(ok?"Team access activated.":"Your team code could not be applied. You can try again from your profile."); }); } } catch(x){}
   });
   var f=document.getElementById("profileForm");
   if (f && !document.getElementById("authShell").hidden) { ["pfName","pfEmail"].forEach(function(id){ var el=document.getElementById(id); if (el) el.value= id==="pfName"?profile.name:profile.email; }); window.__authOK=true; f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
