@@ -1,6 +1,10 @@
 [build]
   publish = "."
 
+[build.environment]
+  # These are public values (they appear in the website by design), so the secrets scanner should not block on them.
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,TEAM_ORG,TEAM_SEATS"
+
 [functions]
   directory = "netlify/functions"
 
