@@ -2208,6 +2208,22 @@ body:not(.public-mode) .wa-fab{display:none}
 .pv-side{gap:12px;padding-top:18px}
 .pv-sfoot .pv-btn{min-height:40px}
 #publicSite aside:not(.pv-side){position:static;transform:none;width:auto;height:auto;box-shadow:none;z-index:auto;padding-bottom:0}
+.pv .ex-preview{order:1}.pv .ex-open{order:2;justify-self:start}.pv .ex-filters{order:3}.pv .ex-grid{order:4}
+.pv .ex-filters[hidden]{display:none}
+.pv .ex-wrap{gap:14px}
+/* learn section: two clean full-width rows */
+.pv-learn{grid-template-columns:1fr!important;gap:30px}
+.pv .pv-h3{display:flex;align-items:center;gap:10px;font-size:22px;margin-bottom:14px}
+.pv .in-grid{grid-template-columns:repeat(3,1fr)!important;gap:14px}
+.pv .in-card{height:100%;justify-content:space-between;min-height:132px}
+.pv .ev-grid{grid-template-columns:repeat(3,1fr)!important;gap:14px;align-items:stretch}
+.pv .ev-card{grid-template-columns:1fr!important;grid-template-rows:auto 1fr;height:100%}
+.pv .ev-date{flex-direction:row!important;justify-content:flex-start!important;gap:10px;padding:10px 16px!important;text-align:left!important}
+.pv .ev-date b{font-size:18px}
+.pv .ev-body{display:flex;flex-direction:column;height:100%}
+.pv .ev-acts{margin-top:auto;padding-top:6px}
+@media (max-width:980px){.pv .in-grid,.pv .ev-grid{grid-template-columns:1fr 1fr!important}}
+@media (max-width:640px){.pv .in-grid,.pv .ev-grid{grid-template-columns:1fr!important}}
 .ls-scene{margin:4px 0 18px;border-radius:14px;overflow:hidden;background:#0E1B30;box-shadow:0 12px 30px rgb(14 27 48 / .12)}
 .ls-scene img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover}
 .ls-scene figcaption{display:flex;gap:10px;align-items:center;padding:12px 16px;color:#E6EBF2;font-size:14.5px}
@@ -2219,6 +2235,12 @@ body:not(.public-mode) .wa-fab{display:none}
 .au-msg.err{color:#B4232A}.au-msg.ok{color:#1A6B52}
 .au-link{grid-column:1/-1;background:none;border:0;color:#1F5F9E;font:600 13.5px var(--sans);cursor:pointer;justify-self:start;padding:0}
 .au-tabs{margin:14px 0 4px}
+.au-role select{width:100%}
+.role-ask{position:fixed;inset:0;z-index:470;background:rgb(8 20 30 / .55);display:grid;place-items:center;padding:16px}
+.role-ask .ra{background:#fff;border-radius:18px;padding:24px;max-width:420px;width:100%;box-shadow:0 30px 80px rgb(0 0 0 / .3)}
+.role-ask h2{margin:0 0 6px;font-size:22px}.role-ask p{margin:0 0 14px;color:#5B6576}
+.role-ask select{width:100%;padding:11px 12px;border:1px solid #CFC7B6;border-radius:10px;font:inherit}
+.role-ask .ra-acts{margin-top:14px;display:flex;justify-content:flex-end}
 .pv-oc{align-self:flex-start;border:0;background:none;padding:2px 0;font:700 13.5px Inter,sans-serif;color:rgb(15 76 67);cursor:pointer;border-bottom:1px solid rgb(15 76 67 / .35)}
 .pv-oc:hover{border-bottom-color:rgb(15 76 67)}
 .oc-wrap{position:fixed;inset:0;z-index:460;background:rgb(8 20 30 / .6);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:5vh 16px}
@@ -4956,14 +4978,16 @@ if (LANG==="fr") setTimeout(applyLang, 0);
   var grid=document.getElementById("exGrid"), tg=document.getElementById("exToggle");
   function fig(x,i){ return '<button class="ex-item" data-ex="'+i+'" aria-label="Open photo: '+x[1]+'"><img src="assets/img/'+x[0]+'.webp" alt="'+x[1]+'" loading="lazy"><span>'+x[1]+'</span></button>'; }
   function draw(){
-    list = F==="all" ? X : X.filter(function(x){ return x[2]===F; });
-    document.getElementById("exFilters").innerHTML=[["all","All ("+X.length+")"]].concat(Object.keys(C).map(function(k){ return [k,C[k]+" ("+X.filter(function(x){return x[2]===k;}).length+")"]; })).map(function(t){ return '<button role="tab" data-exf="'+t[0]+'" aria-selected="'+(t[0]===F)+'">'+t[1]+'</button>'; }).join("");
-    prev.innerHTML=list.slice(0,6).map(fig).join("");
-    grid.innerHTML=list.slice(6).map(function(x,i){ return fig(x,i+6); }).join(""); grid.hidden=!OPEN || list.length<=6;
-    tg.hidden=list.length<=6; tg.setAttribute("aria-expanded",OPEN); tg.textContent=OPEN?"Show fewer photos":"View all "+list.length+" photos";
+    var fl=document.getElementById("exFilters");
+    var pl = F==="all" ? X : X.filter(function(x){ return x[2]===F; });
+    fl.hidden=!OPEN;
+    fl.innerHTML=[["all","All ("+X.length+")"]].concat(Object.keys(C).map(function(k){ return [k,C[k]+" ("+X.filter(function(x){return x[2]===k;}).length+")"]; })).map(function(t){ return '<button role="tab" data-exf="'+t[0]+'" aria-selected="'+(t[0]===F)+'">'+t[1]+'</button>'; }).join("");
+    prev.innerHTML=X.slice(0,3).map(function(x,i){ return fig(x,"p"+i); }).join("");
+    grid.innerHTML=pl.map(function(x,i){ return fig(x,i); }).join(""); grid.hidden=!OPEN; window.__exList=pl;
+    tg.setAttribute("aria-expanded",OPEN); tg.innerHTML=OPEN?"Hide photo catalogue &#9652;":"Browse all "+X.length+" photos by category &#9662;";
   }
   draw();
-  tg.addEventListener("click", function(){ OPEN=!OPEN; draw(); if (!OPEN) document.getElementById("ps-executions").scrollIntoView({behavior:"smooth"}); });
+  tg.addEventListener("click", function(){ OPEN=!OPEN; if (!OPEN) F="all"; draw(); if (!OPEN) document.getElementById("ps-executions").scrollIntoView({behavior:"smooth"}); });
   function lb(i){ var w=document.createElement("div"); w.className="ex-lb"; w.setAttribute("role","dialog"); w.setAttribute("aria-modal","true"); w.setAttribute("aria-label","Execution photo");
     function d(){ w.innerHTML='<figure><img src="assets/img/'+list[i][0]+'.webp" alt="'+list[i][1]+'"><figcaption>'+list[i][1]+'<small>'+C[list[i][2]]+' &middot; '+(i+1)+' of '+list.length+'</small></figcaption></figure><button class="ex-nav p" aria-label="Previous photo">&lsaquo;</button><button class="ex-nav n" aria-label="Next photo">&rsaquo;</button><button class="ex-close" aria-label="Close">&times;</button>'; w.querySelector(".ex-close").focus(); }
     d(); document.body.appendChild(w); document.body.classList.add("sx-open");
@@ -4972,7 +4996,7 @@ if (LANG==="fr") setTimeout(applyLang, 0);
     document.addEventListener("keydown",k);
     w.addEventListener("click", function(e){ if (e.target===w || e.target.closest(".ex-close")) close(); else if (e.target.closest(".ex-nav.n")) { i=(i+1)%list.length; d(); } else if (e.target.closest(".ex-nav.p")) { i=(i-1+list.length)%list.length; d(); } });
   }
-  document.getElementById("ps-executions").addEventListener("click", function(e){ var f=e.target.closest("[data-exf]"); if (f) { F=f.getAttribute("data-exf"); OPEN=false; draw(); return; } var b=e.target.closest("[data-ex]"); if (b) lb(+b.getAttribute("data-ex")); });
+  document.getElementById("ps-executions").addEventListener("click", function(e){ var f=e.target.closest("[data-exf]"); if (f) { F=f.getAttribute("data-exf"); draw(); return; } var b=e.target.closest("[data-ex]"); if (b) { var v=b.getAttribute("data-ex"); if (v.charAt(0)==="p") { list=X; lb(+v.slice(1)); } else { list=window.__exList||X; lb(+v); } } });
 })();
 /* ===== v18: one-off programmes, per-seat membership and enterprise ===== */
 var PAY = { foundations:"https://buy.stripe.com/bJecN764jaPT9EpgN28AE00", floor:"https://buy.stripe.com/fZubJ3akz5vzeYJbsI8AE01", fit:"https://buy.stripe.com/4gM28t1O32jnbMxbsI8AE02", pathway:"https://buy.stripe.com/fZu9AV50faPT8Al1S88AE03", cfs:"https://buy.stripe.com/fZu14pcsHcY19EpeEU8AE04", manager:"https://buy.stripe.com/14A7sN78n6zD03PgN28AE05", master:"https://buy.stripe.com/4gM7sNakzgad6sdaoE8AE06", member_m:"https://buy.stripe.com/4gM4gB3Wb9LP2bX54k8AE07", member_y:"https://buy.stripe.com/cNicN73Wb1fjaIt9kA8AE08", ent_m:"https://buy.stripe.com/aFacN7gIXf699EpdAQ8AE09", ent_y:"https://buy.stripe.com/aFaaEZeAPe257wh8gw8AE0a" };
@@ -5167,10 +5191,12 @@ function authUi(){
   var grid=f.querySelector(".form-grid")||f.firstChild;
   grid.insertAdjacentHTML("beforebegin",'<div class="au-tabs" role="tablist"><button type="button" data-au="signup" aria-selected="true">Create account</button><button type="button" data-au="signin" aria-selected="false">Sign in</button></div>');
   var em=document.getElementById("pfEmail"), lab=em.closest("label")||em.parentNode;
+  var orgEl=document.getElementById("pfOrg"), orgLab=orgEl&&(orgEl.closest("label")||orgEl.parentNode);
+  if (orgLab) orgLab.insertAdjacentHTML("afterend",'<label class="field-label au-role">Your role<select id="pfRole" required>'+ROLE_OPTS+'</select></label>');
   lab.insertAdjacentHTML("afterend",'<label class="field-label au-pw">Password<input id="pfPass" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>');
   f.insertAdjacentHTML("beforeend",'<p class="au-msg" id="auMsg" role="status"></p><button type="button" class="au-link" id="auForgot" hidden>Forgot your password?</button>');
   function setMode(m){ mode=m; f.querySelectorAll("[data-au]").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-au")===m); });
-    ["pfName","pfOrg","pfTrack","pfCode"].forEach(function(id){ var el=document.getElementById(id); if (el) { var l=el.closest("label")||el; l.hidden=(m==="signin"); el.required=(m==="signup" && id==="pfName"); } });
+    ["pfName","pfOrg","pfRole","pfTrack","pfCode"].forEach(function(id){ var el=document.getElementById(id); if (el) { var l=el.closest("label")||el; l.hidden=(m==="signin"); el.required=(m==="signup" && (id==="pfName"||id==="pfRole")); } });
     document.getElementById("pfPass").autocomplete = m==="signin" ? "current-password" : "new-password";
     document.getElementById("auForgot").hidden = m!=="signin";
     var sb=f.querySelector('button[type="submit"]'); if (sb) sb.textContent = m==="signin" ? "Sign in" : "Create my account"; msg(""); }
@@ -5188,7 +5214,9 @@ function authUi(){
     if (mode==="signup") {
       var name=document.getElementById("pfName").value.trim(), org=(document.getElementById("pfOrg")||{}).value||"", pc=((document.getElementById("pfCode")||{}).value||"").trim();
       try { if (pc) localStorage.setItem("bp-pending-code", pc); } catch(x){}
-      SB.auth.signUp({email:email, password:pw, options:{data:{name:name, organisation:org}, emailRedirectTo:location.origin+location.pathname}}).then(function(r){ done();
+      var role=(document.getElementById("pfRole")||{}).value||"";
+      if (!role) { done(); msg("Please choose your role."); return; }
+      SB.auth.signUp({email:email, password:pw, options:{data:{name:name, organisation:org, role:role}, emailRedirectTo:location.origin+location.pathname}}).then(function(r){ done();
         if (r.error) { msg(r.error.message); return; }
         if (!r.data.session) { msg("Check your email to confirm your account, then sign in.", true); setMode("signin"); return; } });
     } else {
@@ -5197,11 +5225,22 @@ function authUi(){
   }, true);
   setMode(mode);
 }
+var ROLES=["Owner or director","Operations manager","Area or regional manager","Store or clinic manager","Supervisor or team leader","Sales staff or associate","Clinician or podiatrist","Trainer","Other"];
+var ROLE_OPTS='<option value="">Choose your role</option>'+ROLES.map(function(r){ return '<option>'+r+'</option>'; }).join("");
+function askRole(){
+  if (!SBUSER || document.querySelector(".role-ask")) return;
+  var w=document.createElement("div"); w.className="role-ask"; w.setAttribute("role","dialog"); w.setAttribute("aria-modal","true"); w.setAttribute("aria-label","Your role");
+  w.innerHTML='<div class="ra"><h2>One quick question</h2><p>What is your role? This helps us tailor your learning and team reporting.</p><select id="raSel">'+ROLE_OPTS+'</select><div class="ra-acts"><button class="btn btn-primary" id="raSave">Save</button></div></div>';
+  document.body.appendChild(w);
+  w.querySelector("#raSave").addEventListener("click", function(){ var v=w.querySelector("#raSel").value; if (!v) return; SB.auth.updateUser({data:{role:v}}).then(function(){ profile.role=v; saveProfile(); w.remove(); toast("Thanks. Your role is saved."); }); });
+}
 function recoverUi(){ var pw=prompt("Choose a new password (at least 8 characters):"); if (pw && pw.length>=8) SB.auth.updateUser({password:pw}).then(function(r){ toast(r.error?r.error.message:"Password updated."); }); }
 function onSignedIn(user){
   SBUSER=user; var md=user.user_metadata||{};
   profile=Object.assign({}, profile||{}, {name:md.name||(profile&&profile.name)||user.email.split("@")[0], email:user.email, org:md.organisation||(profile&&profile.org)||"", uid:user.id}); saveProfile();
+  profile.role=md.role||""; saveProfile();
   SB.from("profiles").upsert({id:user.id, name:profile.name, organisation:profile.org}).then(function(){});
+  if (!md.role) setTimeout(askRole, 1200);
   SB.from("progress").select("state").eq("user_id",user.id).maybeSingle().then(function(r){
     var remote=r.data&&r.data.state;
     if (remote && remote.done) { var d=Object.assign({}, remote.done, state.done); Object.keys(remote).forEach(function(k){ if (!(k in state) || k==="enrolled"||k==="ft"||k==="at") state[k]=Object.assign({}, remote[k]||{}, state[k]||{}); }); state.done=d; if (!state.last) state.last=remote.last; if (!state.track) state.track=remote.track; }
