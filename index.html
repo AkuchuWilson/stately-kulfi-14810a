@@ -2241,6 +2241,14 @@ body:not(.public-mode) .wa-fab{display:none}
 .role-ask h2{margin:0 0 6px;font-size:22px}.role-ask p{margin:0 0 14px;color:#5B6576}
 .role-ask select{width:100%;padding:11px 12px;border:1px solid #CFC7B6;border-radius:10px;font:inherit}
 .role-ask .ra-acts{margin-top:14px;display:flex;justify-content:flex-end}
+/* phones: let the sign-up card scroll inside the overlay, stop iOS zoom, lock the page behind */
+#authShell{overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+html:has(#authShell:not([hidden])),html:has(#authShell:not([hidden])) body{overflow:hidden}
+@media (max-width:700px){
+  #authShell{align-items:flex-start!important;padding:12px 10px calc(28px + env(safe-area-inset-bottom,0px))!important}
+  #authShell > *{margin:0 auto!important;max-height:none!important}
+  #authShell input,#authShell select,#authShell textarea{font-size:16px!important}
+}
 .pv-oc{align-self:flex-start;border:0;background:none;padding:2px 0;font:700 13.5px Inter,sans-serif;color:rgb(15 76 67);cursor:pointer;border-bottom:1px solid rgb(15 76 67 / .35)}
 .pv-oc:hover{border-bottom-color:rgb(15 76 67)}
 .oc-wrap{position:fixed;inset:0;z-index:460;background:rgb(8 20 30 / .6);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:5vh 16px}
