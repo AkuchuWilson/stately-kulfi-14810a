@@ -29,7 +29,7 @@ exports.handler = async (event) => {
         pmap[p.user_id] = { topics: done, enrolled: Object.keys(s.enrolled || {}), track: s.track || "", updated: p.updated_at };
       });
       return out(200, { me: me.email, users: users.map(u => ({
-        id: u.id, email: u.email, name: (u.user_metadata || {}).name || "", org: (u.user_metadata || {}).organisation || "",
+        id: u.id, email: u.email, name: (u.user_metadata || {}).name || "", org: (u.user_metadata || {}).organisation || "", role: (u.user_metadata || {}).role || "",
         created: u.created_at, last: u.last_sign_in_at, confirmed: !!u.email_confirmed_at,
         progress: pmap[u.id] || { topics: 0, enrolled: [], track: "", updated: null },
         access: ents.filter(e => e.user_id === u.id)
