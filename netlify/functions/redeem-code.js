@@ -1,6 +1,6 @@
 // Redeems the BrightPath Global team access code on the server, with a seat limit.
 // Environment variables: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY,
-//   TEAM_CODE (e.g. BPG2026), TEAM_ORG (e.g. BrightPath Global), TEAM_SEATS (e.g. 8)
+//   TEAM_CODE (your team access code), TEAM_ORG (e.g. BrightPath Global), TEAM_SEATS (e.g. 8)
 async function sb(path, opts) {
   const r = await fetch(process.env.SUPABASE_URL + path, opts);
   const t = await r.text();
