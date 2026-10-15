@@ -4987,7 +4987,7 @@ var PROG = [
 var ALLVALUE = PROG.reduce(function(a,p){ return a+p.p; },0);
 PLANS.member = {name:"All-access membership", who:"Per seat", price:19};
 PLANS.enterprise = {name:"Enterprise", who:"10+ seats", price:15};
-var BP_AUTH = { url:"", anon:"" }; /* Supabase project URL and anon (public) key */
+var BP_AUTH = { url:"https://nrjwhdryvwdrqqlhbuuf.supabase.co", anon:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yandoZHJ5dndkcnFxbGhidXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTkyMDQsImV4cCI6MjEwNzU3NTIwNH0.u9FVgXD9OcoBUkZvuVAJIcS43LMnQET6_4rPpFYlbGc" }; /* Supabase project URL and anon (public) key */
 function authOn(){ return !!(BP_AUTH.url && BP_AUTH.anon); }
 if (!platform.ent) platform.ent = {};
 (function(){ try { var q=new URLSearchParams(location.search), b=q.get("buy"); if (!b) return; if (authOn()) { window.__pendingBuy=b; history.replaceState(null,"",location.pathname+"#dashboard"); return; }
