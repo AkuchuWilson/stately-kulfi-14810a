@@ -2341,6 +2341,22 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 .pv .pv-prog .pv-pfoot strong{flex-basis:100%}
 .pv .pv-forh{margin-top:28px}
 </style>
+<style id="v24css">
+.pv .pv-recs{margin-top:22px}
+.pv .pv-recs h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;color:var(--ink2,#102B45)}
+.pv .pv-recs > p{margin:0 0 14px;color:var(--mut);font-size:14.5px}
+.pv .pv-recg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pv .pv-rec{margin:0;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gld);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between}
+.pv .pv-rec.feat{grid-row:span 3;background:linear-gradient(150deg,#0E3D3A,#102B45);border:0;color:#D6E4E0}
+.pv .pv-rec blockquote{margin:0 0 10px;font-family:var(--serif);font-size:16.5px;line-height:1.5;color:var(--ink2,#102B45)}
+.pv .pv-rec.feat blockquote{font-size:26px;line-height:1.4;color:#fff}.pv .pv-rec.feat{padding:28px 30px}
+.pv .pv-rec figcaption b{display:block;font-size:14.5px}
+.pv .pv-rec figcaption span{display:block;font-size:12.5px;color:var(--mut)}
+.pv .pv-rec.feat figcaption b{color:#E3C27A}.pv .pv-rec.feat figcaption span{color:#BFD2CD}
+.pv .pv-recnote{margin:10px 0 0;font-size:12px;color:var(--mut)}
+@media (max-width:900px){.pv .pv-recg{grid-template-columns:1fr}.pv .pv-rec.feat{grid-row:auto}.pv .pv-rec.feat blockquote{font-size:20px}}
+@media (max-width:600px){.pv .pv-recg{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -5551,6 +5567,21 @@ else { showPublicSite(); }
 (function(){ var f=document.getElementById("pvForm"); if (!f || typeof BP_AUTH==="undefined" || !BP_AUTH.url) return;
   f.addEventListener("submit", function(){ try { var d=new FormData(f); var row={kind:"enterprise",name:String(d.get("name")||"").slice(0,120),email:String(d.get("email")||"").slice(0,200),phone:String(d.get("phone")||"").slice(0,40),organisation:String(d.get("organisation")||"").slice(0,160),team_size:String(d.get("team_size")||"").slice(0,30),message:String(d.get("message")||"").slice(0,2000),interest:"Enterprise team seats"};
     if (row.name && row.email) fetch(BP_AUTH.url+"/rest/v1/leads",{method:"POST",keepalive:true,headers:{apikey:BP_AUTH.anon,Authorization:"Bearer "+BP_AUTH.anon,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(row)}).catch(function(){}); } catch(x){} }, true);
+})();
+</script>
+<script id="v24js">
+(function(){
+  var site=document.getElementById("publicSite")||document.body, tr=site.querySelector("#ps-hero .pv-trust");
+  if (!tr || site.querySelector(".pv-recs")) return;
+  var R=[
+    ["feat","He quickly grasped the business acumen of the footwear industry while also excelling at training and developing others to achieve meaningful, long-term results.","Larry Schwartz","CEO, Aetrex, Inc.","December 2025"],
+    ["","Through dedication and sustained effort, Wilson played a meaningful role in driving revenue growth for the company year after year.","Matt Schwartz","Chief Revenue Officer, Aetrex, Inc.",""],
+    ["","His ability to teach, mentor, and energize those around him has had a lasting impact on our performance and morale.","Peter Malkin","SVP International Business Development, Aetrex, Inc.",""],
+    ["","Wilson has been able to grasp the business acumen for the footwear industry and training others to provide valuable and lasting results.","Barry Weinstein","VP Strategic Initiatives, Aetrex, Inc.","2023"]
+  ];
+  tr.insertAdjacentHTML("afterend",'<section class="pv-recs" aria-label="Recommended by industry leaders"><h3>Recommended by industry leaders</h3><p>What senior footwear executives say about the founder and lead trainer.</p><div class="pv-recg">'+
+    R.map(function(r){ return '<figure class="pv-rec'+(r[0]?" "+r[0]:"")+'"><blockquote>&ldquo;'+r[1]+'&rdquo;</blockquote><figcaption><b>'+r[2]+'</b><span>'+r[3]+(r[4]?" &middot; "+r[4]:"")+'</span></figcaption></figure>'; }).join("")+
+    '</div><p class="pv-recnote">Quoted with permission from letters of recommendation for Akuchu Wilson&rsquo;s work at Aetrex, Inc. Not an endorsement of BrightPath Academy by Aetrex.</p></section>');
 })();
 </script>
 </body>
