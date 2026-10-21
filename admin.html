@@ -24,6 +24,8 @@ td small{display:block;color:var(--mut);font-size:12px}
 .grant{display:flex;gap:6px;margin-top:6px}.grant select{padding:5px 8px;font-size:12.5px}
 .badge{font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;background:#FBF4E3;color:#7A5A1A}
 .wrap{overflow-x:auto}
+.tabs{display:flex;gap:8px;margin:0 0 16px;border-bottom:1px solid var(--line)}.tabs button{border:0;background:none;padding:10px 14px;font:700 15px inherit;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}.tabs button[aria-pressed="true"]{color:var(--grn);border-bottom-color:var(--gld)}.tabs b{margin-left:4px;color:var(--ink)}.tabs i{font-style:normal;margin-left:6px;background:#C9A55A;color:#1D1A10;border-radius:999px;padding:1px 7px;font-size:11.5px}
+td .btn.sm{margin:3px 4px 3px 0;display:inline-block;text-decoration:none}
 .roles{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.roles button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font:600 13px inherit;cursor:pointer;color:var(--ink)}.roles button b{color:var(--grn);margin-left:4px}.roles button[aria-pressed="true"]{background:var(--grn);color:#fff;border-color:var(--grn)}.roles button[aria-pressed="true"] b{color:#E3C27A}
 .sec{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9A7A36;margin:4px 0 8px}
 .role{display:inline-block;margin-top:4px;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#E9F3EF;color:#0F4C43}.role.none{background:#F3EFE6;color:#7A6A4A}
@@ -37,12 +39,13 @@ td small{display:block;color:var(--mut);font-size:12px}
 <script>
 var SB=supabase.createClient("https://nrjwhdryvwdrqqlhbuuf.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yandoZHJ5dndkcnFxbGhidXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTkyMDQsImV4cCI6MjEwNzU3NTIwNH0.u9FVgXD9OcoBUkZvuVAJIcS43LMnQET6_4rPpFYlbGc");
 var NAMES={foundations:"Foundations",floor:"Master the Floor",fit:"Fit Intelligence",pathway:"Specialist Pathway",cfs:"Certified Fit Specialist",manager:"Manager Academy",master:"Master Fit Specialist",member:"All-access membership",enterprise:"Enterprise seat",bpg:"BrightPath Global team"};
-var DATA=null, Q="", FR="", FA="";
+var DATA=null, Q="", FR="", FA="", TAB="learners", LEADS=[], LS="";
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function d(x){return x?new Date(x).toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"}):"Never";}
 async function api(body){ var s=(await SB.auth.getSession()).data.session; if(!s) throw new Error("Signed out"); var r=await fetch("/.netlify/functions/admin",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+s.access_token},body:JSON.stringify(body)}); var j=await r.json(); if(!r.ok) throw new Error(j.error||"Error"); return j; }
-async function load(){ var app=document.getElementById("app"); try { DATA=await api({action:"list"}); document.getElementById("who").innerHTML=esc(DATA.me)+' <button class="btn line sm" id="out">Sign out</button>'; render(); } catch(e){ app.innerHTML='<div class="card login"><h1>No access</h1><p>'+esc(e.message)+'</p><button class="btn" id="out">Sign out</button></div>'; } }
-function render(){
+async function load(){ var app=document.getElementById("app"); try { DATA=await api({action:"list"}); try { LEADS=(await api({action:"leads"})).leads||[]; } catch(x){ LEADS=[]; } document.getElementById("who").innerHTML=esc(DATA.me)+' <button class="btn line sm" id="out">Sign out</button>'; render(); } catch(e){ app.innerHTML='<div class="card login"><h1>No access</h1><p>'+esc(e.message)+'</p><button class="btn" id="out">Sign out</button></div>'; } }
+function render(){ if (TAB==="leads") renderLeads(); else renderLearners(); var nn=LEADS.filter(function(l){return l.status==="new";}).length; document.getElementById("app").insertAdjacentHTML("afterbegin",'<div class="tabs"><button data-tab="learners" aria-pressed="'+(TAB==="learners")+'">Learners <b>'+DATA.users.length+'</b></button><button data-tab="leads" aria-pressed="'+(TAB==="leads")+'">Leads <b>'+LEADS.length+'</b>'+(nn?'<i>'+nn+' new</i>':'')+'</button></div>'); }
+function renderLearners(){
   var u=DATA.users, q=Q.toLowerCase();
   var paidOf=function(x){ return x.access.some(function(a){ return a.status==="active" && a.source==="stripe"; }); };
   var activeOf=function(x){ return x.access.some(function(a){ return a.status==="active"; }); };
@@ -59,11 +62,27 @@ function render(){
     (x.access.map(function(a){ return '<span class="chip'+(a.status!=="active"?" off":"")+'" title="'+esc(a.source)+', '+d(a.created_at)+'">'+esc(NAMES[a.key]||a.key)+' <button data-'+(a.status==="active"?"revoke":"restore")+'="'+a.id+'" aria-label="'+(a.status==="active"?"Remove":"Restore")+' access">'+(a.status==="active"?"&times;":"&#8634;")+'</button></span>'; }).join("")||'<small>Free preview only</small>')+
     '<div class="grant"><select data-sel="'+x.id+'">'+opts+'</select><button class="btn sm" data-grant="'+x.id+'">Grant</button></div></td></tr>'; }).join(""):'<tr><td colspan="4">No learners match.</td></tr>')+'</tbody></table></div>';
 }
+
+var KIND={apply:"Applied",brochure:"Brochure",advisor:"Advisor call",enterprise:"Enterprise"};
+function wa(p){ var d=String(p||"").replace(/[^\d]/g,""); return d?'https://wa.me/'+d:""; }
+function renderLeads(){
+  var q=Q.toLowerCase(), list=LEADS.filter(function(l){ return (!LS||l.status===LS) && (!q || [l.name,l.email,l.phone,l.organisation,l.role,l.interest,l.country].join(" ").toLowerCase().indexOf(q)>-1); });
+  var c=function(st){ return LEADS.filter(function(l){ return l.status===st; }).length; };
+  var week=LEADS.filter(function(l){ return Date.now()-new Date(l.created_at)<7*864e5; }).length;
+  document.getElementById("app").innerHTML='<div class="stats"><div><b>'+LEADS.length+'</b><span>All leads</span></div><div><b>'+week+'</b><span>Last 7 days</span></div><div><b>'+c("new")+'</b><span>New, to contact</span></div><div><b>'+c("contacted")+'</b><span>Contacted</span></div><div><b>'+c("won")+'</b><span>Won</span></div></div>'+
+  '<div class="roles">'+[["","All"],["new","New"],["contacted","Contacted"],["won","Won"],["lost","Lost"]].map(function(x){ return '<button data-ls="'+x[0]+'" aria-pressed="'+(LS===x[0])+'">'+x[1]+'<b>'+(x[0]?c(x[0]):LEADS.length)+'</b></button>'; }).join("")+'</div>'+
+  '<div class="tools"><input id="q" placeholder="Search name, email, phone, organisation or programme" value="'+esc(Q)+'"><button class="btn line" id="lcsv">Export CSV</button><button class="btn line" id="rf">Refresh</button></div>'+
+  '<div class="wrap"><table><thead><tr><th>Lead</th><th>Interest</th><th>Contact</th><th>Status</th></tr></thead><tbody>'+
+  (list.length?list.map(function(l){ var w=wa(l.phone); return '<tr><td><b>'+esc(l.name)+'</b><small>'+esc(l.role||"")+(l.organisation?' &middot; '+esc(l.organisation):'')+'</small><small>'+esc(l.country||"")+'</small><small>'+new Date(l.created_at).toLocaleString("en-AU",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})+'</small></td><td><span class="role">'+esc(KIND[l.kind]||l.kind)+'</span><small><b>'+esc(l.interest||"")+'</b></small><small>Team: '+esc(l.team_size||"")+'</small>'+(l.message?'<small>&ldquo;'+esc(l.message)+'&rdquo;</small>':'')+'</td><td><small>Prefers '+esc(l.contact_pref||"")+'</small>'+(w?'<a class="btn sm" href="'+w+'" target="_blank" rel="noopener">WhatsApp</a> ':'')+(l.phone?'<a class="btn line sm" href="tel:'+esc(l.phone)+'">Call</a> ':'')+'<a class="btn line sm" href="mailto:'+esc(l.email)+'">Email</a><small>'+esc(l.phone||"")+'<br>'+esc(l.email)+'</small></td><td><select data-lead-st="'+l.id+'">'+["new","contacted","won","lost"].map(function(s){ return '<option value="'+s+'"'+(l.status===s?' selected':'')+'>'+s.charAt(0).toUpperCase()+s.slice(1)+'</option>'; }).join("")+'</select></td></tr>'; }).join(""):'<tr><td colspan="4">No leads yet. Apply, brochure and advisor requests from the website appear here.</td></tr>')+'</tbody></table></div>';
+}
 document.addEventListener("click", async function(e){
   var t=e.target;
   if (t.id==="go") { var m=document.getElementById("msg"); m.textContent=""; var r=await SB.auth.signInWithPassword({email:document.getElementById("em").value.trim(),password:document.getElementById("pw").value}); if (r.error) { m.textContent="Email or password is incorrect."; return; } load(); }
   if (t.id==="out") { await SB.auth.signOut(); location.reload(); }
   if (t.id==="rf") load();
+  var tb=t.closest&&t.closest("[data-tab]"); if (tb) { TAB=tb.dataset.tab; Q=""; render(); return; }
+  var ls=t.closest&&t.closest("[data-ls]"); if (ls) { LS=ls.dataset.ls; render(); return; }
+  if (t.id==="lcsv") { var rows=[["Date","Type","Name","Email","Phone","Country","Organisation","Role","Interest","Team size","Prefers","Message","Status"]].concat(LEADS.map(function(l){ return [new Date(l.created_at).toISOString().slice(0,16).replace("T"," "),KIND[l.kind]||l.kind,l.name,l.email,l.phone,l.country,l.organisation,l.role,l.interest,l.team_size,l.contact_pref,l.message,l.status]; })); var csv=rows.map(function(r){ return r.map(function(c){ return '"'+String(c==null?"":c).replace(/"/g,'""')+'"'; }).join(","); }).join("\n"); var a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download="brightpath-leads.csv"; a.click(); }
   if (t.dataset && t.dataset.role!==undefined && t.closest(".roles")) { FR=t.dataset.role; render(); }
   var rb=t.closest && t.closest(".roles button"); if (rb && rb!==t) { FR=rb.dataset.role; render(); }
   if (t.dataset.grant) { var k=document.querySelector('[data-sel="'+t.dataset.grant+'"]').value; if (!confirm("Grant "+NAMES[k]+" to this learner?")) return; t.disabled=true; try { await api({action:"grant",user_id:t.dataset.grant,key:k}); await load(); } catch(x){ alert(x.message); t.disabled=false; } }
@@ -72,7 +91,7 @@ document.addEventListener("click", async function(e){
   if (t.id==="csv") { var rows=[["Name","Email","Organisation","Role","Confirmed","Joined","Last sign-in","Topics completed","Active access"]].concat(DATA.users.map(function(x){ return [x.name,x.email,x.org,x.role||"",x.confirmed?"Yes":"No",d(x.created),d(x.last),x.progress.topics,x.access.filter(function(a){return a.status==="active";}).map(function(a){return NAMES[a.key]||a.key;}).join("; ")]; }));
     var csv=rows.map(function(r){ return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(","); }).join("\n"); var a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download="brightpath-learners.csv"; a.click(); }
 });
-document.addEventListener("change", function(e){ if (e.target.id==="fa") { FA=e.target.value; render(); } });
+document.addEventListener("change", async function(e){ if (e.target.id==="fa") { FA=e.target.value; render(); } if (e.target.dataset && e.target.dataset.leadSt) { var id=e.target.dataset.leadSt, v=e.target.value; try { await api({action:"lead",id:id,status:v}); LEADS.forEach(function(l){ if (String(l.id)===id) l.status=v; }); render(); } catch(x){ alert(x.message); } } });
 document.addEventListener("input", function(e){ if (e.target.id==="q") { Q=e.target.value; var pos=e.target.selectionStart; render(); var n=document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); } });
 document.addEventListener("keydown", function(e){ if (e.key==="Enter" && document.getElementById("pw") && document.activeElement && document.activeElement.id==="pw") document.getElementById("go").click(); });
 SB.auth.getSession().then(function(r){ if (r.data.session) load(); });

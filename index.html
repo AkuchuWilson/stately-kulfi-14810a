@@ -2281,6 +2281,66 @@ html:has(#authShell:not([hidden])),html:has(#authShell:not([hidden])) body{overf
 
 #publicSite section{scroll-margin-top:72px}
 </style>
+<style id="v23css">
+/* v23: lead capture, audience, compare, certificate, advisor */
+.pv .pv-for{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 6px}
+.pv .pv-for a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;transition:transform .15s,box-shadow .15s}
+.pv .pv-for a:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.pv .pv-for b{display:block;font-family:var(--serif);font-size:16.5px;margin-bottom:4px;color:var(--ink2,#102B45)}
+.pv .pv-for span{display:block;font-size:13.5px;color:var(--mut);line-height:1.45}
+.pv .pv-for em{display:block;margin-top:8px;font-style:normal;font-size:12px;font-weight:800;color:var(--grn)}
+.pv .pv-forh{margin:22px 0 0;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A7A36}
+.pv .pv-pfoot{flex-wrap:wrap;row-gap:8px}
+.pv .pv-paylink{flex-basis:100%;border:0;background:none;padding:0;font:600 12.5px Inter,sans-serif;color:var(--mut);text-decoration:underline;cursor:pointer;text-align:left}
+.pv .pv-cmpbtn{margin-top:16px}
+.pv .pv-cmp{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
+.pv .pv-cmp table{width:100%;border-collapse:collapse;min-width:760px}
+.pv .pv-cmp th,.pv .pv-cmp td{padding:12px 14px;text-align:left;border-bottom:1px solid #EEE8DB;font-size:14px;vertical-align:top}
+.pv .pv-cmp th{background:#102B45;color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.pv .pv-cmp td b{font-family:var(--serif)}.pv .pv-cmp td button{white-space:nowrap}
+.pv .pv-adv{display:grid;grid-template-columns:1.4fr auto;gap:20px;align-items:center;margin-top:22px;padding:24px 26px;border-radius:24px;background:linear-gradient(150deg,#0E3D3A,#102B45);color:#D6E4E0}
+.pv .pv-adv h3{color:#fff;font-size:24px;margin:0 0 6px}.pv .pv-adv p{margin:0;color:#BFD2CD}
+.pv .pv-adv .acts{display:flex;gap:10px;flex-wrap:wrap}.pv .pv-adv .pv-btn.line{color:#fff;border-color:rgb(255 255 255 / .5)}
+.pv .pv-adv .tr{display:flex;gap:12px;align-items:center;margin-top:14px}.pv .pv-adv .tr img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #E3C27A}
+.pv .pv-adv .tr span{font-size:13px;color:#BFD2CD}.pv .pv-adv .tr b{color:#fff;display:block;font-size:14px}
+.pv .pv-qstrip{margin-top:18px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gld);border-radius:18px;padding:18px 22px}
+.pv .pv-qstrip blockquote{margin:0;font-family:var(--serif);font-size:18px;line-height:1.45;color:var(--ink2,#102B45)}
+.pv .pv-qstrip small{display:block;margin-top:6px;color:var(--mut);font-size:13px}
+.pv .pv-certinfo{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pv .pv-certinfo div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.pv .pv-certinfo b{display:block;font-family:var(--serif);font-size:16px;margin-bottom:6px;color:var(--ink2,#102B45)}
+.pv .pv-certinfo p{margin:0;font-size:13.5px;color:var(--mut);line-height:1.5}
+.pv .pv-tfacts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.pv .pv-tfacts span{background:rgb(233 243 239);color:#0F4C43;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
+/* lead modal */
+.ld-wrap{position:fixed;inset:0;z-index:480;background:rgb(8 20 30 / .6);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:4vh 12px}
+html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
+.ld{max-width:620px;margin:0 auto;background:#FFFDF9;border-radius:22px;box-shadow:0 30px 80px rgb(0 0 0 / .35);overflow:hidden;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#162A28}
+.ld-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:linear-gradient(150deg,#0E3D3A,#102B45);color:#D6E4E0}
+.ld-head small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#E3C27A}
+.ld-head h2{font-family:Georgia,serif!important;color:#fff!important;font-size:24px!important;margin:4px 0 4px!important;line-height:1.2}
+.ld-head p{margin:0;font-size:14px;color:#BFD2CD}
+.ld-x{margin-left:auto;flex:none;width:38px;height:38px;border-radius:50%;border:1px solid rgb(255 255 255 / .35);background:transparent;color:#fff;font-size:22px;cursor:pointer}
+.ld form{padding:20px 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.ld label{display:grid;gap:5px;font-size:13px;font-weight:700;color:#33403D}
+.ld label.full{grid-column:1/-1}
+.ld input,.ld select,.ld textarea{font:inherit;font-size:16px;font-weight:500;padding:11px 12px;border:1px solid #CFC7B6;border-radius:12px;background:#fff;color:#162A28;width:100%}
+.ld textarea{min-height:76px;resize:vertical}
+.ld .ok{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:13px;color:#5B6576}
+.ld .ok input{width:auto;margin-top:2px}
+.ld .acts{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ld .msg{grid-column:1/-1;margin:0;font-size:14px;color:#B4232A;min-height:1em}
+.ld .done{padding:26px 24px}.ld .done h3{font-family:Georgia,serif;font-size:24px;margin:0 0 8px}.ld .done p{color:#5B6576;margin:0 0 14px}
+.ld .done .acts{display:flex;gap:10px;flex-wrap:wrap}
+.ld .pv-btn{border:0;border-radius:999px;padding:12px 20px;font:700 15px Inter,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.ld .pv-btn.dark{background:#0F4C43;color:#fff}.ld .pv-btn.gold{background:#C9A55A;color:#1D1A10}.ld .pv-btn.line{background:transparent;border:1px solid #0F4C43;color:#0F4C43}.ld .pv-btn.wa{background:#1F9D55;color:#fff}
+@media (max-width:1100px){.pv .pv-for{grid-template-columns:repeat(3,1fr)}.pv .pv-certinfo{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.pv .pv-for{grid-template-columns:1fr 1fr}.pv .pv-adv{grid-template-columns:1fr;padding:20px}.pv .pv-qstrip{grid-template-columns:1fr}.ld form{grid-template-columns:1fr;padding:16px}.ld-head{padding:18px 16px}}
+@media (max-width:420px){.pv .pv-for{grid-template-columns:1fr}.pv .pv-certinfo{grid-template-columns:1fr}}
+.pv .pv-adv h3{color:#fff!important}
+.pv .pv-prog .pv-pfoot strong{flex-basis:100%}
+.pv .pv-forh{margin-top:28px}
+</style>
 </head>
 <body class="public-mode">
 
@@ -2443,7 +2503,7 @@ html:has(#authShell:not([hidden])),html:has(#authShell:not([hidden])) body{overf
     <div class="pv-wrap">
       <div class="pv-cta">
         <div><p class="pv-eye light">Enterprise launch</p><h2>Bring one fitting standard to your team.</h2><p>Tell us about your stores or clinics. We reply within one business day.</p><div class="pv-ctalinks"><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp +61 485 502 264</a></div></div>
-        <form class="pv-form" name="enterprise-interest" method="POST" action="/success" data-netlify="true" id="pvForm"><input type="hidden" name="form-name" value="enterprise-interest"><label>Name<input name="name" required autocomplete="name"></label><label>Work email<input name="email" type="email" required autocomplete="email"></label><label>Organisation<input name="organisation" autocomplete="organization"></label><label>Team size<select name="team_size"><option>1&ndash;10</option><option>11&ndash;40</option><option>41&ndash;100</option><option>100+</option></select></label><label class="full">What would you like to improve?<textarea name="message" rows="3"></textarea></label><div class="full pv-formacts"><button class="pv-btn gold" type="submit">Request a proposal</button><a class="pv-btn line" id="pvWa" href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp us</a></div></form>
+        <form class="pv-form" name="enterprise-interest" method="POST" action="/success" data-netlify="true" id="pvForm"><input type="hidden" name="form-name" value="enterprise-interest"><label>Name<input name="name" required autocomplete="name"></label><label>Work email<input name="email" type="email" required autocomplete="email"></label><label>Mobile or WhatsApp<input name="phone" type="tel" required autocomplete="tel" placeholder="+971 50 123 4567"></label><label>Organisation<input name="organisation" autocomplete="organization"></label><label>Team size<select name="team_size"><option>1&ndash;10</option><option>11&ndash;40</option><option>41&ndash;100</option><option>100+</option></select></label><label class="full">What would you like to improve?<textarea name="message" rows="3"></textarea></label><div class="full pv-formacts"><button class="pv-btn gold" type="submit">Request a proposal</button><a class="pv-btn line" id="pvWa" href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp us</a></div></form>
       </div>
     </div>
   </section>
@@ -5362,6 +5422,136 @@ if(start){ openAcademy("course"); go(start); }
 else if(appRoutes.indexOf(initialRoute)>-1){ openAcademy(initialRoute); }
 else { showPublicSite(); }
 
+</script>
+<form name="academy-lead" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<input name="bot-field"><input name="kind"><input name="name"><input name="email"><input name="phone"><input name="organisation"><input name="role"><input name="interest"><input name="contact_pref"><input name="team_size"><input name="country"><textarea name="message"></textarea>
+</form>
+<script id="v23js">
+/* ===== v23: apply / brochure / advisor lead capture and trust content ===== */
+(function(){
+  var site=document.getElementById("publicSite")||document.body;
+  var BROCHURE="assets/brochure/BrightPath-Academy-Programme-Guide.pdf";
+  var WA="https://wa.me/61485502264";
+  var PN={}; (typeof PROG!=="undefined"?PROG:[]).forEach(function(p){ PN[p.k]=p.n.split(":")[0]; });
+  PN.member_y=PN.member_m="All-access membership"; PN.ent_y=PN.ent_m="Enterprise team seats";
+  var INTEREST=Object.keys(PN).filter(function(k){ return !/_m$/.test(k); }).map(function(k){ return [k,PN[k]]; }).concat([["unsure","Not sure yet"]]);
+  var RL=(typeof ROLES!=="undefined"&&ROLES)||["Owner or director","Operations manager","Area or regional manager","Store or clinic manager","Supervisor or team leader","Sales staff or associate","Clinician or podiatrist","Trainer","Other"];
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  var COPY={
+    apply:{eye:"Apply now",h:"Apply for {p}",p:"Leave your details and an advisor will contact you within one business day to confirm the right programme and get you started.",btn:"Send my application"},
+    brochure:{eye:"Programme guide",h:"Download the programme guide",p:"All 7 programmes, outcomes, pricing and certification in one PDF. Enter your details and the download starts straight away.",btn:"Download the guide"},
+    advisor:{eye:"Talk to an advisor",h:"Not sure where to start?",p:"Tell us about you or your team. An advisor will call or WhatsApp you to recommend the right programme.",btn:"Request a call back"}
+  };
+  function openLead(kind, key){
+    var c=COPY[kind]||COPY.apply, pname=PN[key]||"BrightPath Academy";
+    var w=document.createElement("div"); w.className="ld-wrap"; w.setAttribute("role","dialog"); w.setAttribute("aria-modal","true"); w.setAttribute("aria-label",c.eye);
+    var me=(window.profile&&profile)||{};
+    w.innerHTML='<div class="ld"><div class="ld-head"><div><small>'+c.eye+'</small><h2>'+esc(c.h.replace("{p}",pname))+'</h2><p>'+c.p+'</p></div><button class="ld-x" type="button" data-ld-close aria-label="Close">&times;</button></div>'+
+      '<form novalidate><label>Full name<input name="name" autocomplete="name" required value="'+esc(me.name||"")+'"></label>'+
+      '<label>Email<input name="email" type="email" autocomplete="email" required value="'+esc(me.email||"")+'"></label>'+
+      '<label>Mobile or WhatsApp<input name="phone" type="tel" autocomplete="tel" placeholder="+971 50 123 4567" required></label>'+
+      '<label>Country<input name="country" autocomplete="country-name" placeholder="e.g. UAE, Australia"></label>'+
+      '<label>Organisation<input name="organisation" autocomplete="organization" placeholder="Store, clinic or company" value="'+esc(me.org||"")+'"></label>'+
+      '<label>Your role<select name="role" required><option value="">Choose your role</option>'+RL.map(function(r){ return '<option'+(me.role===r?' selected':'')+'>'+r+'</option>'; }).join("")+'</select></label>'+
+      '<label>Interested in<select name="interest">'+INTEREST.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===(key||"unsure")||(key&&o[0]===key.replace(/_m$/,"_y"))?' selected':'')+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
+      '<label>Team size<select name="team_size"><option>Just me</option><option>2 to 10</option><option>11 to 50</option><option>51 to 200</option><option>200+</option></select></label>'+
+      '<label class="full">Best way to contact you<select name="contact_pref"><option>WhatsApp</option><option>Phone call</option><option>Email</option></select></label>'+
+      (kind!=="brochure"?'<label class="full">Anything we should know? (optional)<textarea name="message" placeholder="Goals, timing, number of stores or questions"></textarea></label>':'')+
+      '<label class="ok"><input type="checkbox" name="ok" required><span>I agree that BrightPath Academy may contact me about my enquiry by phone, WhatsApp or email.</span></label>'+
+      '<p class="msg" aria-live="polite"></p><div class="acts"><button class="pv-btn dark" type="submit">'+c.btn+'</button><a class="pv-btn wa" href="'+WA+'?text='+encodeURIComponent("Hello BrightPath Academy, I am interested in "+pname+".")+'" target="_blank" rel="noopener">WhatsApp us instead</a></div></form></div>';
+    document.body.appendChild(w);
+    var f=w.querySelector("form"), msg=w.querySelector(".msg");
+    var close=function(){ w.remove(); document.removeEventListener("keydown",esc1); };
+    function esc1(e){ if (e.key==="Escape") close(); }
+    document.addEventListener("keydown",esc1);
+    w.addEventListener("click",function(e){ if (e.target===w || e.target.closest("[data-ld-close]")) close(); var p=e.target.closest("[data-ld-pay]"); if (p) { close(); startPay(p.getAttribute("data-ld-pay")); } });
+    setTimeout(function(){ var first=f.querySelector("input[name=name]"); if (first && !first.value) first.focus(); },60);
+    f.addEventListener("submit",function(e){
+      e.preventDefault(); msg.textContent="";
+      var d={}; new FormData(f).forEach(function(v,k){ d[k]=String(v).trim(); });
+      if (!d.name) return msg.textContent="Please enter your name.";
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) return msg.textContent="Please enter a valid email.";
+      if ((d.phone||"").replace(/\D/g,"").length<7) return msg.textContent="Please enter your mobile number, including the country code.";
+      if (!d.role) return msg.textContent="Please choose your role.";
+      if (!f.ok.checked) return msg.textContent="Please tick the box so we can contact you.";
+      var btn=f.querySelector("button[type=submit]"); btn.disabled=true; btn.textContent="Sending...";
+      var row={kind:kind,name:d.name.slice(0,120),email:d.email.slice(0,200),phone:d.phone.slice(0,40),organisation:(d.organisation||"").slice(0,160),role:d.role.slice(0,80),interest:(PN[d.interest]||d.interest||"").slice(0,80),contact_pref:d.contact_pref||"",team_size:d.team_size||"",message:(d.message||"").slice(0,2000),country:(d.country||"").slice(0,80)};
+      var jobs=[];
+      try { if (typeof BP_AUTH!=="undefined" && BP_AUTH.url) jobs.push(fetch(BP_AUTH.url+"/rest/v1/leads",{method:"POST",headers:{apikey:BP_AUTH.anon,Authorization:"Bearer "+BP_AUTH.anon,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(row)}).then(function(r){ if(!r.ok) throw new Error("db"); })); } catch(x){}
+      var nf=new URLSearchParams(Object.assign({"form-name":"academy-lead"},row)); jobs.push(fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:nf.toString()}).catch(function(){}));
+      Promise.allSettled(jobs).then(function(res){
+        var saved=res.some(function(r){ return r.status==="fulfilled"; });
+        if (!saved) { btn.disabled=false; btn.textContent=COPY[kind].btn; msg.textContent="Sorry, that did not send. Please try again or WhatsApp us."; return; }
+        try { if (window.gtag) gtag("event","generate_lead",{lead_type:kind,interest:row.interest}); } catch(x){}
+        var pay=key&&typeof PAY!=="undefined"&&PAY[key]?key:"";
+        var done='<div class="done"><h3>'+(kind==="brochure"?"Your guide is downloading":"Thank you, "+esc(d.name.split(" ")[0])+".")+'</h3><p>'+(kind==="brochure"?"If the download did not start, use the button below. An advisor may reach out to help you choose a programme.":"An advisor will contact you by "+esc((d.contact_pref||"WhatsApp").toLowerCase())+" within one business day.")+'</p><div class="acts">'+
+          (kind==="brochure"?'<a class="pv-btn dark" href="'+BROCHURE+'" download>Download the guide (PDF)</a>':'<a class="pv-btn line" href="'+BROCHURE+'" download>Download the programme guide</a>')+
+          (pay?'<button class="pv-btn gold" type="button" data-ld-pay="'+pay+'">Prefer to start now? Pay online</button>':'')+
+          '<a class="pv-btn wa" href="'+WA+'" target="_blank" rel="noopener">WhatsApp us</a><button class="pv-btn line" type="button" data-ld-close>Close</button></div></div>';
+        f.outerHTML=done;
+        if (kind==="brochure") { var a=document.createElement("a"); a.href=BROCHURE; a.download="BrightPath-Academy-Programme-Guide.pdf"; document.body.appendChild(a); a.click(); a.remove(); }
+      });
+    });
+  }
+  window.openLead=openLead;
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-lead]"); if (b) { e.preventDefault(); openLead(b.getAttribute("data-lead"), b.getAttribute("data-prog")||""); } });
+
+  /* hero */
+  var hc=site.querySelector("#ps-hero .pv-herocopy");
+  if (hc) {
+    var hp=hc.querySelector("p"); if (hp) hp.innerHTML="Online fitting and sales training, with assessed certification, for footwear retail and clinic teams. Self-paced on any device, with or without a scanner.";
+    var ct=hc.querySelector(".pv-ctas"); if (ct) ct.innerHTML='<button class="pv-btn gold" data-lead="apply">Apply now</button><button class="pv-btn line" data-lead="brochure">Download brochure</button><a class="pv-btn line" href="#programmes">Explore programmes</a>';
+  }
+  /* who it is for */
+  var herocard=site.querySelector("#ps-hero .pv-herocard");
+  if (herocard && !site.querySelector(".pv-for")) herocard.insertAdjacentHTML("afterend",'<p class="pv-forh">Who it is for</p><div class="pv-for">'+
+    [["Sales staff and associates","Confident, pressure-free fitting conversations.","Start with Foundations","foundations"],
+     ["Supervisors and store managers","Coach the standard every day and lift results.","Start with Manager Academy","manager"],
+     ["Area and operations managers","One standard across every store and market.","Team seats and dashboard","ent_y"],
+     ["Clinicians and podiatry teams","Grow clinic retail responsibly, within scope.","Specialist Pathway","pathway"],
+     ["Owners and distributors","Turn scanners and products into results.","Certified Fit Specialist","cfs"]].map(function(a){ return '<a href="#programmes" data-lead-hint="'+a[3]+'"><b>'+a[0]+'</b><span>'+a[1]+'</span><em>'+a[2]+' &rarr;</em></a>'; }).join("")+'</div>');
+  /* programme cards: apply + brochure, pay online as secondary */
+  function convertPay(root){
+    root.querySelectorAll("[data-pay]:not([data-v23])").forEach(function(b){
+      var k=b.getAttribute("data-pay"); b.setAttribute("data-v23","1");
+      var apply=document.createElement("button"); apply.className=b.className.replace(/\bgold\b/,"dark"); apply.textContent=/^ent/.test(k)?"Request a proposal":"Apply now"; apply.setAttribute("data-lead","apply"); apply.setAttribute("data-prog",k); apply.setAttribute("data-v23","1");
+      var pay=document.createElement("button"); pay.className="pv-paylink"; pay.type="button"; pay.textContent="or pay online now"; pay.setAttribute("data-pay",k); pay.setAttribute("data-v23","1");
+      b.replaceWith(apply); apply.insertAdjacentElement("afterend",pay);
+      if (root.id==="pvCat"||root.closest&&root.closest("#pvCat")) { var br=document.createElement("button"); br.className="pv-btn line sm"; br.textContent="Brochure"; br.setAttribute("data-lead","brochure"); br.setAttribute("data-prog",k); apply.insertAdjacentElement("afterend",br); }
+    });
+  }
+  var cat=document.getElementById("pvCat"); if (cat) {
+    convertPay(cat);
+    cat.querySelectorAll("[data-pv-free]").forEach(function(pf){ var br=pf.parentNode.querySelector('[data-lead="brochure"]'); if (br) br.insertAdjacentElement("afterend",pf); });
+    var rows=(typeof PROG!=="undefined"?PROG:[]).map(function(p){ var st=window.__pvStat?__pvStat(p):{n:"",t:""}, o=(typeof OUTCOMES!=="undefined"&&OUTCOMES[p.k])||{}; return '<tr><td><b>'+PN[p.k]+'</b></td><td>'+esc(o.who||"")+'</td><td>'+st.n+'</td><td>'+st.t+'</td><td>'+(p.k==="cfs"?"Final exam + roleplay":"Knowledge checks")+'<br><small>'+(BADGE[p.b]||"")+' badge</small></td><td><b>$'+p.p+'</b></td><td><button class="pv-btn dark sm" data-lead="apply" data-prog="'+p.k+'">Apply</button></td></tr>'; }).join("");
+    cat.insertAdjacentHTML("afterend",'<button class="pv-btn line pv-cmpbtn" id="pvCmpBtn" aria-expanded="false">Compare all programmes &#9662;</button><div class="pv-cmp" id="pvCmp" hidden><table><thead><tr><th>Programme</th><th>Best for</th><th>Topics</th><th>Time</th><th>Assessment</th><th>Price</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+      '<div class="pv-qstrip"><div><blockquote>&ldquo;He demonstrated a strong ability to engage frontline teams and translate technical fit and footwear concepts into clear, practical guidance that teams could apply on the shop floor.&rdquo;</blockquote><small>Mehrshad Gh, former Area Manager, Runners (UAE) &middot; LinkedIn recommendation</small></div><a class="pv-link" href="#about">More from retail leaders &rarr;</a></div>'+
+      '<div class="pv-adv"><div><h3>Not sure which programme fits?</h3><p>Talk to an advisor. We will recommend the right starting point for you or your team, and arrange team pricing.</p><div class="tr"><img src="assets/img/founder-profile.webp" alt=""><div><b>Akuchu Wilson</b><span>Founder and lead trainer, former International Sales Excellence and Training Manager, Aetrex, Inc.</span></div></div></div><div class="acts"><button class="pv-btn gold" data-lead="advisor">Talk to an advisor</button><button class="pv-btn line" data-lead="brochure">Download brochure</button></div></div>');
+    document.getElementById("pvCmpBtn").addEventListener("click",function(){ var t=document.getElementById("pvCmp"), o=t.hidden; t.hidden=!o; this.setAttribute("aria-expanded",o); this.innerHTML=o?"Hide comparison &#9652;":"Compare all programmes &#9662;"; });
+  }
+  var pr=document.getElementById("pr2"); if (pr) { convertPay(pr); new MutationObserver(function(){ convertPay(pr); }).observe(pr,{childList:true,subtree:true}); }
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType===1 && n.classList.contains("oc-wrap")) { var ft=n.querySelector(".oc-foot"); if (ft) { convertPay(ft); var a=ft.querySelector("[data-lead]"); var k=a&&a.getAttribute("data-prog"); ft.querySelectorAll("[data-oc-print]").forEach(function(x){ x.textContent="Save this page as PDF"; }); if (a) a.insertAdjacentHTML("afterend",'<button class="pv-btn line" data-lead="brochure" data-prog="'+k+'" data-oc-close>Download brochure</button>'); ft.querySelectorAll('a[href="#contact"]').forEach(function(x){ x.remove(); }); } } }); }); }).observe(document.body,{childList:true});
+  /* certificate explained */
+  var cred=site.querySelector("#credentials .pv-cred");
+  if (cred && !site.querySelector(".pv-certinfo")) cred.insertAdjacentHTML("afterend",'<div class="pv-certinfo">'+
+    '<div><b>Who issues it?</b><p>BrightPath Academy, the training division of BrightPath Global. Assessments are marked against the BrightPath fitting standard.</p></div>'+
+    '<div><b>Is it accredited?</b><p>It is a professional industry credential that shows assessed, practical skill. It is not a government-accredited or university qualification.</p></div>'+
+    '<div><b>How is it verified?</b><p>Every certificate has a unique credential ID (BP-CFS-XXXX). Employers can confirm it with us by email or WhatsApp.</p></div>'+
+    '<div><b>What do learners receive?</b><p>A named digital certificate, stage badges with grades, and a LinkedIn-ready credential to share.</p></div></div>');
+  /* trainer facts */
+  var fc=site.querySelector("#about .pv-fcopy");
+  if (fc && !fc.querySelector(".pv-tfacts")) { var p1=fc.querySelector("p"); if (p1) p1.insertAdjacentHTML("afterend",'<div class="pv-tfacts"><span>Lead trainer and assessor</span><span>10 countries</span><span>13 retail and clinic groups</span><span>Footwear retail since 2018</span></div>'); }
+  /* FAQ: certificates */
+  try { if (FAQ && FAQ.certs && !FAQ.certs.__v23) { FAQ.certs.__v23=1; FAQ.certs.q.push(
+    ["Who issues the certificate?","Qui délivre le certificat ?","BrightPath Academy, the training division of BrightPath Global. Each certificate shows the learner name, credential, pathway, date and a unique credential ID.","BrightPath Academy, la division formation de BrightPath Global."],
+    ["Is the certificate accredited?","Le certificat est-il accrédité ?","It is a professional industry credential based on assessed knowledge and a recorded practical roleplay. It is not a government-accredited or university qualification.","C'est un titre professionnel du secteur, non une qualification accréditée par l'État ou une université."],
+    ["Can an employer verify a certificate?","Un employeur peut-il vérifier un certificat ?","Yes. Send us the credential ID (BP-CFS-XXXX) by email or WhatsApp and we will confirm the holder and date.","Oui, envoyez-nous l'identifiant du titre et nous le confirmerons."]); if (window.__bpRedrawLearn) __bpRedrawLearn(); } } catch(x){}
+})();
+
+(function(){ var f=document.getElementById("pvForm"); if (!f || typeof BP_AUTH==="undefined" || !BP_AUTH.url) return;
+  f.addEventListener("submit", function(){ try { var d=new FormData(f); var row={kind:"enterprise",name:String(d.get("name")||"").slice(0,120),email:String(d.get("email")||"").slice(0,200),phone:String(d.get("phone")||"").slice(0,40),organisation:String(d.get("organisation")||"").slice(0,160),team_size:String(d.get("team_size")||"").slice(0,30),message:String(d.get("message")||"").slice(0,2000),interest:"Enterprise team seats"};
+    if (row.name && row.email) fetch(BP_AUTH.url+"/rest/v1/leads",{method:"POST",keepalive:true,headers:{apikey:BP_AUTH.anon,Authorization:"Bearer "+BP_AUTH.anon,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(row)}).catch(function(){}); } catch(x){} }, true);
+})();
 </script>
 </body>
 </html>
