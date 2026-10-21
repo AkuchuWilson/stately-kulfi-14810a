@@ -46,6 +46,16 @@ exports.handler = async (event) => {
       await sb("/rest/v1/entitlements?id=eq." + body.id, { method: "PATCH", headers: Object.assign(svc(), { Prefer: "return=minimal" }), body: JSON.stringify({ status: body.action === "revoke" ? "canceled" : "active" }) });
       return out(200, { ok: true });
     }
+    if (body.action === "leads") {
+      const leads = await sb("/rest/v1/leads?select=*&order=created_at.desc&limit=2000");
+      return out(200, { leads });
+    }
+    if (body.action === "lead") {
+      if (!/^\d+$/.test(String(body.id || "")) || !["new","contacted","won","lost"].includes(body.status)) return out(400, { error: "Invalid request." });
+      const patch = { status: body.status }; if (typeof body.notes === "string") patch.notes = body.notes.slice(0, 2000);
+      await sb("/rest/v1/leads?id=eq." + body.id, { method: "PATCH", headers: Object.assign(svc(), { Prefer: "return=minimal" }), body: JSON.stringify(patch) });
+      return out(200, { ok: true });
+    }
     return out(400, { error: "Unknown action." });
   } catch (e) {
     return out(500, { error: "Admin service error. Please try again." });
