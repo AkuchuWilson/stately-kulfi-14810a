@@ -2357,6 +2357,18 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:900px){.pv .pv-recg{grid-template-columns:1fr}.pv .pv-rec.feat{grid-row:auto}.pv .pv-rec.feat blockquote{font-size:20px}}
 @media (max-width:600px){.pv .pv-recg{grid-template-columns:1fr}}
 </style>
+<style id="v25css">
+.pv .pv-base a{color:inherit}
+.pv .pv-fbs{margin-top:22px}.pv .pv-fbs h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;color:var(--ink2,#102B45)}
+.pv .pv-fbs > p{margin:0 0 14px;color:var(--mut);font-size:14.5px}
+.pv .pv-fbg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pv .pv-fb{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.pv .pv-fb .st{color:#C9A55A;letter-spacing:2px;font-size:16px}.pv .pv-fb blockquote{margin:0;font-size:15px;line-height:1.55;color:var(--ink)}
+.pv .pv-fb figcaption b{display:block;font-size:14px}.pv .pv-fb figcaption span{display:block;font-size:12.5px;color:var(--mut)}
+.pv .pv-fblink{display:inline-block;margin-top:10px;font-weight:700;font-size:14px;color:var(--grn)}
+.au-legal{grid-column:1/-1;margin:2px 0 0;font-size:12.5px;color:#5B6576}.au-legal a{color:#0F4C43}
+@media (max-width:900px){.pv .pv-fbg{grid-template-columns:1fr 1fr}}@media (max-width:600px){.pv .pv-fbg{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -2528,10 +2540,10 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
     <div class="pv-wrap pv-footin">
       <div><a class="pv-brand light" href="#ps-hero"><img src="assets/img/pv-academy_logo.webp" alt=""><span><b>BrightPath Academy</b><small>A BrightPath Global company</small></span></a><p>Professional footwear fitting education at the intersection of service, foot knowledge and technology.</p></div>
       <div><b>Academy</b><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#credentials">Credentials</a></div>
-      <div><b>For business</b><a href="#enterprise">For organisations</a><a href="#contact">Request a proposal</a><a href="#faq">FAQ</a></div>
+      <div><b>For business</b><a href="#enterprise">For organisations</a><a href="#contact">Request a proposal</a><a href="#faq">FAQ</a><a href="/feedback.html">Leave feedback</a></div>
       <div><b>Contact</b><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp +61 485 502 264</a><a href="https://brightpathglobal.org" target="_blank" rel="noopener">brightpathglobal.org</a></div>
     </div>
-    <div class="pv-wrap pv-base"><span>&copy; 2026 BrightPath Academy, a BrightPath Global company</span><span>Some scenes are AI-generated. Training photos are from real sessions.</span></div>
+    <div class="pv-wrap pv-base"><span>&copy; 2026 BrightPath Academy, a BrightPath Global company</span><span><a href="/terms.html">Terms of use</a> &middot; <a href="/privacy.html">Privacy policy</a> &middot; <a href="/refunds.html">Refund policy</a> &middot; Some scenes are AI-generated. Training photos are from real sessions.</span></div>
   </footer>
   </div>
 </main>
@@ -5473,7 +5485,7 @@ else { showPublicSite(); }
       '<label>Team size<select name="team_size"><option>Just me</option><option>2 to 10</option><option>11 to 50</option><option>51 to 200</option><option>200+</option></select></label>'+
       '<label class="full">Best way to contact you<select name="contact_pref"><option>WhatsApp</option><option>Phone call</option><option>Email</option></select></label>'+
       (kind!=="brochure"?'<label class="full">Anything we should know? (optional)<textarea name="message" placeholder="Goals, timing, number of stores or questions"></textarea></label>':'')+
-      '<label class="ok"><input type="checkbox" name="ok" required><span>I agree that BrightPath Academy may contact me about my enquiry by phone, WhatsApp or email.</span></label>'+
+      '<label class="ok"><input type="checkbox" name="ok" required><span>I agree that BrightPath Academy may contact me about my enquiry by phone, WhatsApp or email. See our <a href="/privacy.html" target="_blank" rel="noopener">privacy policy</a>.</span></label>'+
       '<p class="msg" aria-live="polite"></p><div class="acts"><button class="pv-btn dark" type="submit">'+c.btn+'</button><a class="pv-btn wa" href="'+WA+'?text='+encodeURIComponent("Hello BrightPath Academy, I am interested in "+pname+".")+'" target="_blank" rel="noopener">WhatsApp us instead</a></div></form></div>';
     document.body.appendChild(w);
     var f=w.querySelector("form"), msg=w.querySelector(".msg");
@@ -5582,6 +5594,24 @@ else { showPublicSite(); }
   tr.insertAdjacentHTML("afterend",'<section class="pv-recs" aria-label="Recommended by industry leaders"><h3>Recommended by industry leaders</h3><p>What senior footwear executives say about the founder and lead trainer.</p><div class="pv-recg">'+
     R.map(function(r){ return '<figure class="pv-rec'+(r[0]?" "+r[0]:"")+'"><blockquote>&ldquo;'+r[1]+'&rdquo;</blockquote><figcaption><b>'+r[2]+'</b><span>'+r[3]+(r[4]?" &middot; "+r[4]:"")+'</span></figcaption></figure>'; }).join("")+
     '</div><p class="pv-recnote">Quoted with permission from letters of recommendation for Akuchu Wilson&rsquo;s work at Aetrex, Inc. Not an endorsement of BrightPath Academy by Aetrex.</p></section>');
+})();
+</script>
+<script id="v25js">
+(function(){
+  var site=document.getElementById("publicSite")||document.body;
+  /* feedback link under recommendations */
+  var rn=site.querySelector(".pv-recnote"); if (rn) rn.insertAdjacentHTML("afterend",'<a class="pv-fblink" href="/feedback.html">Trained with us? Share your feedback &rarr;</a>');
+  /* approved learner feedback */
+  function e(x){ return String(x==null?"":x).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  try { if (typeof BP_AUTH!=="undefined" && BP_AUTH.url) fetch(BP_AUTH.url+"/rest/v1/feedback?select=name,role,organisation,programme,rating,comment,created_at&order=created_at.desc&limit=9",{headers:{apikey:BP_AUTH.anon,Authorization:"Bearer "+BP_AUTH.anon}}).then(function(r){ return r.ok?r.json():[]; }).then(function(rows){
+    if (!rows || !rows.length) return; var anchor=site.querySelector(".pv-recs"); if (!anchor) return;
+    var avg=(rows.reduce(function(a,r){ return a+r.rating; },0)/rows.length).toFixed(1);
+    anchor.insertAdjacentHTML("afterend",'<section class="pv-fbs" aria-label="What learners say"><h3>What learners and teams say</h3><p>'+avg+' out of 5 from '+rows.length+' published review'+(rows.length>1?"s":"")+'.</p><div class="pv-fbg">'+rows.map(function(r){ return '<figure class="pv-fb"><span class="st" aria-label="'+r.rating+' out of 5">'+"&#9733;".repeat(r.rating)+'</span><blockquote>&ldquo;'+e(r.comment)+'&rdquo;</blockquote><figcaption><b>'+e(r.name)+'</b><span>'+e([r.role,r.organisation].filter(Boolean).join(", "))+'</span><span>'+e(r.programme||"")+'</span></figcaption></figure>'; }).join("")+'</div></section>');
+  }).catch(function(){}); } catch(x){}
+  /* sign-up consent line */
+  function addLegal(){ var f=document.getElementById("profileForm"); if (!f || f.querySelector(".au-legal")) return; var sb=f.querySelector("button[type=submit]"); if (!sb) return;
+    sb.insertAdjacentHTML("afterend",'<p class="au-legal">By creating an account you agree to our <a href="/terms.html" target="_blank" rel="noopener">Terms of use</a> and <a href="/privacy.html" target="_blank" rel="noopener">Privacy policy</a>.</p>'); }
+  addLegal(); setTimeout(addLegal,1500); setTimeout(addLegal,4000);
 })();
 </script>
 </body>
