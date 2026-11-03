@@ -2369,6 +2369,24 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 .au-legal{grid-column:1/-1;margin:2px 0 0;font-size:12.5px;color:#5B6576}.au-legal a{color:#0F4C43}
 @media (max-width:900px){.pv .pv-fbg{grid-template-columns:1fr 1fr}}@media (max-width:600px){.pv .pv-fbg{grid-template-columns:1fr}}
 </style>
+<style id="v26css">
+.pv .pv-ann a{color:inherit;font-weight:800;text-decoration:underline}
+.pv .pv-snav a.pv-snew i{font-size:9.5px;letter-spacing:.06em;color:#1D1A10;background:#C9A55A;border-radius:6px;padding:2px 5px;font-style:normal}
+.pv .pv-perf{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:center;background:linear-gradient(150deg,#0E3D3A,#102B45);border-radius:28px;padding:34px;color:#D6E4E0}
+.pv .pv-perf h2{color:#fff!important;margin:6px 0 10px}.pv .pv-perf .pv-eye{color:#E3C27A}
+.pv .pv-perf p{color:#C3D6D1}.pv .pv-perf ul{margin:12px 0 0;padding-left:20px;color:#D6E4E0}.pv .pv-perf li{margin-bottom:6px}
+.pv .pv-perf .fx{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pv .pv-perf .fx div{background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .14);border-radius:16px;padding:14px}
+.pv .pv-perf .fx b{display:block;font-family:var(--serif);font-size:22px;color:#fff}.pv .pv-perf .fx span{font-size:13px;color:#BFD2CD}
+.pv .pv-perf .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.pv .pv-perf .pv-btn.line{color:#fff;border-color:rgb(255 255 255 / .5)}
+.pv .pv-perf small.nb{display:block;margin-top:12px;color:#9FB8B2;font-size:12.5px}
+.pv .pv-offers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 22px}
+.pv .pv-offers > div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column}
+.pv .pv-offers > div.hl{border:2px solid #C9A55A}.pv .pv-offers small{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9A7A36}
+.pv .pv-offers h3{font-family:var(--serif);font-size:20px;margin:4px 0 6px;color:var(--ink2,#102B45)}.pv .pv-offers p{margin:0 0 6px;font-size:14px;color:var(--mut)}
+.pv .pv-offers b.pr{font-family:var(--serif);font-size:21px;color:var(--grn);margin:4px 0}.pv .pv-offers a{margin-top:auto;font-weight:700;color:var(--grn)}
+.pv .pv-learnh{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A7A36;margin:4px 0 12px}
+@media (max-width:900px){.pv .pv-perf{grid-template-columns:1fr;padding:24px}.pv .pv-offers{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -2378,7 +2396,7 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
     <button class="pv-ssearch" data-search><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Search courses</span><kbd>/</kbd></button>
     <nav class="pv-snav" id="pvSnav">
       <div class="pv-sgrp"><small>Start</small><a href="#ps-hero"><i>01</i>Home</a><a href="#value"><i>02</i>Value at a glance</a></div>
-      <div class="pv-sgrp"><small>Academy</small><a href="#standard"><i>03</i>The Standard</a><a href="#programmes"><i>04</i>Programmes</a><a href="#pricing"><i>05</i>Pricing</a></div>
+      <div class="pv-sgrp"><small>Academy</small><a href="#standard"><i>03</i>The Standard</a><a href="#programmes"><i>04</i>Programmes</a><a href="#pricing"><i>05</i>Pricing</a><a href="/perform" class="pv-snew"><i>NEW</i>Academy Perform</a></div>
       <div class="pv-sgrp"><small>For business</small><a href="#enterprise"><i>06</i>For organisations</a><a href="#credentials"><i>07</i>Credentials</a></div>
       <div class="pv-sgrp"><small>About</small><a href="#about"><i>08</i>Founder</a><a href="#ps-executions"><i>09</i>Field executions</a><a href="#learn"><i>10</i>Insights and events</a><a href="#faq"><i>11</i>FAQ</a></div>
     </nav>
@@ -2390,7 +2408,7 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
   </aside>
   <div class="pv-scrim" id="pvScrim" hidden></div>
   <div class="pv-main">
-  <div class="pv-ann">Enterprise-ready footwear fitting education for retail, clinical and multi-site teams.</div>
+  <div class="pv-ann">New: <a href="/perform">Academy Perform founding pilot</a> &middot; 30-day Scan-to-Fit Coaching for scanner-equipped stores</div>
   <header class="pv-head">
     <div class="pv-wrap pv-headin">
       <a class="pv-brand" href="#ps-hero"><img src="assets/img/pv-academy_logo.webp" alt=""><span><b>BrightPath Academy</b><small>A BrightPath Global company</small></span></a>
@@ -2462,8 +2480,8 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
         <div class="pv-roll">
           <p class="pv-eye">Enterprise rollout</p>
           <ol><li><i>1</i><b>Baseline</b><span>Current behaviours and goals</span><em>Start</em></li><li><i>2</i><b>Certify</b><span>Core learning and assessment</span><em>Learn</em></li><li><i>3</i><b>Coach</b><span>Huddles and floor practice</span><em>Apply</em></li><li><i>4</i><b>Measure</b><span>Behaviours and results together</span><em>Review</em></li><li><i>5</i><b>Refresh</b><span>Quarterly reinforcement</span><em>Sustain</em></li></ol>
-          <div class="pv-vis"><div><small>Organisation dashboard</small><em>What managers see</em></div><ul><li><b>Progress</b><span>by store and learner</span></li><li><b>Credentials</b><span>earned and due</span></li><li><b>Coaching</b><span>observations logged</span></li></ul></div>
-          <a class="pv-btn dark" href="#contact">Request an enterprise proposal</a>
+          <div class="pv-vis"><div><small>Organisation reporting</small><em>Introduced through Perform pilots</em></div><ul><li><b>Progress</b><span>by store and learner</span></li><li><b>Credentials</b><span>earned and due</span></li><li><b>Coaching</b><span>observations logged</span></li></ul></div>
+          <a class="pv-btn dark" href="#contact">Request an enterprise proposal</a> <a class="pv-btn line" href="/perform">Start with a 30-day Perform pilot</a>
         </div>
       </div>
     </div>
@@ -2539,7 +2557,7 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
   <footer class="pv-foot">
     <div class="pv-wrap pv-footin">
       <div><a class="pv-brand light" href="#ps-hero"><img src="assets/img/pv-academy_logo.webp" alt=""><span><b>BrightPath Academy</b><small>A BrightPath Global company</small></span></a><p>Professional footwear fitting education at the intersection of service, foot knowledge and technology.</p></div>
-      <div><b>Academy</b><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#credentials">Credentials</a></div>
+      <div><b>Academy</b><a href="#standard">The Standard</a><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#credentials">Credentials</a><a href="/perform">Academy Perform</a></div>
       <div><b>For business</b><a href="#enterprise">For organisations</a><a href="#contact">Request a proposal</a><a href="#faq">FAQ</a><a href="/feedback.html">Leave feedback</a></div>
       <div><b>Contact</b><a href="mailto:globalbrightpath1@gmail.com">globalbrightpath1@gmail.com</a><a href="https://wa.me/61485502264" target="_blank" rel="noopener">WhatsApp +61 485 502 264</a><a href="https://brightpathglobal.org" target="_blank" rel="noopener">brightpathglobal.org</a></div>
     </div>
@@ -5612,6 +5630,16 @@ else { showPublicSite(); }
   function addLegal(){ var f=document.getElementById("profileForm"); if (!f || f.querySelector(".au-legal")) return; var sb=f.querySelector("button[type=submit]"); if (!sb) return;
     sb.insertAdjacentHTML("afterend",'<p class="au-legal">By creating an account you agree to our <a href="/terms.html" target="_blank" rel="noopener">Terms of use</a> and <a href="/privacy.html" target="_blank" rel="noopener">Privacy policy</a>.</p>'); }
   addLegal(); setTimeout(addLegal,1500); setTimeout(addLegal,4000);
+})();
+</script>
+<script id="v26js">
+(function(){
+  var pr=document.getElementById("pricing");
+  if (pr && !document.getElementById("perform")) pr.insertAdjacentHTML("beforebegin",'<section class="pv-sec" id="perform"><div class="pv-wrap"><div class="pv-perf"><div><p class="pv-eye">New &middot; Academy Perform</p><h2>Scan-to-Fit Coaching: a 30-day founding pilot</h2><p>For scanner-equipped footwear stores. Your team practises better scan conversations, appropriate recommendations and confident fitting, with a weekly manager review and before-and-after scorecards.</p><ul><li>Relevant Academy lessons and three short coaching exercises a week</li><li>A 20-minute manager review each week, plus observation checklists</li><li>Baseline and closing scorecards, and a final practical improvement plan</li></ul><div class="acts"><a class="pv-btn gold" href="/perform#apply">Apply for the founding pilot</a><a class="pv-btn line" href="/perform">How the pilot works</a></div><small class="nb">No scanner? Academy Learn covers hands-on fitting for every team.</small></div><div class="fx"><div><b>30 days</b><span>One store</span></div><div><b>Up to 5</b><span>Learners included</span></div><div><b>US$200</b><span>Total, one-time</span></div><div><b>No renewal</b><span>Nothing recurs</span></div></div></div></div></section>');
+  var wrap=pr&&pr.querySelector(".pv-wrap"), p2=document.getElementById("pr2");
+  if (wrap && p2 && !wrap.querySelector(".pv-offers")) {
+    p2.insertAdjacentHTML("beforebegin",'<div class="pv-offers"><div><small>Academy Learn</small><h3>Programmes and certification</h3><p>Self-paced programmes, assessments and certification, with or without a scanner.</p><b class="pr">From US$49</b><p>or all-access from US$15 per seat a month, billed annually</p><a href="#pr2">See Learn pricing &darr;</a></div><div class="hl"><small>Academy Perform</small><h3>Learning plus coaching</h3><p>Weekly coaching exercises, manager reviews and store scorecards.</p><b class="pr">US$200 founding pilot</b><p>30 days, one store, up to five learners. One-time, no renewal.</p><a href="/perform">Explore Academy Perform &rarr;</a></div><div><small>Academy Enterprise</small><h3>Multi-store implementation</h3><p>Rollout, manager development and organisation reporting.</p><b class="pr">Priced by proposal</b><p>Seat access from US$12 per seat a month on annual plans</p><a href="#contact">Request a proposal &rarr;</a></div></div><p class="pv-learnh">Academy Learn pricing</p>');
+  }
 })();
 </script>
 </body>
