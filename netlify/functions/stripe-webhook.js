@@ -3,6 +3,7 @@
 //   STRIPE_WEBHOOK_SECRET      whsec_... from the Stripe webhook endpoint
 //   SUPABASE_URL               https://<project>.supabase.co
 //   SUPABASE_SERVICE_ROLE_KEY  service_role key (server only, never in the website)
+//   STRIPE_WEBHOOK_SECRET_TEST optional: whsec_... from a TEST-mode endpoint, used only to verify test events
 const crypto = require("crypto");
 
 const LINKS = {
@@ -46,10 +47,21 @@ async function db(method, path, body) {
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
   const raw = event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf8") : event.body;
-  if (!verify(raw, event.headers["stripe-signature"], process.env.STRIPE_WEBHOOK_SECRET)) return { statusCode: 400, body: "Invalid signature" };
+  const sig = event.headers["stripe-signature"];
+  const live = verify(raw, sig, process.env.STRIPE_WEBHOOK_SECRET), test = !live && verify(raw, sig, process.env.STRIPE_WEBHOOK_SECRET_TEST);
+  if (!live && !test) return { statusCode: 400, body: "Invalid signature" };
   const evt = JSON.parse(raw), obj = evt.data && evt.data.object;
+  if (test && evt.livemode) return { statusCode: 400, body: "Live event signed with test secret" };
   try {
+    if (evt.type === "checkout.session.completed" && /^perf-\d+$/.test(obj.client_reference_id || "")) {
+      // Academy Perform founding pilot: one-time US$200 payment, linked to an application (not a user)
+      const ok = obj.mode === "payment" && obj.payment_status === "paid" && obj.amount_total === 20000 && String(obj.currency).toLowerCase() === "usd";
+      if (!ok) return { statusCode: 200, body: "Ignored: pilot payment did not match" };
+      await db("PATCH", "perform_applications?id=eq." + obj.client_reference_id.slice(5) + "&payment_status=neq.paid", { payment_status: evt.livemode ? "paid" : "test_paid", paid_at: new Date().toISOString(), stripe_ref: (evt.livemode ? "" : "test:") + (obj.payment_intent || obj.id) });
+      return { statusCode: 200, body: "ok" };
+    }
     if (evt.type === "checkout.session.completed") {
+      if (!evt.livemode) return { statusCode: 200, body: "Ignored: test event" };
       const map = LINKS[obj.payment_link];
       const uid = obj.client_reference_id;
       if (!map || !uid || !/^[0-9a-f-]{36}$/i.test(uid)) return { statusCode: 200, body: "Ignored: no mapped link or user" };
