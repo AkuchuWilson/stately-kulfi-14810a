@@ -55,7 +55,8 @@ exports.handler = async (event) => {
   try {
     if (evt.type === "checkout.session.completed" && /^perf-\d+$/.test(obj.client_reference_id || "")) {
       // Academy Perform founding pilot: one-time US$200 payment, linked to an application (not a user)
-      const ok = obj.mode === "payment" && obj.payment_status === "paid" && obj.amount_total === 20000 && String(obj.currency).toLowerCase() === "usd";
+      const PERFORM_LINKS = ["plink_1UXq2NRueWFwHmpjip0ixJis" /* test mode */].concat((process.env.PERFORM_PAYMENT_LINKS || "").split(",").map(x => x.trim()).filter(Boolean));
+      const ok = obj.mode === "payment" && obj.payment_status === "paid" && (PERFORM_LINKS.includes(obj.payment_link) || (obj.amount_total === 20000 && String(obj.currency).toLowerCase() === "usd"));
       if (!ok) return { statusCode: 200, body: "Ignored: pilot payment did not match" };
       await db("PATCH", "perform_applications?id=eq." + obj.client_reference_id.slice(5) + "&payment_status=neq.paid", { payment_status: evt.livemode ? "paid" : "test_paid", paid_at: new Date().toISOString(), stripe_ref: (evt.livemode ? "" : "test:") + (obj.payment_intent || obj.id) });
       return { statusCode: 200, body: "ok" };
