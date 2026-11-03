@@ -98,7 +98,15 @@ exports.handler = async (event) => {
         const row = {};
         if (body.status) { if (!["new","reviewing","accepted","declined","withdrawn"].includes(body.status)) return out(400, { error: "Invalid status." }); row.status = body.status; }
         if (body.payment_status) { if (!["unpaid","link_sent","waived","refunded"].includes(body.payment_status)) return out(400, { error: "Paid status is only set by a verified Stripe payment." }); row.payment_status = body.payment_status; }
-        if (body.enrolment_status) { if (!["not_enrolled","enrolled","completed"].includes(body.enrolment_status)) return out(400, { error: "Invalid status." }); row.enrolment_status = body.enrolment_status; }
+        if (body.enrolment_status) {
+          if (!["not_enrolled","enrolled","completed"].includes(body.enrolment_status)) return out(400, { error: "Invalid status." });
+          if (body.enrolment_status !== "not_enrolled") {
+            const app = (await sb("/rest/v1/perform_applications?select=cohort_id&id=eq." + a))[0];
+            const learners = app && app.cohort_id ? await sb("/rest/v1/perform_members?select=user_id&role=eq.learner&cohort_id=eq." + app.cohort_id) : [];
+            if (!learners.length) return out(200, { ok: false, error: "Enrolment status changes automatically when you add learners to this application's pilot. Add at least one learner first." });
+          }
+          row.enrolment_status = body.enrolment_status;
+        }
         if (typeof body.admin_notes === "string") row.admin_notes = body.admin_notes.slice(0, 2000);
         await patch("perform_applications?id=eq." + a, row); return out(200, { ok: true });
       }
@@ -138,13 +146,15 @@ exports.handler = async (event) => {
           if (!ex.length) await ins("entitlements", { user_id: u.id, kind: "plan", key: "member", status: "active", source: "perform-" + c, expires_at: exp });
           else await patch("entitlements?user_id=eq." + u.id + "&source=eq.perform-" + c, { status: "active", expires_at: exp });
         }
-        if (cohort.application_id) await patch("perform_applications?id=eq." + cohort.application_id, { enrolment_status: "enrolled" });
+        if (cohort.application_id && role === "learner") await patch("perform_applications?id=eq." + cohort.application_id + "&enrolment_status=eq.not_enrolled", { enrolment_status: "enrolled" });
         return out(200, { ok: true, access: !!cohort.end_date });
       }
       if (P === "perform_member_remove") {
         const c = id(body.cohort_id); if (!c || !/^[0-9a-f-]{36}$/i.test(body.user_id || "")) return out(400, { error: "Invalid request." });
         await del("perform_members?cohort_id=eq." + c + "&user_id=eq." + body.user_id);
         await patch("entitlements?user_id=eq." + body.user_id + "&source=eq.perform-" + c, { status: "canceled" });
+        const left = await sb("/rest/v1/perform_members?select=user_id&role=eq.learner&cohort_id=eq." + c);
+        if (!left.length) { const co = (await sb("/rest/v1/perform_cohorts?select=application_id&id=eq." + c))[0]; if (co && co.application_id) await patch("perform_applications?id=eq." + co.application_id + "&enrolment_status=eq.enrolled", { enrolment_status: "not_enrolled" }); }
         return out(200, { ok: true });
       }
       if (P === "perform_exercise_save") {
