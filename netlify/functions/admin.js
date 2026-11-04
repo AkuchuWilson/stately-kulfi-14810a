@@ -115,7 +115,7 @@ exports.handler = async (event) => {
         const end = start ? new Date(new Date(start + "T00:00:00Z").getTime() + 29 * 864e5).toISOString().slice(0, 10) : null;
         const cur = /^[A-Z]{3}$/.test(body.currency || "") ? body.currency : "USD";
         const appId = id(body.application_id);
-        const r = await ins("perform_cohorts", { name: String(body.name || "Scan-to-Fit pilot").slice(0, 120), organisation: String(body.organisation || "").slice(0, 160), store_name: String(body.store_name || "").slice(0, 160), currency: cur, start_date: start, end_date: end, status: "setup", lessons: ["3.1","3.2","1.4","S1.2","5.1","S3.2","F2.3","F3.3","3.4","S2.2","F2.2","4.4","6.1"], application_id: appId });
+        const r = await ins("perform_cohorts", { name: String(body.name || "Scan-to-Fit pilot").slice(0, 120), organisation: String(body.organisation || "").slice(0, 160), store_name: String(body.store_name || "").slice(0, 160), currency: cur, start_date: start, end_date: end, status: "setup", lessons: ["3.1","3.2","1.4","S1.1","0.1","S1.2","F3.3","5.1","4.1","F2.2","S2.2","4.4","6.1","F2.3","3.4"], application_id: appId });
         if (appId) await patch("perform_applications?id=eq." + appId, { cohort_id: r[0].id });
         return out(200, { ok: true, cohort: r[0] });
       }
@@ -181,11 +181,15 @@ exports.handler = async (event) => {
       }
       if (P === "perform_assign_plan") {
         const c = id(body.cohort_id); if (!c) return out(400, { error: "Invalid request." });
-        const ex = await sb("/rest/v1/perform_exercises?select=id&status=eq.approved&order=id&limit=3");
-        if (ex.length < 3) return out(200, { ok: false, error: "Approve the three launch exercises first." });
-        const rows = []; [1, 2, 3, 4].forEach(w => ex.forEach(x => rows.push({ cohort_id: Number(c), exercise_id: x.id, week: w })));
+        // Scan-to-Fit Method stages practised each week (three exercises a week)
+        const PLAN = { 1: [2, 3, 4], 2: [1, 7, 8], 3: [5, 6, 4], 4: [4, 7, 6] };
+        const ex = await sb("/rest/v1/perform_exercises?select=id,stage&status=eq.approved&order=id");
+        const byStage = {}; ex.forEach(x => { if (x.stage && !byStage[x.stage]) byStage[x.stage] = x.id; });
+        const rows = [], missing = new Set();
+        Object.keys(PLAN).forEach(w => PLAN[w].forEach(st => { if (byStage[st]) rows.push({ cohort_id: Number(c), exercise_id: byStage[st], week: Number(w) }); else missing.add(st); }));
+        if (!rows.length) return out(200, { ok: false, error: "Approve the stage exercises first." });
         await sb("/rest/v1/perform_assignments?on_conflict=cohort_id,exercise_id,week", { method: "POST", headers: Object.assign(svc(), { Prefer: "resolution=ignore-duplicates,return=minimal" }), body: JSON.stringify(rows) });
-        return out(200, { ok: true, count: rows.length });
+        return out(200, { ok: true, count: rows.length, missing: [...missing].sort() });
       }
       if (P === "perform_unassign") {
         const a = id(body.id); if (!a) return out(400, { error: "Invalid request." });
