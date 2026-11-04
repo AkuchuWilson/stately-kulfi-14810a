@@ -5769,6 +5769,7 @@ else { showPublicSite(); }
   function reveal(id,scroll){ var s=site.querySelector("#"+id); if (!s) return; if (s.classList.contains("chap")) setOpen(s,true); if (scroll) setTimeout(function(){ s.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}); },30); }
   document.addEventListener("click",function(e){ var a=e.target.closest('a[href^="#"]'); if (!a) return; var id=a.getAttribute("href").slice(1).split("?")[0]; var s=id&&site.querySelector("#"+CSS.escape(id)); if (s && s.classList.contains("chap")) { e.preventDefault(); reveal(id,true); history.replaceState(null,"","#"+id); } }, true);
   var h=(location.hash||window.__bpInitialHash||"").slice(1); if (h && site.querySelector("#"+CSS.escape(h)+".chap")) { reveal(h,true); setTimeout(function(){ reveal(h,true); },600); }
+  window.addEventListener("hashchange",function(){ var x=(location.hash||"").slice(1); if (x && site.querySelector("#"+CSS.escape(x)+".chap")) reveal(x,true); });
   window.__bpReveal=reveal;
 })();
 </script>
