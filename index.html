@@ -2388,70 +2388,47 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:900px){.pv .pv-perf{grid-template-columns:1fr;padding:24px}.pv .pv-offers{grid-template-columns:1fr}}
 </style>
 <style id="v27css">
-/* v27 tweaks */
-.pv .pv-snav a.pv-snew i,.pv a.pv-snew i{width:auto!important;min-width:0!important;padding:2px 6px!important;font-size:9px!important}
-.pv #ps-hero .pv-heroimg img{max-height:540px;object-fit:cover}
-.pv #ps-hero .pv-herocopy{padding-top:36px;padding-bottom:36px}
-/* v27: executive layout. Slim hero, Academy-at-a-glance board, collapsible chapters */
-.pv #ps-hero .pv-proof,.pv #ps-hero figcaption,.pv #ps-hero .pv-stats,.pv #ps-hero .pv-forh,.pv #ps-hero .pv-for{display:none!important}
-.pv #ps-hero .pv-trust{display:none!important}
-.pv #ps-hero .pv-herocard{min-height:0}
+/* v28: open palette. Image cards with accent edges, beige chapter bars */
+.pv #ps-hero .pv-proof,.pv #ps-hero figcaption,.pv #ps-hero .pv-stats,.pv #ps-hero .pv-forh,.pv #ps-hero .pv-for,.pv #ps-hero .pv-trust{display:none!important}
 .pv #ps-hero h1{max-width:13ch}
-.pv .pv-proofline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 2px 0;color:var(--mut);font-size:14px}
-.pv .pv-proofline b{color:var(--ink2,#102B45);font-weight:700}
-.pv .pv-proofline a{color:var(--grn);font-weight:700}
-/* the board */
-.pv .glance{margin:34px 0 8px;background:#102B45;color:#D6E4E0;border-radius:30px;padding:30px 30px 26px;position:relative;overflow:hidden}
-.pv .glance::before{content:"";position:absolute;inset:auto -120px -160px auto;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgb(201 165 90 / .22),transparent 70%);pointer-events:none}
-.pv .glance h2{font-family:var(--serif);color:#fff!important;font-size:clamp(26px,3vw,36px)!important;margin:0 0 6px!important;letter-spacing:-.01em}
-.pv .glance .lede{margin:0 0 18px;color:#AFC4BF;max-width:62ch;font-size:15.5px}
-.pv .roles{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 20px}
-.pv .roles span{color:#AFC4BF;font-size:14px;margin-right:4px}
-.pv .roles button{border:1px solid rgb(255 255 255 / .22);background:transparent;color:#E8F0EE;border-radius:999px;padding:8px 14px;font:600 14px Inter,sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
-.pv .roles button:hover{border-color:rgb(255 255 255 / .5)}
-.pv .roles button[aria-pressed="true"]{background:#C9A55A;border-color:#C9A55A;color:#1D1A10}
-.pv .rolehint{min-height:22px;margin:-8px 0 16px;color:#E3C27A;font-size:14.5px}
-.pv .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.pv .tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;min-height:150px;padding:18px 20px;border-radius:20px;background:rgb(255 255 255 / .05);border:1px solid rgb(255 255 255 / .12);transition:background .2s,border-color .2s,transform .2s}
-.pv .tile:hover{background:rgb(255 255 255 / .09)}
-.pv .tile:focus-visible{outline:3px solid #E3C27A;outline-offset:2px}
-.pv .tile .k{font-size:13.5px;color:#AFC4BF;font-weight:600}
-.pv .tile .v{font-family:var(--serif);font-size:44px;line-height:1.05;color:#fff;margin-top:auto}
-.pv .tile .d{font-size:14.5px;color:#D6E4E0}
-.pv .tile .more{font-size:13px;color:#E3C27A;font-weight:700;margin-top:6px}
-.pv .tile[aria-expanded="true"]{background:#F7F3EA;border-color:#F7F3EA}
-.pv .tile[aria-expanded="true"] .k{color:#5B6576}.pv .tile[aria-expanded="true"] .v{color:#0F4C43}.pv .tile[aria-expanded="true"] .d{color:#33403D}.pv .tile[aria-expanded="true"] .more{color:#9A7A36}
-.pv .tile.fit{border-color:#C9A55A;box-shadow:0 0 0 1px #C9A55A inset}
-.pv .tile.dim{opacity:.45}
-.pv .drawer{grid-column:1/-1;background:#F7F3EA;color:#162A28;border-radius:20px;padding:22px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start;animation:drop .28s ease}
-@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.pv .drawer{animation:none}.pv .chap-body{transition:none!important}}
-.pv .drawer h3{font-family:var(--serif);font-size:24px;margin:0 0 8px;color:#102B45}
-.pv .drawer ul{margin:0;padding-left:18px;color:#33403D;font-size:15px}.pv .drawer li{margin-bottom:6px}
-.pv .drawer .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-self:end}
-.pv .drawer .acts .pv-btn.line{color:#0F4C43;border-color:#0F4C43}
-.pv .drawer .note{grid-column:1/-1;margin:0;font-size:12.5px;color:#5B6576}
-/* chapters */
-.pv .grp{max-width:var(--wrap,1180px);margin:46px auto 10px;padding:0 var(--gut,28px);display:flex;align-items:baseline;gap:14px}
-.pv .grp h2{font-family:var(--serif);font-size:22px!important;margin:0!important;color:#102B45}
-.pv .grp span{color:var(--mut);font-size:14.5px}
+.pv #ps-hero .pv-heroimg img{max-height:520px;object-fit:cover}
+.pv a.pv-snew i{width:auto!important;min-width:0!important;padding:2px 6px!important;font-size:9px!important}
+.pv .pv-proofline{margin:16px 2px 0;color:#5B6576;font-size:14px}
+.pv .pv-proofline b{color:#3A3226;font-weight:700}.pv .pv-proofline a{color:#7A4E1D;font-weight:700;margin-left:6px}
+.pv .glance{margin:34px 0 0}
+.pv .gh{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 14px}
+.pv .gh h2{font-family:var(--serif);font-size:clamp(24px,2.6vw,30px)!important;margin:0!important;color:#2A241C!important}
+.pv .gh a{color:#7A4E1D;font-weight:700;font-size:14.5px}
+.pv .ocards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pv .ostages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pv .oc{display:flex;flex-direction:column;background:#fff;border:1px solid #E6DED2;border-left:4px solid var(--ac);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s}
+.pv .oc:hover{box-shadow:0 10px 26px rgb(60 45 25 / .12);transform:translateY(-2px)}
+.pv .oc:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.pv .oc img{width:100%;height:150px;object-fit:cover;display:block;background:#EFE6DA}
+.pv .ostages .oc img{height:132px}
+.pv .oc div{padding:12px 14px 14px}
+.pv .oc small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:3px}
+.pv .oc b{display:block;font-family:var(--serif);font-size:18.5px;font-weight:600;color:#2A241C;line-height:1.25}
+.pv .oc span{display:block;font-size:14px;color:#5B6576;margin-top:3px}
+.pv .glance-sec{margin-top:34px}
+/* chapter bars styled like a portal stack */
 .pv section.chap{padding:0!important;background:transparent!important}
 .pv section.chap > .pv-wrap{padding-top:0!important;padding-bottom:0!important}
-.pv .chap-bar{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 22px;margin:8px 0;background:#fff;border:1px solid var(--line);border-radius:18px;transition:border-color .2s,box-shadow .2s}
-.pv .chap-bar:hover{border-color:#C9A55A}
-.pv .chap-bar:focus-visible{outline:3px solid #C9A55A;outline-offset:2px}
-.pv .chap-bar b{display:block;font-family:var(--serif);font-size:20px;color:#102B45;font-weight:600}
-.pv .chap-bar small{display:block;color:var(--mut);font-size:14.5px;margin-top:2px}
-.pv .chap-bar i{font-style:normal;display:inline-flex;align-items:center;gap:8px;font:700 14px Inter,sans-serif;color:#0F4C43;white-space:nowrap}
-.pv .chap-bar i::after{content:"";width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .25s}
-.pv section.chap.open .chap-bar{border-color:#C9A55A;background:#FBF7EE}
-.pv section.chap.open .chap-bar i::after{transform:rotate(-135deg) translateY(-1px)}
-.pv .chap-body{overflow:hidden}
+.pv .chap-first{margin-top:34px}
+.pv .chap-bar{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:12px;padding:13px 18px;margin:6px 0;background:#EFE6DA;border:1px solid #E2D6C5;border-radius:12px;color:#4A3D2C;transition:background .2s}
+.pv .chap-bar:hover{background:#E9DDCC}
+.pv .chap-bar:focus-visible{outline:3px solid #A9772F;outline-offset:2px}
+.pv .chap-bar::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .2s;flex:none}
+.pv .chap-bar b{font:800 13.5px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.pv .chap-bar small{margin-left:auto;font-size:13.5px;color:#7A6A55;text-align:right}
+.pv section.chap.open .chap-bar{background:#E6D8C3}
+.pv section.chap.open .chap-bar::before{transform:rotate(90deg)}
 .pv section.chap:not(.open) .chap-body{display:none}
-.pv section.chap.open .chap-body{padding:14px 0 34px}
+.pv section.chap.open .chap-body{padding:12px 0 30px}
 .pv section.chap .chap-body > header.pv-sh{display:none}
-@media (max-width:980px){.pv .tiles{grid-template-columns:1fr 1fr}.pv .drawer{grid-template-columns:1fr}.pv .drawer .acts{justify-content:flex-start}}
-@media (max-width:560px){.pv .glance{padding:22px 16px;border-radius:22px}.pv .tile{min-height:118px;padding:14px}.pv .tile .v{font-size:27px}.pv .tile .k{font-size:12.5px}.pv .tile .d{font-size:13.5px}.pv .chap-bar{padding:14px 16px;grid-template-columns:1fr}.pv .chap-bar i{justify-self:start}.pv .grp{flex-direction:column;gap:2px}}
+@media (max-width:980px){.pv .ocards{grid-template-columns:1fr 1fr}.pv .ostages{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pv .ocards,.pv .ostages{grid-template-columns:1fr 1fr;gap:10px}.pv .oc img,.pv .ostages .oc img{height:104px}.pv .oc div{padding:10px}.pv .oc b{font-size:15.5px}.pv .oc span{font-size:12.5px}.pv .chap-bar small{display:none}}
+@media (prefers-reduced-motion:reduce){.pv .oc{transition:none}.pv .oc:hover{transform:none}}
 </style>
 </head>
 <body class="public-mode">
@@ -5712,59 +5689,32 @@ else { showPublicSite(); }
 (function(){
   var site=document.getElementById("publicSite"); if (!site || site.querySelector(".glance")) return;
   var hero=site.querySelector("#ps-hero"), wrap=hero&&hero.querySelector(".pv-wrap"); if (!wrap) return;
-  /* slim hero copy */
   var hp=hero.querySelector(".pv-herocopy > p"); if (hp) hp.textContent="Fitting and sales training, certification and in-store coaching for footwear retail and clinic teams.";
-  /* one-line proof under the hero */
-  wrap.querySelector(".pv-herocard").insertAdjacentHTML("afterend",'<p class="pv-proofline"><span>Founder-led training with teams at <b>ASICS Middle East</b>, <b>Runners</b>, <b>Apparel Group</b>, <b>Reebok UAE</b>, <b>MAP Indonesia</b> and <b>Primer Group</b>.</span><a href="#about" data-chap="about">See the proof</a></p>');
-  /* the board */
-  var T=[
-    {id:"learn",k:"Academy Learn",v:"7",d:"programmes, from US$49",h:"Programmes and certification",li:["From Foundations to Certified Fit Specialist, self-paced on any device","About nine hours to certification","For teams with or without a scanner","Single programmes, or all-access from US$15 per seat a month"],a:[["Open programmes","#programmes","programmes"],["Download brochure","lead:brochure"]]},
-    {id:"perform",k:"Academy Perform",v:"30 days",d:"in-store coaching pilot, US$200",h:"Learning plus workplace coaching",li:["One store, up to five learners","Three short coaching exercises a week","A 20-minute manager review every week","Baseline and closing scorecards, then an improvement plan"],a:[["How the pilot works","/perform"],["Apply for the pilot","/perform#apply"]],n:"One-time payment, no automatic renewal."},
-    {id:"ent",k:"Academy Enterprise",v:"1 standard",d:"across every store and market",h:"Multi-store implementation",li:["Rollout planned around your stores and markets","Manager development and train-the-trainer","Organisation reporting, introduced through Perform pilots","Seat access from US$12 per seat a month; implementation by proposal"],a:[["Open enterprise","#enterprise","enterprise"],["Request a proposal","#contact","contact"]]},
-    {id:"method",k:"Scan-to-Fit Method",v:"8 stages",d:"for scanner-led stores",h:"One customer journey, every shift",li:["Connect: welcome, consent and the scan moment","Understand: explain the data, narrow the choice","Guide: confident footwear choice, complete the fit, natural close","Works with any 3D foot scanner"],a:[["See the eight stages","/scanner-led-stores"]]},
-    {id:"cred",k:"Credential",v:"24 / 30",d:"exam pass mark, plus a recorded roleplay",h:"Capability, not attendance",li:["Certified Fit Specialist with a unique, verifiable ID","Stage badges with grades along the way","Assessed knowledge and practical skill only","A professional industry credential, not a government-accredited qualification"],a:[["Open credentials","#credentials","credentials"]]},
-    {id:"proof",k:"Field experience",v:"13",d:"retail and clinic groups trained, 10 countries",h:"Built on the shop floor",li:["Store launches and floor training across the Middle East, Asia, Europe and Australia","A 2024 training tour with Primer Group across three countries","Recommended by Aetrex leadership, including its CEO","Real photos from launches, fittings and certification days"],a:[["Open the proof","#about","about"]]}
-  ];
-  var R={store:{t:"For a single store or clinic: start with Learn, then prove it in one store with a Perform pilot.",ids:["learn","perform","method"]},multi:{t:"For several stores: pilot in one store, then roll out the standard with Enterprise.",ids:["perform","ent","method"]},clinic:{t:"For clinics: Learn with the Clinical pathway, and the credential for front-of-house teams.",ids:["learn","cred","proof"]},self:{t:"For your own growth: Learn, then earn the Certified Fit Specialist credential.",ids:["learn","cred"]}};
-  var board='<section class="glance" aria-labelledby="glanceH"><h2 id="glanceH">The Academy at a glance</h2><p class="lede">Three ways to work with us, one method and one credential. Open any card for the detail.</p>'+
-    '<div class="roles" role="group" aria-label="Show what fits"><span>Show me what fits:</span><button data-role="store" aria-pressed="false">One store or clinic</button><button data-role="multi" aria-pressed="false">Several stores</button><button data-role="clinic" aria-pressed="false">A clinic team</button><button data-role="self" aria-pressed="false">My own learning</button></div><p class="rolehint" aria-live="polite"></p>'+
-    '<div class="tiles">'+T.map(function(t){ return '<button class="tile" data-tile="'+t.id+'" aria-expanded="false" aria-controls="dr-'+t.id+'"><span class="k">'+t.k+'</span><span class="v">'+t.v+'</span><span class="d">'+t.d+'</span><span class="more">Open details</span></button>'; }).join("")+'</div></section>';
-  wrap.insertAdjacentHTML("beforeend",board);
-  var G=wrap.querySelector(".glance"), tiles=G.querySelector(".tiles");
-  function cols(){ return getComputedStyle(tiles).gridTemplateColumns.split(" ").length; }
-  function closeDrawer(){ var d=tiles.querySelector(".drawer"); if (d) d.remove(); tiles.querySelectorAll(".tile").forEach(function(b){ b.setAttribute("aria-expanded","false"); b.querySelector(".more").textContent="Open details"; }); }
-  function openTile(id){
-    var t=T.find(function(x){ return x.id===id; }), btn=tiles.querySelector('[data-tile="'+id+'"]'); var was=btn.getAttribute("aria-expanded")==="true"; closeDrawer(); if (was) return;
-    btn.setAttribute("aria-expanded","true"); btn.querySelector(".more").textContent="Close details";
-    var all=[].slice.call(tiles.querySelectorAll(".tile")), i=all.indexOf(btn), c=cols(), last=all[Math.min(all.length-1, Math.floor(i/c)*c+c-1)];
-    var html='<div class="drawer" id="dr-'+id+'" role="region" aria-label="'+t.k+'"><div><h3>'+t.h+'</h3><ul>'+t.li.map(function(x){ return '<li>'+x+'</li>'; }).join("")+'</ul></div><div class="acts">'+t.a.map(function(a,j){ var cls=j===t.a.length-1?"pv-btn dark":"pv-btn line"; if (a[1].indexOf("lead:")===0) return '<button class="'+cls+'" data-lead="'+a[1].slice(5)+'">'+a[0]+'</button>'; return '<a class="'+cls+'" href="'+a[1]+'"'+(a[2]?' data-chap="'+a[2]+'"':'')+'>'+a[0]+'</a>'; }).join("")+'</div>'+(t.n?'<p class="note">'+t.n+'</p>':'')+'</div>';
-    last.insertAdjacentHTML("afterend",html);
-  }
-  tiles.addEventListener("click",function(e){ var b=e.target.closest(".tile"); if (b) openTile(b.dataset.tile); });
-  G.querySelector(".roles").addEventListener("click",function(e){ var b=e.target.closest("[data-role]"); if (!b) return; var on=b.getAttribute("aria-pressed")!=="true";
-    G.querySelectorAll("[data-role]").forEach(function(x){ x.setAttribute("aria-pressed","false"); }); var hint=G.querySelector(".rolehint");
-    tiles.querySelectorAll(".tile").forEach(function(t){ t.classList.remove("fit","dim"); });
-    if (!on) { hint.textContent=""; return; } b.setAttribute("aria-pressed","true"); var r=R[b.dataset.role]; hint.textContent=r.t;
-    tiles.querySelectorAll(".tile").forEach(function(t){ t.classList.add(r.ids.indexOf(t.dataset.tile)>-1?"fit":"dim"); }); });
-  window.addEventListener("resize",function(){ var o=tiles.querySelector('.tile[aria-expanded="true"]'); if (o) { var id=o.dataset.tile; closeDrawer(); openTile(id); } });
-
-  /* chapters */
-  var GROUPS=[["Why it works","The problems we solve and the standard behind it",["value","standard"]],["What you can choose","Programmes, coaching and plans",["programmes","perform","pricing","enterprise"]],["Why you can trust it","Credential and field experience",["credentials","about"]],["Resources","Insights, events and answers",["learn","faq"]]];
-  var SUB={value:"Long shifts, shape mismatch, technology nobody explains",standard:"S.E.R.V.E. conversations, CLEAR concerns, the fit assessment",programmes:"Foundations to Certified Fit Specialist, from US$49",perform:"One store, up to five learners, US$200 one-time",pricing:"Learn from US$49, Perform US$200, Enterprise by proposal",enterprise:"Rollout, manager development and train-the-trainer",credentials:"24 of 30 exam pass mark, recorded roleplay, verifiable ID",about:"The founder, executive recommendations and field photos",learn:"Six short reads and three live sessions",faq:"Learners, managers, payments and certificates"};
-  GROUPS.forEach(function(g){
-    var first=site.querySelector("#"+g[2][0]); if (!first) return;
-    first.insertAdjacentHTML("beforebegin",'<div class="grp"><h2>'+g[0]+'</h2><span>'+g[1]+'</span></div>');
-    g[2].forEach(function(id){
-      var sec=site.querySelector("#"+id); if (!sec) return; var w=sec.querySelector(".pv-wrap"); if (!w) return;
-      var h2=sec.querySelector("h2"), title=h2?h2.textContent:id;
-      sec.classList.add("chap");
-      var body=document.createElement("div"); body.className="chap-body"; body.id="cb-"+id; while (w.firstChild) body.appendChild(w.firstChild);
-      w.innerHTML='<button class="chap-bar" aria-expanded="false" aria-controls="cb-'+id+'"><span><b>'+title+'</b><small>'+(SUB[id]||"")+'</small></span><i>Open</i></button>'; w.appendChild(body);
-    });
+  wrap.querySelector(".pv-herocard").insertAdjacentHTML("afterend",'<p class="pv-proofline">Founder-led training with teams at <b>ASICS Middle East</b>, <b>Runners</b>, <b>Apparel Group</b>, <b>Reebok UAE</b>, <b>MAP Indonesia</b> and <b>Primer Group</b>.<a href="#about">See the proof</a></p>');
+  var I="assets/img/";
+  var C=[["#1F7A4D","Academy Learn","7 programmes","Certification from US$49","sc-foot-model","#programmes"],
+         ["#A9772F","Academy Perform","30-day coaching pilot","One store, US$200","ex20","/perform"],
+         ["#1D4E89","Academy Enterprise","One standard, every store","Rollout by proposal","sc-huddle","#enterprise"],
+         ["#6B3FA0","Scanner-led stores","Scan-to-Fit Method","Eight stages, any scanner","ex02","/scanner-led-stores"],
+         ["#B3263B","Credential","Certified Fit Specialist","Exam plus roleplay","cert-finale","#credentials"],
+         ["#1F7A75","Field experience","13 groups, 10 countries","Founder-led training","ex10","#about"]];
+  var CON="#1F7A4D", UND="#1D4E89", GUI="#A9772F";
+  var S=[["Welcome","Lower the guard","sc-listening",CON,"Connect"],["Invite to scan","Earn consent","scene-seated-scan",CON,"Connect"],["The scan","Create the moment","pv-scan",CON,"Connect"],["Explain the data","Build trust","sc-scan-pressure",UND,"Understand"],
+         ["Match","Narrow the choice","sc-hands-on",UND,"Understand"],["Recommend footwear","Guide a confident choice","scene-walk-compare",GUI,"Guide"],["Recommend support","Complete the fit","ex01",GUI,"Guide"],["Natural close","Confirm the decision","scan",GUI,"Guide"]];
+  function card(ac,eye,t,line,img,href){ return '<a class="oc" style="--ac:'+ac+'" href="'+href+'"><img src="'+I+img+'.webp" alt="" loading="lazy"><div><small>'+eye+'</small><b>'+t+'</b><span>'+line+'</span></div></a>'; }
+  wrap.insertAdjacentHTML("beforeend",'<section class="glance" aria-labelledby="glanceH"><div class="gh"><h2 id="glanceH">The Academy at a glance</h2></div><div class="ocards">'+C.map(function(c){ return card(c[0],c[1],c[2],c[3],c[4],c[5]); }).join("")+'</div>'+
+    '<div class="glance-sec"><div class="gh"><h2>The Scan-to-Fit Method</h2><a href="/scanner-led-stores">See the full method</a></div><div class="ostages">'+S.map(function(s,i){ return card(s[3],"Stage "+(i+1)+" &middot; "+s[4],s[0],s[1],s[2],"/scanner-led-stores#method"); }).join("")+'</div></div></section>');
+  /* chapters: beige bars */
+  var NAME={value:["Problems we solve","Long shifts, shape mismatch, unexplained tech"],standard:["The BrightPath standard","S.E.R.V.E., CLEAR and the fit assessment"],programmes:["Programmes","Seven programmes, from US$49"],perform:["Academy Perform","30-day pilot, US$200"],pricing:["Pricing","Learn, Perform and Enterprise"],enterprise:["For organisations","Multi-store rollout"],credentials:["Credentials","Certified Fit Specialist"],about:["Founder and proof","Recommendations and field photos"],learn:["Insights and events","Short reads and live sessions"],faq:["FAQ","Answers for learners and managers"]};
+  var order=["value","standard","programmes","perform","pricing","enterprise","credentials","about","learn","faq"], first=true;
+  order.forEach(function(id){
+    var sec=site.querySelector("#"+id); if (!sec) return; var w=sec.querySelector(".pv-wrap"); if (!w) return;
+    sec.classList.add("chap"); if (first) { sec.classList.add("chap-first"); first=false; }
+    var body=document.createElement("div"); body.className="chap-body"; body.id="cb-"+id; while (w.firstChild) body.appendChild(w.firstChild);
+    var n=NAME[id]||[id,""]; w.innerHTML='<button class="chap-bar" aria-expanded="false" aria-controls="cb-'+id+'"><b>'+n[0]+'</b><small>'+n[1]+'</small></button>'; w.appendChild(body);
   });
-  /* move recommendations and learner feedback into the proof chapter */
-  var ab=site.querySelector("#cb-about"); if (ab) { ["pv-recs","pv-fbs"].forEach(function(c){ var n=site.querySelector("."+c); if (n) ab.insertBefore(n, ab.firstChild); }); }
-  function setOpen(sec,on){ sec.classList.toggle("open",on); var b=sec.querySelector(".chap-bar"); b.setAttribute("aria-expanded",on); b.querySelector("i").textContent=on?"Close":"Open"; if (on) sec.querySelectorAll("img[loading=lazy]").forEach(function(i){ i.loading="eager"; }); }
+  var ab=site.querySelector("#cb-about"); if (ab) ["pv-recs","pv-fbs"].forEach(function(c){ var x=site.querySelector("."+c); if (x) ab.insertBefore(x, ab.firstChild); });
+  function setOpen(sec,on){ sec.classList.toggle("open",on); var b=sec.querySelector(".chap-bar"); b.setAttribute("aria-expanded",on); if (on) sec.querySelectorAll("img[loading=lazy]").forEach(function(i){ i.loading="eager"; }); }
   site.addEventListener("click",function(e){ var b=e.target.closest(".chap-bar"); if (b) { var s=b.closest("section.chap"); setOpen(s,!s.classList.contains("open")); } });
   function reveal(id,scroll){ var s=site.querySelector("#"+id); if (!s) return; if (s.classList.contains("chap")) setOpen(s,true); if (scroll) setTimeout(function(){ s.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}); },30); }
   document.addEventListener("click",function(e){ var a=e.target.closest('a[href^="#"]'); if (!a) return; var id=a.getAttribute("href").slice(1).split("?")[0]; var s=id&&site.querySelector("#"+CSS.escape(id)); if (s && s.classList.contains("chap")) { e.preventDefault(); reveal(id,true); history.replaceState(null,"","#"+id); } }, true);
