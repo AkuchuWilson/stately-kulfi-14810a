@@ -115,7 +115,7 @@ exports.handler = async (event) => {
         const end = start ? new Date(new Date(start + "T00:00:00Z").getTime() + 29 * 864e5).toISOString().slice(0, 10) : null;
         const cur = /^[A-Z]{3}$/.test(body.currency || "") ? body.currency : "USD";
         const appId = id(body.application_id);
-        const r = await ins("perform_cohorts", { name: String(body.name || "Scan-to-Fit pilot").slice(0, 120), organisation: String(body.organisation || "").slice(0, 160), store_name: String(body.store_name || "").slice(0, 160), currency: cur, start_date: start, end_date: end, status: "setup", lessons: ["3.1","3.2","1.4","S1.1","0.1","S1.2","F3.3","5.1","4.1","F2.2","S2.2","4.4","6.1","F2.3","3.4"], application_id: appId });
+        const r = await ins("perform_cohorts", { name: String(body.name || "Scan-to-Fit pilot").slice(0, 120), organisation: String(body.organisation || "").slice(0, 160), store_name: String(body.store_name || "").slice(0, 160), currency: cur, start_date: start, end_date: end, status: "setup", lessons: ["S1.1","S1.2","S2.1","0.1","3.1","3.2","S2.2","F2.2","F2.3","4.4","S3.2","F3.3","6.1","3.4"], application_id: appId });
         if (appId) await patch("perform_applications?id=eq." + appId, { cohort_id: r[0].id });
         return out(200, { ok: true, cohort: r[0] });
       }
@@ -182,7 +182,7 @@ exports.handler = async (event) => {
       if (P === "perform_assign_plan") {
         const c = id(body.cohort_id); if (!c) return out(400, { error: "Invalid request." });
         // Scan-to-Fit Method stages practised each week (three exercises a week)
-        const PLAN = { 1: [2, 3, 4], 2: [1, 7, 8], 3: [5, 6, 4], 4: [4, 7, 6] };
+        const PLAN = { 1: [1, 2], 2: [3, 4, 6], 3: [5, 7, 8], 4: [4, 6, 7] }; // understand, assess and validate, recommend and guide, bring it together
         const ex = await sb("/rest/v1/perform_exercises?select=id,stage&status=eq.approved&order=id");
         const byStage = {}; ex.forEach(x => { if (x.stage && !byStage[x.stage]) byStage[x.stage] = x.id; });
         const rows = [], missing = new Set();
