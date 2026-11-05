@@ -43,8 +43,8 @@ td .btn.sm{margin:3px 4px 3px 0;display:inline-block;text-decoration:none}
 var SB=supabase.createClient("https://nrjwhdryvwdrqqlhbuuf.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yandoZHJ5dndkcnFxbGhidXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTkyMDQsImV4cCI6MjEwNzU3NTIwNH0.u9FVgXD9OcoBUkZvuVAJIcS43LMnQET6_4rPpFYlbGc");
 var NAMES={foundations:"Foundations",floor:"Master the Floor",fit:"Fit Intelligence",pathway:"Specialist Pathway",cfs:"Certified Fit Specialist",manager:"Manager Academy",master:"Master Fit Specialist",member:"All-access membership",enterprise:"Enterprise seat",bpg:"BrightPath Global team"};
 var DATA=null, Q="", FR="", FA="", TAB="learners", LEADS=[], LS="", FBK=[], FS="", PF=null, PSUB="apps", PEDIT=null;
-var PERFORM_LINK="https://buy.stripe.com/test_4gM7sNakzgad6sdaoE8AE06"; /* TEST MODE link. Replace with the live link after the test payment is verified. */
-var PERFORM_LINK_MODE="test";
+var PERFORM_LINK="https://buy.stripe.com/7sYeVf0JZ8HL4k5dAQ8AE0b"; /* LIVE US$200 pilot link (real payments). Test link: https://buy.stripe.com/test_4gM7sNakzgad6sdaoE8AE06 */
+var PERFORM_LINK_MODE="live";
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function d(x){return x?new Date(x).toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"}):"Never";}
 async function api(body){ var s=(await SB.auth.getSession()).data.session; if(!s) throw new Error("Signed out"); var r=await fetch("/.netlify/functions/admin",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+s.access_token},body:JSON.stringify(body)}); var j=await r.json(); if(!r.ok) throw new Error(j.error||"Error"); return j; }
