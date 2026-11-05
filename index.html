@@ -2582,6 +2582,24 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:760px){.pv .wwy a{min-height:280px}.pv .act .ban{grid-template-columns:1fr}.pv .act .ban .im{height:170px;order:-1}.pv .act .ban .im::before{background:linear-gradient(0deg,var(--tone) 0%,transparent 60%)}.pv .act .ban .tx{padding:22px 22px 36px}.pv .act .ban .tx::after{left:22px;bottom:20px}}
 @media (prefers-reduced-motion:reduce){.pv .wwy a,.pv .wwy .go::after{transition:none}.pv .wwy a:hover{transform:none}}
 </style>
+<style id="v33css">
+/* v33: career path, from the shop floor up */
+.pv .path{margin-top:22px;background:#102B45;color:#DCE5E1;border-radius:24px;padding:30px 30px 26px;position:relative;overflow:hidden}
+.pv .path::after{content:"";position:absolute;inset:12px;border:1px solid rgb(227 194 122 / .28);border-radius:16px;pointer-events:none}
+.pv .path h3{font-family:var(--serif)!important;font-size:26px!important;color:#fff!important;margin:0 0 6px!important}
+.pv .path > p{margin:0 0 30px!important;color:#AFC4BF!important;font-size:15.5px}
+.pv .path ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative}
+.pv .path ol::before{content:"";position:absolute;top:7px;left:4%;right:4%;height:2px;background:linear-gradient(90deg,rgb(201 165 90 / .35),#C9A55A)}
+.pv .path li{position:relative;padding-top:26px}
+.pv .path li::before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:#102B45;border:2px solid #C9A55A}
+.pv .path li.now::before{background:#C9A55A}
+.pv .path time{display:block;font:700 12px Inter,sans-serif;letter-spacing:.08em;color:#E3C27A;margin-bottom:6px}
+.pv .path b{display:block;font-family:var(--serif);font-size:17px;line-height:1.25;color:#fff;margin-bottom:3px}
+.pv .path em{display:block;font-style:normal;font-size:13px;color:#AFC4BF;margin-bottom:6px}
+.pv .path span{display:block;font-size:13.5px;color:#CFDAD6;line-height:1.5}
+@media (max-width:1100px){.pv .path ol{grid-template-columns:repeat(3,1fr);row-gap:24px}.pv .path ol::before{display:none}}
+@media (max-width:640px){.pv .path{padding:24px 20px}.pv .path ol{grid-template-columns:1fr;gap:18px;padding-left:26px}.pv .path ol::before{display:block;top:6px;bottom:6px;left:7px;right:auto;width:2px;height:auto;background:#C9A55A}.pv .path li{padding-top:0}.pv .path li::before{left:-26px;top:2px}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -6015,6 +6033,22 @@ else { showPublicSite(); }
     act.style.setProperty("--tone",d[1]); act.style.setProperty("--img","url("+I+d[0]+".webp)");
     w.innerHTML='<div class="ban"><div class="tx"><span class="num">'+d[2]+'</span><h2>'+h+'</h2><p>'+p+'</p></div><div class="im" role="img" aria-label=""></div></div>';
   });
+})();
+</script>
+<script id="v33js">
+(function(){
+  var ev=document.querySelector("#evidence .ev"); if (!ev || document.querySelector(".path")) return;
+  var R=[
+    ["2018 to 2020","Sales Associate","Al-Futtaim, Stadium Sports, UAE","Fitting customers on a multi-brand footwear floor."],
+    ["2020 to 2023","Sales Supervisor, then Area Sales Supervisor","Andy Enterprises, UAE","Leading store teams, then several locations."],
+    ["2020 to 2024","Junior Manager, Brand Activation","Andy Enterprises, UAE","Opened seven Aetrex kiosks in UAE malls and ran event activations."],
+    ["2024 to 2026","International Sales Excellence Manager","Aetrex, Inc.","Rolled out scanning programmes and trained store teams across international markets."],
+    ["2026 to now","Business Development and Technology Specialist","The Comfort Co | Global Footcare, APAC","Scanner integration consultant: technical training and team enablement in Australia, New Zealand and Singapore."],
+    ["2026","Founder","BrightPath Academy","Turning that experience into one teachable fitting standard."]
+  ];
+  ev.insertAdjacentHTML("afterend",'<div class="path"><h3>From the shop floor up</h3><p>The method was learned in the same roles your teams work in, before it was taught.</p><ol>'+
+    R.map(function(r,i){ return '<li'+(i===R.length-1?' class="now"':'')+'><time>'+r[0]+'</time><b>'+r[1]+'</b><em>'+r[2]+'</em><span>'+r[3]+'</span></li>'; }).join("")+'</ol></div>');
+  var who=document.querySelector("#evidence .who span"); if (who) who.textContent="Founder and lead trainer. From floor sales associate to international sales excellence, since 2018.";
 })();
 </script>
 <script id="v29js">
