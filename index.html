@@ -2525,6 +2525,35 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:760px){.pv .nx{padding:52px 0}.pv .g3x,.pv .eng,.pv .notes2,.pv .proc,.pv .layers{grid-template-columns:1fr}.pv .layers div{border-left:0;border-top:1px solid #E2D6C5}.pv .layers div:first-child{border-top:0}
  .pv .steps5{grid-template-columns:1fr;gap:12px}.pv .steps5::before{top:10px;bottom:10px;left:26px;right:auto;width:2px;height:auto}.pv .steps5 li{display:grid;grid-template-columns:54px 1fr;gap:14px;text-align:left;padding:0}.pv .steps5 .n{margin:0}}
 </style>
+<style id="v31css">
+/* v31: Who / What / Why flow */
+.pv .wwy{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.pv .wwy a{display:block;text-decoration:none;background:#fff;border:1px solid #E6DED2;border-top:4px solid var(--ac);border-radius:16px;padding:18px 20px;color:inherit;transition:box-shadow .2s,transform .2s}
+.pv .wwy a:hover{box-shadow:0 10px 24px rgb(60 45 25 / .1);transform:translateY(-2px)}
+.pv .wwy small{font:800 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.pv .wwy b{display:block;font-family:var(--serif);font-size:20px;color:#2A241C;margin:4px 0 6px}
+.pv .wwy span{display:block;font-size:14.5px;color:#4A4F57;line-height:1.5}
+.pv .acts3{position:relative;z-index:30;min-height:52px;}
+.pv .acts3 nav{background:rgb(247 243 234 / .95);backdrop-filter:blur(8px);border-bottom:1px solid #E6DED2}
+.pv .acts3.fix nav{position:fixed;top:0;box-shadow:0 6px 18px rgb(60 45 25 / .08)}
+.pv .acts3-x{background:rgb(247 243 234 / .94);backdrop-filter:blur(8px);border-bottom:1px solid #E6DED2}
+.pv .acts3 nav{display:flex;gap:8px;justify-content:center;padding:10px 16px}
+.pv .acts3 a{display:flex;align-items:center;gap:8px;text-decoration:none;color:#5B5244;font:700 14px Inter,sans-serif;padding:7px 14px;border-radius:999px;border:1px solid transparent}
+.pv .acts3 a i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:#EFE6DA;color:#5B5244}
+.pv .acts3 a em{font-style:normal;white-space:pre}
+.pv .acts3 a.on{background:#fff;border-color:#E2D6C5;color:#2A241C}.pv .acts3 a.on i{background:var(--ac);color:#fff}
+.pv .act{padding:84px 0 4px}
+.pv .act .pv-wrap{display:flex;gap:18px;align-items:flex-end}
+.pv .act .num{font-family:var(--serif);font-size:72px;line-height:.8;color:var(--ac);opacity:.9}
+.pv .act h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px)!important;margin:0!important;color:#2A241C!important;line-height:1.05}
+.pv .act p{margin:6px 0 0;color:#5B6576;font-size:17px}
+.pv .act + .nx{border-top:0;padding-top:36px}
+.pv .why5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.pv .why5 .box{padding:18px}.pv .why5 h3{font-size:18px}
+.pv #why .layers{margin-top:26px}
+@media (max-width:1000px){.pv .why5{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.pv .wwy,.pv .why5{grid-template-columns:1fr}.pv .act{padding-top:60px}.pv .act .num{font-size:52px}.pv .acts3 a{padding:6px 10px;font-size:13px}.pv .acts3 a span{display:none}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -5883,6 +5912,63 @@ else { showPublicSite(); }
     '<div class="pv-sgrp"><small>More</small><a href="/perform" class="pv-snew">Academy Perform</a><a href="/scanner-led-stores" class="pv-snew">Scanner-led stores</a></div>';
 })();
 </script>
+<script id="v31js">
+(function(){
+  var site=document.getElementById("publicSite"); if (!site || site.querySelector("#act-who")) return;
+  var $=function(q){ return site.querySelector(q); };
+  var hero=$("#ps-hero"), sFor=$("#for"), sVal=$("#value"), sMet=$("#method"), sEng=$("#engage"), sFlo=$("#floor"), sEv=$("#evidence"), sOrg=$("#enterprise");
+  if (!hero||!sFor||!sMet||!sEv||!sOrg) return;
+  function head(sec,k,h,p){ var x=sec.querySelector(".nx-h"); if (!x) return; x.querySelector("p.k").textContent=k; x.querySelector("h2").textContent=h; var d=x.querySelector("p:not(.k)"); if (p) { if (!d) { d=document.createElement("p"); x.appendChild(d); } d.textContent=p; } else if (d) d.remove(); }
+  /* hero: three-part summary that starts the flow */
+  var hc=hero.querySelector(".pv-herocopy");
+  var strip='<div class="pv-wrap"><div class="wwy">'+
+    '<a href="#act-who" style="--ac:#1F7A4D"><small>1 &middot; Who it is for</small><b>Footwear retail and clinic teams</b><span>And the managers and owners responsible for how they fit customers.</span></a>'+
+    '<a href="#act-what" style="--ac:#1D4E89"><small>2 &middot; What it does</small><b>Teaches one fitting conversation</b><span>Listen, measure, explain, recommend and validate, through learning and in-store coaching.</span></a>'+
+    '<a href="#act-why" style="--ac:#A9772F"><small>3 &middot; Why use it</small><b>Consistent, confident fitting</b><span>Changes you can see on the shop floor, built from real field experience, and an easy place to start.</span></a></div></div>';
+  hero.insertAdjacentHTML("afterend",'<div class="acts3" id="acts3"><nav aria-label="Page sections"><a href="#act-who" style="--ac:#1F7A4D"><i>1</i><em>Who<span> it is for</span></em></a><a href="#act-what" style="--ac:#1D4E89"><i>2</i><em>What<span> it does</span></em></a><a href="#act-why" style="--ac:#A9772F"><i>3</i><em>Why<span> use it</span></em></a></nav></div>');
+  var pl=hero.querySelector(".pv-proofline"); (pl||hero.querySelector(".pv-herocard")).insertAdjacentHTML("afterend",'<div class="wwy-holder"></div>');
+  hero.querySelector(".wwy-holder").outerHTML=strip.replace('<div class="pv-wrap">','').replace(/<\/div>$/,'');
+  function act(id,n,ac,h,p){ var d=document.createElement("div"); d.className="act"; d.id=id; d.style.setProperty("--ac",ac); d.innerHTML='<div class="pv-wrap"><span class="num">'+n+'</span><div><h2>'+h+'</h2><p>'+p+'</p></div></div>'; return d; }
+  /* act 1: who */
+  sFor.before(act("act-who","1","#1F7A4D","Who it is for","The teams who fit customers, and the challenges they face."));
+  head(sFor,"The teams","Footwear retail and clinic teams, and the people who lead them","");
+  if (sVal) head(sVal,"Their challenge","Three things that go wrong on the shop floor","");
+  /* act 2: what */
+  sMet.before(act("act-what","2","#1D4E89","What it does","One practical method, three ways to use it, and visible change on the floor."));
+  head(sMet,"The method","Five steps every customer conversation follows","Listen, measure, explain, recommend, validate.");
+  if (sEng) head(sEng,"Three ways to use it","Learn it, apply it in store, then scale it","");
+  if (sFlo) head(sFlo,"In practice","What your team does differently","");
+  /* act 3: why */
+  var why=document.createElement("section"); why.className="nx"; why.id="why";
+  why.innerHTML='<div class="pv-wrap"><div class="nx-h"><p class="k">Why teams choose it</p><h2>Five reasons to use BrightPath Academy</h2></div><div class="why5">'+
+    '<div class="box edge" style="--ac:#1F7A4D"><h3>Built on the shop floor</h3><p>Shaped by years of store launches and floor training, not a classroom.</p></div>'+
+    '<div class="box edge" style="--ac:#1D4E89"><h3>Practical every day</h3><p>Short exercises staff use with real customers, the same day.</p></div>'+
+    '<div class="box edge" style="--ac:#6B3FA0"><h3>Progress you can see</h3><p>Assessed learning and a manager checklist show what has changed.</p></div>'+
+    '<div class="box edge" style="--ac:#A9772F"><h3>Easy to start</h3><p>Begin with one programme, or a 30-day pilot in one store for US$200.</p></div>'+
+    '<div class="box edge" style="--ac:#B3263B"><h3>Safe and professional</h3><p>Retail fitting only. No diagnosis, no medical claims, no pressure selling.</p></div></div></div>';
+  var layers=sFlo&&sFlo.querySelector(".layers"); if (layers) { why.querySelector(".pv-wrap").insertAdjacentHTML("beforeend",'<h3 style="font-family:var(--serif);font-size:22px;margin:34px 0 0;color:#2A241C">What you can expect to see</h3>'); why.querySelector(".pv-wrap").appendChild(layers); }
+  sEv.before(act("act-why","3","#A9772F","Why use it","The reasons, the experience behind it, and how to start."));
+  sEv.before(why);
+  head(sEv,"The experience behind it","Where the approach comes from","");
+  head(sOrg,"Get started","How we work with your organisation","From a first conversation to one standard across your locations.");
+  /* tint alternation for calm rhythm */
+  [sFor,sVal,sMet,sEng,sFlo,why,sEv,sOrg].forEach(function(s,i){ if (s) s.classList.toggle("tint",i%2===1); });
+  /* sticky progress */
+  var links=[].slice.call(document.querySelectorAll("#acts3 a")), marks=["act-who","act-what","act-why"].map(function(id){ return document.getElementById(id); }), det=document.getElementById("details");
+  function spy(){ var y=innerHeight*0.35, cur=-1; marks.forEach(function(m,i){ if (m.getBoundingClientRect().top<y) cur=i; }); if (det && det.getBoundingClientRect().top<y) cur=-1; links.forEach(function(a,i){ a.classList.toggle("on",i===cur); }); }
+  var bar=document.getElementById("acts3"), bn=bar.querySelector("nav"), main=site.querySelector(".pv-main")||site;
+  function pin(){ var r=bar.getBoundingClientRect(), on=r.top<0 && (!det || det.getBoundingClientRect().top>60); bar.classList.toggle("fix",on); if (on) { var m=main.getBoundingClientRect(); bn.style.left=m.left+"px"; bn.style.width=m.width+"px"; } else { bn.style.left=""; bn.style.width=""; } }
+  addEventListener("scroll",function(){ spy(); pin(); },{passive:true}); addEventListener("resize",pin); spy(); pin();
+  /* sidebar follows the same flow */
+  var nav=document.getElementById("pvSnav");
+  if (nav) nav.innerHTML='<div class="pv-sgrp"><small>Start</small><a href="#ps-hero">Home</a></div>'+
+    '<div class="pv-sgrp"><small>1 &middot; Who it is for</small><a href="#for">The teams</a><a href="#value">Their challenge</a></div>'+
+    '<div class="pv-sgrp"><small>2 &middot; What it does</small><a href="#method">The method</a><a href="#engage">Learn, Perform, Enterprise</a><a href="#floor">In practice</a></div>'+
+    '<div class="pv-sgrp"><small>3 &middot; Why use it</small><a href="#why">Why teams choose it</a><a href="#evidence">The experience behind it</a><a href="#enterprise">Get started</a></div>'+
+    '<div class="pv-sgrp"><small>Details</small><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#standard">The BrightPath standard</a><a href="#credentials">Credentials</a><a href="#about">Founder and field photos</a><a href="#learn">Insights and events</a><a href="#faq">FAQ</a></div>'+
+    '<div class="pv-sgrp"><small>More</small><a href="/perform" class="pv-snew">Academy Perform</a><a href="/scanner-led-stores" class="pv-snew">Scanner-led stores</a></div>';
+})();
+</script>
 <script id="v29js">
 (function(){
   var nav=document.getElementById("pvSnav"); if (!nav || nav.querySelector(".ico")) return;
@@ -5905,7 +5991,7 @@ else { showPublicSite(); }
     check:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12l2 2 4-4"/>',
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><path d="M12 17v.01"/>'
   };
-  var M={"#ps-hero":["home","#1F7A75","Home"],"#for":["users","#1F7A4D","Who it is for"],"#value":["target","#B3263B","The problem"],"#method":["route","#1D4E89","The method"],"#engage":["layers","#A9772F","Learn, Perform, Enterprise"],"#floor":["check","#1F7A4D","On the shop floor"],"#evidence":["award","#B3263B","Evidence"],"#enterprise":["building","#1D4E89","For organisations"],"#programmes":["book","#1F7A4D","Programmes"],"#pricing":["tag","#A9772F","Pricing"],"#standard":["shield","#1F7A4D","The BrightPath standard"],"#credentials":["award","#6B3FA0","Credentials"],"#about":["camera","#1F7A75","Founder and field photos"],"#learn":["bulb","#A9772F","Insights and events"],"#faq":["help","#5B6576","FAQ"],"/perform":["chart","#A9772F","Academy Perform"],"/scanner-led-stores":["foot","#6B3FA0","Scanner-led stores"]};
+  var M={"#ps-hero":["home","#1F7A75","Home"],"#for":["users","#1F7A4D","The teams"],"#value":["target","#B3263B","Their challenge"],"#method":["route","#1D4E89","The method"],"#engage":["layers","#1D4E89","Learn, Perform, Enterprise"],"#floor":["check","#1D4E89","In practice"],"#why":["award","#A9772F","Why teams choose it"],"#evidence":["user","#A9772F","The experience behind it"],"#enterprise":["building","#A9772F","Get started"],"#programmes":["book","#1F7A4D","Programmes"],"#pricing":["tag","#A9772F","Pricing"],"#standard":["shield","#1F7A4D","The BrightPath standard"],"#credentials":["award","#6B3FA0","Credentials"],"#about":["camera","#1F7A75","Founder and field photos"],"#learn":["bulb","#A9772F","Insights and events"],"#faq":["help","#5B6576","FAQ"],"/perform":["chart","#A9772F","Academy Perform"],"/scanner-led-stores":["foot","#6B3FA0","Scanner-led stores"]};
   nav.querySelectorAll("a").forEach(function(a){
     var m=M[a.getAttribute("href")]; if (!m) return; var isNew=a.classList.contains("pv-snew");
     a.style.setProperty("--ic",m[1]);
