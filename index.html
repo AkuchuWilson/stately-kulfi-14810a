@@ -2454,6 +2454,77 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 .pv .pv-sfoot p a{color:#7A6A55!important}
 .pv .pv-side::-webkit-scrollbar{width:8px}.pv .pv-side::-webkit-scrollbar-thumb{background:#E2D6C5;border-radius:8px}
 </style>
+<style id="v30css">
+/* v30 fixes */
+.pv .box a{color:#7A4E1D;font-weight:700}
+.pv #ps-hero .pv-heroimg{display:flex}.pv #ps-hero .pv-heroimg img{height:100%!important;max-height:none!important;width:100%;object-fit:cover}
+/* v30: narrative homepage. Calm sections, one purpose each */
+.pv .nx{padding:72px 0;border-top:1px solid #ECE4D8}
+.pv .nx.tint{background:#FBF8F2}
+.pv .nx-h{max-width:720px;margin:0 0 28px}
+.pv .nx-h p.k{margin:0 0 8px;font-size:14px;font-weight:700;color:#7A4E1D}
+.pv .nx-h h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px)!important;line-height:1.15;margin:0 0 10px!important;color:#2A241C!important}
+.pv .nx-h > p:not(.k){margin:0;color:#5B6576;font-size:17px;line-height:1.6}
+.pv .g3x{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pv .box{background:#fff;border:1px solid #E6DED2;border-radius:16px;padding:22px}
+.pv .box.edge{border-left:4px solid var(--ac,#1F7A75)}
+.pv .box h3{font-family:var(--serif);font-size:20px;margin:0 0 8px;color:#2A241C}
+.pv .box p{margin:0 0 8px;color:#4A4F57;font-size:15px;line-height:1.55}
+.pv .box p.eg{margin-top:10px;padding-top:10px;border-top:1px dashed #E2D6C5;color:#6B5E4B;font-size:14px}
+.pv .box ul{margin:8px 0 0;padding-left:18px;color:#4A4F57;font-size:15px;line-height:1.55}.pv .box li{margin-bottom:6px}
+/* method diagram */
+.pv .steps5{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
+.pv .steps5::before{content:"";position:absolute;top:26px;left:10%;right:10%;height:2px;background:#E2D6C5}
+.pv .steps5 li{position:relative;text-align:center;padding:0 6px}
+.pv .steps5 .n{width:54px;height:54px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--ac);color:var(--ac);font:800 18px Inter,sans-serif;position:relative;z-index:1}
+.pv .steps5 b{display:block;font-family:var(--serif);font-size:21px;color:#2A241C;margin-bottom:6px}
+.pv .steps5 span{display:block;font-size:14.5px;color:#4A4F57;line-height:1.5}
+.pv .steps5 em{display:block;margin-top:8px;font-style:normal;font-size:13.5px;color:#7A6A55}
+.pv .notes2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.pv .note{background:#F4EEE4;border-radius:14px;padding:14px 16px;font-size:14.5px;color:#4A3D2C;line-height:1.55}
+.pv .note a{color:#7A4E1D;font-weight:700}
+/* engage */
+.pv .eng{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pv .eng .box{display:flex;flex-direction:column}
+.pv .eng small{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.pv .eng h3{margin-top:4px}
+.pv .eng dl{margin:10px 0 14px;display:grid;gap:8px}
+.pv .eng dt{font-size:12.5px;font-weight:700;color:#7A6A55}
+.pv .eng dd{margin:0;font-size:14.5px;color:#2A241C}
+.pv .eng .pv-btn{margin-top:auto;align-self:flex-start}
+.pv .flow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 0;color:#4A3D2C;font-size:15px}
+.pv .flow b{background:#fff;border:1px solid #E2D6C5;border-radius:999px;padding:6px 12px}
+/* floor */
+.pv .layers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px;border:1px solid #E2D6C5;border-radius:16px;overflow:hidden;background:#fff}
+.pv .layers div{padding:18px 20px;border-left:1px solid #E2D6C5}.pv .layers div:first-child{border-left:0}
+.pv .layers b{display:block;font-family:var(--serif);font-size:18px;color:#2A241C;margin-bottom:4px}
+.pv .layers span{display:block;font-size:14.5px;color:#4A4F57;line-height:1.5}
+.pv .layers em{display:inline-block;margin-top:8px;font-style:normal;font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pv .layers .y{background:#E3F1EA;color:#1F6B47}.pv .layers .o{background:#F7EBD3;color:#7A4E1D}
+/* evidence */
+.pv .ev{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:start}
+.pv .ev .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pv .ev .chips span{background:#F4EEE4;border-radius:999px;padding:5px 11px;font-size:13.5px;color:#4A3D2C}
+.pv .ev .who{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.pv .ev .who img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 15%}
+.pv .ev .who b{display:block;font-family:var(--serif);font-size:19px;color:#2A241C}.pv .ev .who span{font-size:14px;color:#5B6576}
+.pv #evidence .pv-recs{margin-top:20px}
+.pv .gap{margin-top:18px;background:#fff;border:1px dashed #CDBFA8;border-radius:14px;padding:14px 16px;font-size:14.5px;color:#4A3D2C}
+/* organisations */
+.pv .proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:p}
+.pv .proc li{background:#fff;border:1px solid #E6DED2;border-radius:14px;padding:16px;counter-increment:p}
+.pv .proc li::before{content:counter(p);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#1D4E89;color:#fff;font:800 14px Inter,sans-serif;margin-bottom:10px}
+.pv .proc b{display:block;font-family:var(--serif);font-size:18px;color:#2A241C;margin-bottom:4px}
+.pv .proc span{font-size:14.5px;color:#4A4F57;line-height:1.5}
+.pv .orgcta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.pv .orgcta .pv-btn.line{color:#2A241C;border-color:#CDBFA8}
+.pv .orgcta small{color:#5B6576;font-size:14px}
+.pv .dethead{margin:60px 0 6px}.pv .dethead h2{font-family:var(--serif);font-size:24px!important;margin:0!important;color:#2A241C!important}.pv .dethead p{margin:4px 0 0;color:#5B6576}
+.pv #value-old,.pv #enterprise-old,.pv #perform,.pv .glance{display:none!important}
+@media (max-width:1000px){.pv .g3x,.pv .eng{grid-template-columns:1fr 1fr}.pv .proc{grid-template-columns:1fr 1fr}.pv .ev{grid-template-columns:1fr}}
+@media (max-width:760px){.pv .nx{padding:52px 0}.pv .g3x,.pv .eng,.pv .notes2,.pv .proc,.pv .layers{grid-template-columns:1fr}.pv .layers div{border-left:0;border-top:1px solid #E2D6C5}.pv .layers div:first-child{border-top:0}
+ .pv .steps5{grid-template-columns:1fr;gap:12px}.pv .steps5::before{top:10px;bottom:10px;left:26px;right:auto;width:2px;height:auto}.pv .steps5 li{display:grid;grid-template-columns:54px 1fr;gap:14px;text-align:left;padding:0}.pv .steps5 .n{margin:0}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -5714,7 +5785,7 @@ else { showPublicSite(); }
   var site=document.getElementById("publicSite"); if (!site || site.querySelector(".glance")) return;
   var hero=site.querySelector("#ps-hero"), wrap=hero&&hero.querySelector(".pv-wrap"); if (!wrap) return;
   var hp=hero.querySelector(".pv-herocopy > p"); if (hp) hp.textContent="Fitting and sales training, certification and in-store coaching for footwear retail and clinic teams.";
-  wrap.querySelector(".pv-herocard").insertAdjacentHTML("afterend",'<p class="pv-proofline">Founder-led training with teams at <b>ASICS Middle East</b>, <b>Runners</b>, <b>Apparel Group</b>, <b>Reebok UAE</b>, <b>MAP Indonesia</b> and <b>Primer Group</b>.<a href="#about">See the proof</a></p>');
+  wrap.querySelector(".pv-herocard").insertAdjacentHTML("afterend",'<p class="pv-proofline">Founder-led training with teams at <b>ASICS Middle East</b>, <b>Runners</b>, <b>Apparel Group</b>, <b>Reebok UAE</b>, <b>MAP Indonesia</b> and <b>Primer Group</b>.<a href="#evidence">See the evidence</a></p>');
   var I="assets/img/";
   var C=[["#1F7A4D","Academy Learn","7 programmes","Certification from US$49","sc-foot-model","#programmes"],
          ["#A9772F","Academy Perform","30-day coaching pilot","One store, US$200","ex20","/perform"],
@@ -5747,6 +5818,71 @@ else { showPublicSite(); }
   window.__bpReveal=reveal;
 })();
 </script>
+<script id="v30js">
+(function(){
+  var site=document.getElementById("publicSite"); if (!site || site.querySelector("#method")) return;
+  var hero=site.querySelector("#ps-hero"); if (!hero) return;
+  /* retire sections the new narrative replaces (kept in the page, hidden, to preserve old content) */
+  var ov=site.querySelector("#value"); if (ov) ov.id="value-old";
+  var oe=site.querySelector("#enterprise"); if (oe) oe.id="enterprise-old";
+  /* hero: what we do, who for, the next step */
+  var hp=hero.querySelector(".pv-herocopy > p"); if (hp) hp.textContent="BrightPath Academy trains footwear retail and clinic teams to fit customers well, with online learning, certification and in-store coaching.";
+  var ct=hero.querySelector(".pv-ctas"); if (ct) ct.innerHTML='<a class="pv-btn gold" href="#enterprise">Train your team</a><a class="pv-btn line" href="#method">See the method</a><button class="pv-btn line" data-lead="brochure">Download brochure</button>';
+  var I="assets/img/";
+  var S='';
+  S+='<section class="nx" id="for"><div class="pv-wrap"><div class="nx-h"><p class="k">Who it is for</p><h2>Teams that fit footwear, and the people who lead them</h2></div><div class="g3x">'+
+    '<div class="box edge" style="--ac:#1F7A4D"><h3>Footwear retailers</h3><p>Specialty, sports and comfort stores, with or without a foot scanner.</p></div>'+
+    '<div class="box edge" style="--ac:#1D4E89"><h3>Clinics</h3><p>Podiatry and allied health clinics that offer footwear and support products at the front desk.</p></div>'+
+    '<div class="box edge" style="--ac:#A9772F"><h3>People responsible for capability</h3><p>Owners, operations and area managers, store and clinic managers, and in-house trainers.</p></div></div></div></section>';
+  S+='<section class="nx tint" id="value"><div class="pv-wrap"><div class="nx-h"><p class="k">The problem</p><h2>Three things that go wrong on the shop floor</h2><p>These are the situations the training is built around.</p></div><div class="g3x">'+
+    '<div class="box"><h3>Fitting conversations vary</h3><p>Two staff members in the same store can fit the same customer in very different ways.</p><p class="eg">One asks about activity and comfort. The other goes straight to the bestseller.</p></div>'+
+    '<div class="box"><h3>Measurements are hard to explain</h3><p>A scan or measurement is shown, but the customer leaves unsure what it meant for them.</p><p class="eg">"Your arch is low" without saying why that matters for their shoes.</p></div>'+
+    '<div class="box"><h3>Matching is uncertain</h3><p>Staff are unsure how to match footwear and support to what this customer needs.</p><p class="eg">Support is mentioned at the till as an add-on, or not at all.</p></div></div></div></section>';
+  var M=[["Listen","#1F7A4D","Ask about activity, comfort and what is not working before showing product.","\u201cWhat are you on your feet for most days?\u201d"],
+         ["Measure","#1F7A75","Measure length, width and volume of both feet, by hand or with a scanner.","Fit the larger foot."],
+         ["Explain","#1D4E89","Say what the measurements show in plain words, linked to what the customer told you. No diagnosis.","\u201cThis shows where you put more pressure.\u201d"],
+         ["Recommend","#6B3FA0","Offer two or three options that suit the foot and the activity, and support only where there is a clear need.","One reason for each option."],
+         ["Validate","#A9772F","Let the customer try, walk and compare. Their feel confirms the choice.","\u201cWhich one do you notice less?\u201d"]];
+  S+='<section class="nx" id="method"><div class="pv-wrap"><div class="nx-h"><p class="k">The method</p><h2>Listen, measure, explain, recommend, validate</h2><p>Every programme and coaching exercise practises this same five-step fitting conversation.</p></div><ol class="steps5">'+
+    M.map(function(m,i){ return '<li style="--ac:'+m[1]+'"><span class="n">'+(i+1)+'</span><div><b>'+m[0]+'</b><span>'+m[2]+'</span><em>'+m[3]+'</em></div></li>'; }).join("")+'</ol>'+
+    '<div class="notes2"><p class="note">Scanner-led stores use the scan in steps 2 and 3. The <a href="/scanner-led-stores">eight-stage Scan-to-Fit Method</a> breaks the same conversation down for scanner stores.</p><p class="note">The method sits inside clear boundaries: retail fitting only, no diagnosis or medical claims, and customers with ongoing pain are referred to a podiatrist or doctor.</p></div></div></section>';
+  S+='<section class="nx tint" id="engage"><div class="pv-wrap"><div class="nx-h"><p class="k">Ways to work with us</p><h2>Learn the method, apply it, then scale it</h2></div><div class="eng">'+
+    '<div class="box edge" style="--ac:#1F7A4D"><small>Learn</small><h3>Individual learning and credentials</h3><dl><dt>What it is</dt><dd>Self-paced programmes with assessments, badges and the Certified Fit Specialist credential.</dd><dt>Best for</dt><dd>Individuals and teams building knowledge.</dd><dt>Price</dt><dd>From US$49 per programme, or all-access from US$15 per seat a month billed annually.</dd></dl><a class="pv-btn line" href="#programmes">Explore programmes</a></div>'+
+    '<div class="box edge" style="--ac:#A9772F"><small>Perform</small><h3>In-store application and coaching</h3><dl><dt>What it is</dt><dd>A 30-day pilot in one store: up to five learners, three short exercises a week and a 20-minute weekly manager review.</dd><dt>Best for</dt><dd>Turning learning into habits on the shop floor.</dd><dt>Price</dt><dd>US$200 founding pilot, one-time, no automatic renewal.</dd></dl><a class="pv-btn line" href="/perform">How the pilot works</a></div>'+
+    '<div class="box edge" style="--ac:#1D4E89"><small>Enterprise</small><h3>One standard across locations</h3><dl><dt>What it is</dt><dd>A rollout plan across stores or clinics, with manager development and train-the-trainer.</dd><dt>Best for</dt><dd>Organisations with several teams or locations.</dd><dt>Price</dt><dd>By proposal. Seat access from US$12 per seat a month on annual plans.</dd></dl><a class="pv-btn line" href="#enterprise">Plan a rollout</a></div></div>'+
+    '<p class="flow"><b>Learn</b> builds knowledge <span aria-hidden="true">&rarr;</span> <b>Perform</b> turns it into habits in one store <span aria-hidden="true">&rarr;</span> <b>Enterprise</b> repeats it across locations</p></div></section>';
+  S+='<section class="nx" id="floor"><div class="pv-wrap"><div class="nx-h"><p class="k">On the shop floor</p><h2>What changes in day-to-day customer conversations</h2></div><div class="g3x">'+
+    '<div class="box"><h3>What learners practise</h3><ul><li>Explaining a pressure map in plain words, without naming a condition</li><li>Measuring both feet and fitting the larger one</li><li>Responding to \u201cthe insoles are too expensive\u201d without pressure</li><li>Running a try, walk and compare with two or three pairs</li></ul></div>'+
+    '<div class="box"><h3>What coaching looks like</h3><ul><li>Short 10-minute exercises in a quiet moment or a pre-shift huddle</li><li>Role-play in pairs, then the real thing with a customer</li><li>A 20-minute weekly review that agrees one thing to coach next</li></ul></div>'+
+    '<div class="box"><h3>What a manager can observe</h3><ul><li>Asked about activity before showing product</li><li>Measured both feet</li><li>Explained results in plain words</li><li>Offered no more than three options</li><li>The customer walked in each pair</li><li>Accepted a \u201cno\u201d respectfully</li></ul></div></div>'+
+    '<div class="layers"><div><b>Learning outputs</b><span>Lessons completed, knowledge checks, a 30-question exam (24 to pass) and a recorded roleplay.</span><em class="y">Assessed by the Academy</em></div><div><b>Observable behaviours</b><span>What a manager sees on the floor, recorded on a short checklist during coaching.</span><em class="y">Observed by your manager</em></div><div><b>Business outcomes</b><span>Figures such as fit-related returns or support sales. Your store can track these, but the Academy has not yet published measured results.</span><em class="o">Not yet measured</em></div></div></div></section>';
+  var orgs=["Global Footcare AU / NZ / SG","MAP Indonesia","ASICS Middle East","Primer Group Asia","Runners Middle East","Apparel Group (ACO RUN)","Aetrex Middle East","Andy Enterprises","Reebok UAE","Regatta Canoe UAE","IRUN Poland","Footprints Podiatry","Body Mechanix"];
+  S+='<section class="nx tint" id="evidence"><div class="pv-wrap"><div class="nx-h"><p class="k">Evidence</p><h2>Where the approach comes from</h2><p>The method is built from field training and store launches. Here is what we can show today.</p></div><div class="ev">'+
+    '<div class="box"><div class="who"><img src="'+I+'founder-profile.webp" alt="Akuchu Wilson"><div><b>Akuchu Wilson</b><span>Founder and lead trainer. Former International Sales Excellence and Training Manager, Aetrex, Inc.</span></div></div><p>Has trained retail and clinic teams across the Middle East, Asia, Europe, Australia and New Zealand, including:</p><div class="chips">'+orgs.map(function(o){ return '<span>'+o+'</span>'; }).join("")+'</div><p style="margin-top:12px;font-size:13px;color:#7A6A55">Training experience only. Not an endorsement of BrightPath Academy by these organisations.</p></div>'+
+    '<div class="box"><h3>See the work</h3><ul><li>Photos from store launches, floor training and certification days. <a href="#ps-executions">View field photos</a></li><li>A 2024 training tour with Primer Group across the Philippines, Singapore and Malaysia. <a href="https://www.primergrp.com/blogs/news/aetrex-soars-in-southeast-asia-empowering-retail-associates-with-cutting-edge-training" target="_blank" rel="noopener">Read the article</a></li><li>Recommendations from retail leaders on LinkedIn. <a href="https://www.linkedin.com/in/akuchu-wilson-b56278187/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a></li></ul></div></div>'+
+    '<p class="gap"><b>Not yet available:</b> independently measured store results from Academy programmes. Perform pilots record baseline and closing scorecards, so results can be reported with each store\u2019s permission once pilots complete.</p></div></section>';
+  S+='<section class="nx" id="enterprise"><div class="pv-wrap"><div class="nx-h"><p class="k">For organisations</p><h2>How we work with your team</h2><p>From a first conversation to a consistent standard across locations.</p></div><ol class="proc">'+
+    '<li><b>Talk</b><span>A short call about your stores or clinics, your team and whether you use a scanner.</span></li>'+
+    '<li><b>Baseline</b><span>We review how fitting conversations happen today and agree what you will track.</span></li>'+
+    '<li><b>Choose a format</b><span>Learn seats, a Perform pilot in one store, or an Enterprise rollout.</span></li>'+
+    '<li><b>Train and coach</b><span>Online learning, floor exercises and manager reviews.</span></li>'+
+    '<li><b>Review and refresh</b><span>Compare with the baseline and plan reinforcement.</span></li></ol>'+
+    '<div class="orgcta"><a class="pv-btn dark" href="#contact">Request a proposal</a><a class="pv-btn line" href="/perform#apply">Apply for the Perform pilot</a><button class="pv-btn line" data-lead="brochure">Download brochure</button><small>We reply within one business day.</small></div></div></section>';
+  S+='<div class="pv-wrap dethead" id="details"><h2>Programme details</h2><p>Open any section for the full detail.</p></div>';
+  hero.insertAdjacentHTML("afterend",S);
+  /* evidence: move the executive recommendations here */
+  var recs=site.querySelector(".pv-recs"), ev=site.querySelector("#evidence .ev"); if (recs && ev) ev.insertAdjacentElement("afterend",recs);
+  /* place the detail chapters after the new narrative, in a logical order */
+  var anchor=site.querySelector("#details"), order=["programmes","pricing","standard","credentials","about","learn","faq"], last=anchor;
+  order.forEach(function(id){ var sec=site.querySelector("#"+id); if (sec) { last.insertAdjacentElement("afterend",sec); last=sec; } });
+  /* sidebar: mirror the page structure */
+  var nav=document.getElementById("pvSnav");
+  if (nav) nav.innerHTML='<div class="pv-sgrp"><small>Overview</small><a href="#ps-hero">Home</a><a href="#for">Who it is for</a><a href="#value">The problem</a><a href="#method">The method</a></div>'+
+    '<div class="pv-sgrp"><small>Work with us</small><a href="#engage">Learn, Perform, Enterprise</a><a href="#floor">On the shop floor</a><a href="#evidence">Evidence</a><a href="#enterprise">For organisations</a></div>'+
+    '<div class="pv-sgrp"><small>Details</small><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#standard">The BrightPath standard</a><a href="#credentials">Credentials</a><a href="#about">Founder and field photos</a><a href="#learn">Insights and events</a><a href="#faq">FAQ</a></div>'+
+    '<div class="pv-sgrp"><small>More</small><a href="/perform" class="pv-snew">Academy Perform</a><a href="/scanner-led-stores" class="pv-snew">Scanner-led stores</a></div>';
+})();
+</script>
 <script id="v29js">
 (function(){
   var nav=document.getElementById("pvSnav"); if (!nav || nav.querySelector(".ico")) return;
@@ -5763,9 +5899,13 @@ else { showPublicSite(); }
     user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
     camera:'<path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="3.5"/>',
     bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+    users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.6-5.5 6.5-5.5s5.5 2 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.6c2.6.2 4.5 2 5.5 5"/>',
+    route:'<circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/>',
+    layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+    check:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12l2 2 4-4"/>',
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><path d="M12 17v.01"/>'
   };
-  var M={"#ps-hero":["home","#1F7A75","Home"],"#value":["target","#B3263B","Problems we solve"],"#standard":["shield","#1F7A4D","The BrightPath standard"],"#programmes":["book","#1F7A4D","Programmes"],"#pricing":["tag","#A9772F","Pricing"],"/perform":["chart","#A9772F","Academy Perform"],"/scanner-led-stores":["foot","#6B3FA0","Scanner-led stores"],"#enterprise":["building","#1D4E89","For organisations"],"#credentials":["award","#B3263B","Credentials"],"#about":["user","#1F7A75","Founder and proof"],"#ps-executions":["camera","#1D4E89","Field executions"],"#learn":["bulb","#A9772F","Insights and events"],"#faq":["help","#5B6576","FAQ"]};
+  var M={"#ps-hero":["home","#1F7A75","Home"],"#for":["users","#1F7A4D","Who it is for"],"#value":["target","#B3263B","The problem"],"#method":["route","#1D4E89","The method"],"#engage":["layers","#A9772F","Learn, Perform, Enterprise"],"#floor":["check","#1F7A4D","On the shop floor"],"#evidence":["award","#B3263B","Evidence"],"#enterprise":["building","#1D4E89","For organisations"],"#programmes":["book","#1F7A4D","Programmes"],"#pricing":["tag","#A9772F","Pricing"],"#standard":["shield","#1F7A4D","The BrightPath standard"],"#credentials":["award","#6B3FA0","Credentials"],"#about":["camera","#1F7A75","Founder and field photos"],"#learn":["bulb","#A9772F","Insights and events"],"#faq":["help","#5B6576","FAQ"],"/perform":["chart","#A9772F","Academy Perform"],"/scanner-led-stores":["foot","#6B3FA0","Scanner-led stores"]};
   nav.querySelectorAll("a").forEach(function(a){
     var m=M[a.getAttribute("href")]; if (!m) return; var isNew=a.classList.contains("pv-snew");
     a.style.setProperty("--ic",m[1]);
