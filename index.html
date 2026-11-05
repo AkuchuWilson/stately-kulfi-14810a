@@ -2669,6 +2669,7 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 .pv #contact .pv-cta h2 .cl{display:block}
 .pv #contact .pv-cta h2 .cl:nth-child(2){color:#E3C27A}
 .pv .closebtn{margin-top:18px}
+.pv #contact .meetnote{margin:12px 0 0!important;font-size:14px!important;color:#CFDCD8!important}
 .pv #contact .pv-cta h2 + p{margin-top:14px!important}
 .pv #contact .pv-form button[type=submit]{background:#0E3D3A!important;color:#fff!important;border-color:#0E3D3A!important}
 @media (max-width:980px){.pv .owner,.pv .prog{grid-template-columns:1fr}.pv .owner .im{min-height:240px;order:-1}.pv .owner .im::before{background:linear-gradient(0deg,#0E3D3A 0%,transparent 45%)}.pv .out3{grid-template-columns:1fr 1fr}.pv .lpa{grid-template-columns:1fr}.pv .lpa > div{border-left:0;border-top:1px solid #E2D6C5}.pv .lpa > div:first-child{border-top:0}}
@@ -5896,7 +5897,7 @@ else { showPublicSite(); }
     ["","His ability to teach, mentor, and energize those around him has had a lasting impact on our performance and morale.","Peter Malkin","SVP International Business Development, Aetrex, Inc.",""],
     ["","Wilson has been able to grasp the business acumen for the footwear industry and training others to provide valuable and lasting results.","Barry Weinstein","VP Strategic Initiatives, Aetrex, Inc.","2023"]
   ];
-  tr.insertAdjacentHTML("afterend",'<section class="pv-recs" aria-label="Recommended by industry leaders"><h3>Recommended by industry leaders</h3><p>What senior footwear executives say about the founder and lead trainer.</p><div class="pv-recg">'+
+  tr.insertAdjacentHTML("afterend",'<section class="pv-recs" aria-label="What colleagues say"><h3>What colleagues say</h3><p>Senior footwear executives on working with the founder and lead trainer.</p><div class="pv-recg">'+
     R.map(function(r){ return '<figure class="pv-rec'+(r[0]?" "+r[0]:"")+'"><blockquote>&ldquo;'+r[1]+'&rdquo;</blockquote><figcaption><b>'+r[2]+'</b><span>'+r[3]+(r[4]?" &middot; "+r[4]:"")+'</span></figcaption></figure>'; }).join("")+
     '</div><p class="pv-recnote">Quoted with permission from letters of recommendation for Akuchu Wilson&rsquo;s work at Aetrex, Inc. Not an endorsement of BrightPath Academy by Aetrex.</p></section>');
 })();
@@ -6016,7 +6017,7 @@ else { showPublicSite(); }
     '<li><b>Choose a format</b><span>Learn seats, a Perform pilot in one store, or an Enterprise rollout.</span></li>'+
     '<li><b>Train and coach</b><span>Online learning, floor exercises and manager reviews.</span></li>'+
     '<li><b>Review and refresh</b><span>Compare with the baseline and plan reinforcement.</span></li></ol>'+
-    '<div class="orgcta"><a class="pv-btn dark" href="#contact">Request a proposal</a><a class="pv-btn line" href="/perform#apply">Apply for the Perform pilot</a><button class="pv-btn line" data-lead="brochure">Download brochure</button><small>We reply within one business day.</small></div></div></section>';
+    '<div class="orgcta"><a class="pv-btn dark" href="#contact">Request a proposal</a><a class="pv-btn line" href="/perform#apply">Apply for the Perform pilot</a><button class="pv-btn line" data-lead="brochure">Download brochure</button><small>We reply within one business day, by Zoom, email or phone.</small></div></div></section>';
   S+='<div class="pv-wrap dethead" id="details"><h2>Programme details</h2><p>Open any section for the full detail.</p></div>';
   hero.insertAdjacentHTML("afterend",S);
   /* evidence: move the executive recommendations here */
@@ -6151,7 +6152,7 @@ else { showPublicSite(); }
      '<p class="boundary">Fitting education stays within retail and professional boundaries. Retail staff do not diagnose, and customers with ongoing pain are referred to a podiatrist or doctor.</p></div></section>';
   H+='<section class="ps" id="approach"><div class="pv-wrap"><div class="ps-h"><small>Our approach</small><h2>Learn it. Practise it. Apply it.</h2><p>Every part of the training leads back to real customer conversations on your shop floor.</p></div><div class="lpa">'+
      '<div><b><i>1</i>Learn it</b><p>Self-paced online programmes, from Foundations to Certified Fit Specialist.</p><ul><li>Short lessons on any device</li><li>Knowledge checks and stage badges</li><li>A 30-question exam (24 to pass) and a recorded roleplay for certification</li></ul><span class="tag">From US$49 per programme</span></div>'+
-     '<div><b><i>2</i>Practise it</b><p>Realistic customer scenarios, practised before they happen for real.</p><ul><li>Role-play in pairs using real customer situations</li><li>Explaining scans and measurements in plain words</li><li>Fitting demonstrations during in-store training sessions</li></ul></div>'+
+     '<div><b><i>2</i>Practise it</b><p>Realistic customer scenarios, practised before they happen for real.</p><ul><li>Role-play in pairs using real customer situations</li><li>Explaining scans and measurements in plain words</li><li>Fitting demonstrations during in-store training, available by appointment</li></ul></div>'+
      '<div><b><i>3</i>Apply it</b><p>Manager reinforcement on the shop floor through Academy Perform.</p><ul><li>Three short coaching exercises a week</li><li>A manager checklist for real interactions</li><li>A 20-minute weekly review that agrees what to coach next</li></ul><span class="tag">30-day pilot, US$200 one-time</span></div></div>'+
      '<p class="apx">The Certified Fit Specialist is a professional industry credential issued by BrightPath Academy. It is not a government-accredited qualification.</p></div></section>';
   H+='<section class="ps cream" id="progress"><div class="pv-wrap"><div class="prog"><div><small>Measurement</small><h2>Progress you can see.</h2>'+
@@ -6178,13 +6179,13 @@ else { showPublicSite(); }
     if (eng) { var g=eng.querySelector(".eng"), f=eng.querySelector(".flow"); if (g) org.querySelector(".nx-h").insertAdjacentElement("afterend",g); if (f) f.remove(); eng.style.display="none";
       g.querySelectorAll(".pv-btn").forEach(function(b){ b.classList.remove("dark"); b.classList.add("line"); }); var pr=g.querySelector('a[href="#enterprise"]'); if (pr) { pr.setAttribute("href","#contact"); pr.textContent="Talk to us about a rollout"; }
       g.insertAdjacentHTML("afterend",'<h3 style="font-family:var(--serif);font-size:22px;margin:34px 0 14px;color:#1E2A26">How we work with your team</h3>'); }
-    var oc=org.querySelector(".orgcta"); if (oc) oc.innerHTML='<a class="pv-btn dark" href="#contact">Build your team&rsquo;s confidence</a><small>We reply within one business day.</small>'; }
+    var oc=org.querySelector(".orgcta"); if (oc) oc.innerHTML='<a class="pv-btn dark" href="#contact">Build your team&rsquo;s confidence</a><small>We reply within one business day, by Zoom, email or phone.</small>'; }
   /* CLOSING lives in the enquiry section, with the form */
   var con=$("#contact"), det=$("#details");
   if (con && det) det.insertAdjacentElement("beforebegin",con);
   if (con) { var left=con.querySelector(".pv-cta > div"); if (left) { var eye=left.querySelector(".pv-eye"), h2=left.querySelector("h2"), p=left.querySelector("p:not(.pv-eye)");
       if (eye) eye.textContent="Let\u2019s talk"; if (h2) h2.innerHTML='<span class="cl">Build your people.</span><span class="cl">Earn trust.</span><span class="cl">Grow with purpose.</span>';
-      if (p) { p.textContent="Give your team the confidence to serve well and the skills to make every customer conversation count."; p.insertAdjacentHTML("afterend",'<button type="button" class="pv-btn gold closebtn" id="closeCta">Let&rsquo;s build your team&rsquo;s next chapter</button>'); }
+      if (p) { p.textContent="Give your team the confidence to serve well and the skills to make every customer conversation count."; p.insertAdjacentHTML("afterend",'<button type="button" class="pv-btn gold closebtn" id="closeCta">Let&rsquo;s build your team&rsquo;s next chapter</button><p class="meetnote">We reply within one business day, by Zoom, email or phone. In-store training is available by appointment.</p>'); }
       var sb=con.querySelector('.pv-form button[type=submit]'); if (sb) sb.textContent="Send";
       document.getElementById("closeCta").addEventListener("click",function(){ var f=document.getElementById("pvForm"), n=f&&f.querySelector('input[name=name]'); if (f) f.scrollIntoView({behavior:"smooth",block:"center"}); if (n) setTimeout(function(){ n.focus({preventScroll:true}); },450); }); } }
   /* SIDEBAR mirrors the story */
