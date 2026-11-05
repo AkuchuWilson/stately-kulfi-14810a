@@ -3,7 +3,7 @@
 <head><script>window.__bpInitialHash=location.hash;</script>
 <meta charset="utf-8">
 <meta name="theme-color" content="#11213A">
-<meta name="description" content="BrightPath Academy, a BrightPath Global company: the professional standard for modern footwear fitting. Certified Fit Specialist training for retail and clinical teams. Module 0 is free.">
+<meta name="description" content="People buy solutions, not products. BrightPath Academy, a BrightPath Global company: the professional standard for modern footwear fitting. Certified Fit Specialist training for retail and clinical teams. Module 0 is free.">
 <meta property="og:title" content="BrightPath Academy | A BrightPath Global company">
 <meta property="og:description" content="The professional standard for modern footwear fitting. Start Module 0 free.">
 <meta property="og:image" content="https://academy.brightpathglobal.org/assets/img/og.jpg">
@@ -2555,6 +2555,8 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:760px){.pv .wwy,.pv .why5{grid-template-columns:1fr}.pv .act{padding-top:60px}.pv .act .num{font-size:52px}.pv .acts3 a{padding:6px 10px;font-size:13px}.pv .acts3 a span{display:none}}
 </style>
 <style id="v32css">
+.pv #ps-hero h1{max-width:15ch!important}
+.pv #ps-hero h1 em.sol{font-style:italic;color:#E3C27A;font-weight:inherit}
 /* v32: rich, mature placards for the three stages */
 .pv .wwy{gap:18px;margin-top:26px}
 .pv .wwy a{position:relative;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px 26px 24px;border:0!important;border-radius:22px;overflow:hidden;color:#F4EFE6;isolation:isolate;
@@ -2635,8 +2637,8 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
     <div class="pv-wrap">
       <div class="pv-herocard">
         <div class="pv-herocopy">
-          <span class="pv-pill">People &middot; Skills &middot; Better fit &middot; Brighter lives</span>
-          <h1>Better conversations. Better fit. Better business.</h1>
+          <span class="pv-pill">Everyone sells something &middot; We teach teams to sell the solution</span>
+          <h1>People don&rsquo;t buy products. They buy <em class="sol">solutions.</em></h1>
           <p>The professional fitting standard for footwear retailers, clinics and distributors. With or without a scanner.</p>
           <div class="pv-ctas"><a class="pv-btn gold" href="#programmes">Explore programmes</a><a class="pv-btn line" href="#contact">Train your team</a></div>
           <div class="pv-proof"><div><b>Customer-first</b><span>S.E.R.V.E. keeps the customer in control.</span></div><div><b>Practical proof</b><span>Try, compare and validate fit.</span></div><div><b>Certified</b><span>Exam, roleplay and badges.</span></div></div>
@@ -5901,7 +5903,7 @@ else { showPublicSite(); }
   var ov=site.querySelector("#value"); if (ov) ov.id="value-old";
   var oe=site.querySelector("#enterprise"); if (oe) oe.id="enterprise-old";
   /* hero: what we do, who for, the next step */
-  var hp=hero.querySelector(".pv-herocopy > p"); if (hp) hp.textContent="BrightPath Academy trains footwear retail and clinic teams to fit customers well, with online learning, certification and in-store coaching.";
+  var hp=hero.querySelector(".pv-herocopy > p"); if (hp) hp.textContent="Every customer walks in with a problem to solve. BrightPath Academy trains footwear retail and clinic teams to find it, explain it and fit the right solution, through online learning, certification and in-store coaching.";
   var ct=hero.querySelector(".pv-ctas"); if (ct) ct.innerHTML='<a class="pv-btn gold" href="#enterprise">Train your team</a><a class="pv-btn line" href="#method">See the method</a><button class="pv-btn line" data-lead="brochure">Download brochure</button>';
   var I="assets/img/";
   var S='';
@@ -5969,7 +5971,7 @@ else { showPublicSite(); }
   var hc=hero.querySelector(".pv-herocopy");
   var strip='<div class="pv-wrap"><div class="wwy">'+
     '<a href="#act-who" style="--ac:#1F7A4D"><small>1 &middot; Who it is for</small><b>Footwear retail and clinic teams</b><span>And the managers and owners responsible for how they fit customers.</span></a>'+
-    '<a href="#act-what" style="--ac:#1D4E89"><small>2 &middot; What it does</small><b>Teaches one fitting conversation</b><span>Listen, measure, explain, recommend and validate, through learning and in-store coaching.</span></a>'+
+    '<a href="#act-what" style="--ac:#1D4E89"><small>2 &middot; What it does</small><b>Teaches teams to sell the solution</b><span>Listen, measure, explain, recommend and validate, through learning and in-store coaching.</span></a>'+
     '<a href="#act-why" style="--ac:#A9772F"><small>3 &middot; Why use it</small><b>Consistent, confident fitting</b><span>Changes you can see on the shop floor, built from real field experience, and an easy place to start.</span></a></div></div>';
   hero.insertAdjacentHTML("afterend",'<div class="acts3" id="acts3"><nav aria-label="Page sections"><a href="#act-who" style="--ac:#1F7A4D"><i>1</i><em>Who<span> it is for</span></em></a><a href="#act-what" style="--ac:#1D4E89"><i>2</i><em>What<span> it does</span></em></a><a href="#act-why" style="--ac:#A9772F"><i>3</i><em>Why<span> use it</span></em></a></nav></div>');
   var pl=hero.querySelector(".pv-proofline"); (pl||hero.querySelector(".pv-herocard")).insertAdjacentHTML("afterend",'<div class="wwy-holder"></div>');
