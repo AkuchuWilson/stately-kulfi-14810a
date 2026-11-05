@@ -2554,6 +2554,34 @@ html:has(.ld-wrap),html:has(.ld-wrap) body{overflow:hidden}
 @media (max-width:1000px){.pv .why5{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.pv .wwy,.pv .why5{grid-template-columns:1fr}.pv .act{padding-top:60px}.pv .act .num{font-size:52px}.pv .acts3 a{padding:6px 10px;font-size:13px}.pv .acts3 a span{display:none}}
 </style>
+<style id="v32css">
+/* v32: rich, mature placards for the three stages */
+.pv .wwy{gap:18px;margin-top:26px}
+.pv .wwy a{position:relative;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px 26px 24px;border:0!important;border-radius:22px;overflow:hidden;color:#F4EFE6;isolation:isolate;
+  background:var(--img) center/cover no-repeat;box-shadow:0 18px 40px -18px rgb(20 30 28 / .55)}
+.pv .wwy a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(10 20 22 / .25) 0%,rgb(10 20 22 / .5) 34%,var(--tone) 66%);transition:opacity .35s}
+.pv .wwy a::after{content:"";position:absolute;inset:12px;border:1px solid rgb(227 194 122 / .35);border-radius:16px;pointer-events:none}
+.pv .wwy a:hover{transform:translateY(-4px);box-shadow:0 26px 50px -20px rgb(20 30 28 / .6)}
+.pv .wwy .no{position:absolute;top:22px;left:26px;font-family:var(--serif);font-size:54px;line-height:1;color:#E3C27A;text-shadow:0 2px 14px rgb(0 0 0 / .35)}
+.pv .wwy small{color:#E3C27A!important;font:700 12px Inter,sans-serif;letter-spacing:.16em}
+.pv .wwy b{color:#fff!important;font-size:25px!important;line-height:1.2;margin:6px 0 8px!important;font-weight:600}
+.pv .wwy span.t{color:#DCE5E1!important;font-size:15px!important;line-height:1.55}
+.pv .wwy .go{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font:700 13.5px Inter,sans-serif;color:#E3C27A;letter-spacing:.02em}
+.pv .wwy .go::after{content:"\2192";transition:transform .25s}.pv .wwy a:hover .go::after{transform:translateX(4px)}
+/* stage openers become banner placards */
+.pv .act{padding:76px 0 6px}
+.pv .act .pv-wrap{display:block}
+.pv .act .ban{position:relative;display:grid;grid-template-columns:1.1fr 1fr;min-height:230px;border-radius:26px;overflow:hidden;background:var(--tone);color:#F4EFE6;box-shadow:0 22px 50px -26px rgb(20 30 28 / .6)}
+.pv .act .ban .tx{position:relative;z-index:1;padding:34px 38px;display:flex;flex-direction:column;justify-content:center}
+.pv .act .ban .tx::after{content:"";position:absolute;left:38px;bottom:26px;width:64px;height:2px;background:#C9A55A}
+.pv .act .num{font-family:var(--serif)!important;font-size:22px!important;line-height:1!important;color:#E3C27A!important;opacity:1!important;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.pv .act h2{color:#fff!important;font-size:clamp(34px,4vw,52px)!important}
+.pv .act p{color:#CFDAD6!important;font-size:17px!important;margin-top:10px!important;max-width:46ch}
+.pv .act .ban .im{background:var(--img) 50% 22%/cover no-repeat;position:relative}
+.pv .act .ban .im::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--tone) 0%,transparent 45%)}
+@media (max-width:760px){.pv .wwy a{min-height:280px}.pv .act .ban{grid-template-columns:1fr}.pv .act .ban .im{height:170px;order:-1}.pv .act .ban .im::before{background:linear-gradient(0deg,var(--tone) 0%,transparent 60%)}.pv .act .ban .tx{padding:22px 22px 36px}.pv .act .ban .tx::after{left:22px;bottom:20px}}
+@media (prefers-reduced-motion:reduce){.pv .wwy a,.pv .wwy .go::after{transition:none}.pv .wwy a:hover{transform:none}}
+</style>
 </head>
 <body class="public-mode">
 
@@ -5967,6 +5995,26 @@ else { showPublicSite(); }
     '<div class="pv-sgrp"><small>3 &middot; Why use it</small><a href="#why">Why teams choose it</a><a href="#evidence">The experience behind it</a><a href="#enterprise">Get started</a></div>'+
     '<div class="pv-sgrp"><small>Details</small><a href="#programmes">Programmes</a><a href="#pricing">Pricing</a><a href="#standard">The BrightPath standard</a><a href="#credentials">Credentials</a><a href="#about">Founder and field photos</a><a href="#learn">Insights and events</a><a href="#faq">FAQ</a></div>'+
     '<div class="pv-sgrp"><small>More</small><a href="/perform" class="pv-snew">Academy Perform</a><a href="/scanner-led-stores" class="pv-snew">Scanner-led stores</a></div>';
+})();
+</script>
+<script id="v32js">
+(function(){
+  var site=document.getElementById("publicSite"); if (!site || site.querySelector(".act .ban")) return;
+  var I="assets/img/";
+  var D={"act-who":["sc-huddle","#0E3D3A","Stage one"],"act-what":["scene-scan-review","#102B45","Stage two"],"act-why":["sc-certified","#3A2A17","Stage three"]};
+  site.querySelectorAll(".wwy a").forEach(function(a){
+    var d=D[a.getAttribute("href").slice(1)]; if (!d) return;
+    a.style.setProperty("--img","url("+I+d[0]+".webp)"); a.style.setProperty("--tone",d[1]+"F2");
+    var sp=a.querySelector("span"); if (sp) sp.className="t";
+    var sm=a.querySelector("small"); var n=sm?sm.textContent.split("\u00b7")[0].trim():""; if (sm) sm.textContent=sm.textContent.split("\u00b7").slice(1).join("").trim();
+    a.insertAdjacentHTML("afterbegin",'<span class="no" aria-hidden="true">0'+n+'</span>'); a.insertAdjacentHTML("beforeend",'<span class="go">Explore</span>');
+  });
+  Object.keys(D).forEach(function(id){
+    var act=document.getElementById(id); if (!act) return; var d=D[id], w=act.querySelector(".pv-wrap");
+    var h=w.querySelector("h2").textContent, p=w.querySelector("p").textContent;
+    act.style.setProperty("--tone",d[1]); act.style.setProperty("--img","url("+I+d[0]+".webp)");
+    w.innerHTML='<div class="ban"><div class="tx"><span class="num">'+d[2]+'</span><h2>'+h+'</h2><p>'+p+'</p></div><div class="im" role="img" aria-label=""></div></div>';
+  });
 })();
 </script>
 <script id="v29js">
